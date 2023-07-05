@@ -27,18 +27,24 @@ SRL helps us understand sentences better. Imagine you have a sentence like "The 
 
 ### How Does SRL Work?
 <br />
+
 To use SRL, we need to train a computer program using lots of examples. These examples have sentences with annotated roles for each word or phrase. The program learns patterns from these examples to understand how words relate to each other in different roles.
 <br />
+
 Once the program is trained, we can give it new sentences, and it will tell us the roles of the words. For example, if we give it the sentence "The cat chased the mouse," it will say that "cat" is the "chaser" and "mouse" is the "chased."
 
 ### Why is SRL Useful?
 <br />
+
 SRL has many uses. Here are a few examples:
 <br />
+
 - Information Extraction: SRL helps us extract important information from sentences. We can find out who did what to whom and understand the relationships between different parts of the sentence.
 <br />
+
 - Question Answering: SRL helps us answer questions based on the information in a sentence. For example, if we're asked, "Who chased the mouse?" SRL can help us find the answer by identifying the role of the words in the sentence.
 <br />
+
 - Machine Translation: SRL can improve machine translation by understanding the roles and relationships of words in different languages. This helps in accurately translating sentences from one language to another.
 <br />
 
