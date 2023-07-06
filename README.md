@@ -165,30 +165,24 @@ All of them have a raw institutional statement, and corresponding Attribute, Deo
 ##  Results
 
 ### Comparison of IG vs SRL results
-- Attribute 
-{'rouge1': 0.5134343434343435, 'rouge2': 0.2074074074074074, 'rougeL': 0.5164646464646465, 'rougeLsum': 0.5162626262626263}
 <br />
-BLEU score for attribute: 0.00
-<br />
-F1 score for attribute: 0.3157894736842105
 
-- Object
-{'rouge1': 0.47647072226019593, 'rouge2': 0.4330465622941684, 'rougeL': 0.4799605073289284, 'rougeLsum': 0.48310498468393204}
-<br />
-BLEU score for object: 0.00
-<br />
-F1 score for object: 0.32432432432432434
+### Attribute 
+- {'rouge1': 0.5134343434343435, 'rouge2': 0.2074074074074074, 'rougeL': 0.5164646464646465, 'rougeLsum': 0.5162626262626263}
+- BLEU score for attribute: 0.00
+- F1 score for attribute: 0.3157894736842105
 
-- Deontic 
-{'rouge1': 1.0, 'rouge2': 0.0, 'rougeL': 1.0, 'rougeLsum': 1.0}
-<br />
-BLEU score for deontic: 1.00
-<br />
-F1 score for deontic: 0
+### Object
+- {'rouge1': 0.47647072226019593, 'rouge2': 0.4330465622941684, 'rougeL': 0.4799605073289284, 'rougeLsum': 0.48310498468393204}
+- BLEU score for object: 0.00
+- F1 score for object: 0.32432432432432434
 
-- Aim
-{'rouge1': 0.711111111111111, 'rouge2': 0.0, 'rougeL': 0.7222222222222221, 'rougeLsum': 0.711111111111111}
-<br />
-BLEU score for aim: 0.17
-<br />
-F1 score for aim: 0.15384615384615385
+### Deontic 
+- {'rouge1': 1.0, 'rouge2': 0.0, 'rougeL': 1.0, 'rougeLsum': 1.0}
+- BLEU score for deontic: 1.00
+- F1 score for deontic: 0
+
+### Aim
+- {'rouge1': 0.711111111111111, 'rouge2': 0.0, 'rougeL': 0.7222222222222221, 'rougeLsum': 0.711111111111111}
+- BLEU score for aim: 0.17
+- F1 score for aim: 0.15384615384615385
