@@ -28,10 +28,10 @@ nltk.download('brown')
 nltk.download('universal_tagset')
 
 all_words = []
-tags = ['DET','INTJ','NUM']
+tags = ['SCONJ','CCONJ','DET','INTJ','NUM']
 for elem in brown.tagged_words(tagset="universal"):
   if elem[1] in tags:
-    all_words.append(elem[0])
+    if elem[0].lower() not in ['no','not']: all_words.append(elem[0].lower()) ##all determiners except negation
 
 all_words = list(set(all_words))
 
