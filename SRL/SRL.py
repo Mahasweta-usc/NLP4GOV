@@ -150,7 +150,7 @@ class SRL:
     if arg == 'attribute_inf':
       #attribute usually found in ARG0 or ARG1
       if 'ARG0' in list(x.keys()) : return " ".join(x['ARG0'])
-      elif 'ARG1' in list(x.keys()) : return " ".join(x['ARG1'])
+      elif 'ARG1' in list(x.keys()) and not self.agent : return " ".join(x['ARG1'])
       else: return ""
 
     if arg == 'object_inf':
