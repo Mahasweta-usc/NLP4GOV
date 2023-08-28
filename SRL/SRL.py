@@ -164,12 +164,15 @@ class SRL:
       #   if 'ARG2' in list(x.keys()) : return " ".join(x['ARG2'])
       #   else: return ""
 
-      if 'ARG0' in x or 'ARG1' in x: keys = set(main_arguments[1:]) & set(x.keys())
-      else: keys = set(main_arguments) & set(x.keys())
+        if not self.agent:
+            if 'ARG0' in x or 'ARG1' in x : keys = set(main_arguments[1:]) & set(x.keys())
+            else : keys = set(main_arguments) & set(x.keys())
 
-      obj = []
-      for argument in keys: obj.extend(x[argument])
-      return ", ".join(obj)
+        else : keys = set(main_arguments[1:]) & set(x.keys())
+
+        obj = []
+        for argument in keys: obj.extend(x[argument])
+        return ", ".join(obj)
 
     if arg == 'aim_inf': return " ".join(x['V'])
 
