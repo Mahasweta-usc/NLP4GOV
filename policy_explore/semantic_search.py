@@ -45,12 +45,12 @@ class semantic_search:
         text = text.replace("\r\n", " ").replace("\n", " ")
         regex = r'\b(\w+)(?:\W+\1\b)+'
         text = re.sub(regex, r'\1', text, flags=re.IGNORECASE)
-        text = remove_punc(text)
+        text = self.remove_punc(text)
         return text.lower()
 
     def bm25_tokenizer(self, text):  ### Custom tokenizer function for BM25. This tokenizes text and removes punctuation, stopwords, and non-alphabetic words.
         tokenized_doc = []
-        for token in word_tokenize(process_(text)):
+        for token in word_tokenize(self.process_(text)):
 
             if len(token) > 0 and token not in stopwords and token.isalpha():
                 tokenized_doc.append(token)
