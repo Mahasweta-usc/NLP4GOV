@@ -7,6 +7,7 @@ import nltk
 from nltk.corpus import wordnet as wn
 from nltk.corpus import brown
 from nltk import word_tokenize
+from sentence_transformers import SentenceTransformer
 nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
 nltk.download('brown')
@@ -71,7 +72,7 @@ class semantic_search:
         bm25_hits = [{'corpus_id': data["reply"][idx], 'score': bm25_scores[idx]} for idx, _ in enumerate(bm25_scores)]
         filtered_bm25_hits = [entry for entry in bm25_hits if entry['score'] > 0]
         filtered_bm25_hits = pd.DataFrame(filtered_bm25_hits)
-        filtered_bm25_hits.sort_values(by=['score'], inplace=True)
+        filtered_bm25_hits.sort_values(by=['score'], ascending=False, inplace=True)
         return filtered_bm25_hits
 
     # rank matches with query by cosine distance
@@ -87,3 +88,5 @@ class semantic_search:
             wer.append(util.cos_sim(query_embed, example))
         return wer
     # save csv in descending sorted order of match
+    def sentence_embeddings_encode(word_embedding_model, data):
+        return word_embedding_model.encode(data)
