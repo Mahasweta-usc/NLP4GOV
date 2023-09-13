@@ -10,6 +10,7 @@ from sentence_transformers import SentenceTransformer, util
 #read files
 column_name = "Raw Institutional Statement"
 file_names = os.listdir('/content/IG-SRL/policy_comparison/data')
+print(file_names)
 db1 = pd.read_csv(file_names[0], usecols=[column_name])
 db2 = pd.read_csv(file_names[1], usecols=[column_name])
 
