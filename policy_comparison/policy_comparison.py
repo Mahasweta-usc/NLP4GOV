@@ -45,6 +45,7 @@ class policy_comparison:
         # Retrieve and store the results in the DataFrame
         results_df = pd.DataFrame(columns=["Camden Food Security", "Connecticut Food Policy", "Similarity Score"])
 
+        seen_pairs = set()
         for i, query_result in enumerate(search_results):
             for j, result in enumerate(query_result):
                 corpus_id = result['corpus_id']
@@ -52,7 +53,15 @@ class policy_comparison:
                 # Access the corresponding sentences from db1 and db2
                 sentence1 = db1.loc[i, 'Raw Institutional Statement']
                 sentence2 = db2.loc[corpus_id, 'Raw Institutional Statement']
-                results_df.loc[len(results_df)] = [sentence1, sentence2, score]
+
+                # Sort the sentences alphabetically to eliminate duplicates
+                pair_key = tuple(sorted([sentence1, sentence2]))
+                
+                # Check if this pair has been seen before
+                if pair_key not in seen_pairs:
+                    results_df.loc[len(results_df)] = [sentence1, sentence2, score]
+                    seen_pairs.add(pair_key)
+                    
         results_df = results_df.sort_values(by='Similarity Score', ascending=False)
         display(HTML(results_df.to_html()))
         return results_df
