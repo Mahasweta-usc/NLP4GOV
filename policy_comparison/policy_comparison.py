@@ -8,11 +8,18 @@ from IPython.display import display, HTML
 from sentence_transformers import SentenceTransformer, util
 
 #read files
-# import pandas as pd
-column_name = "Raw Institutional Statement"
 
-db1 = pd.read_csv(r'policy_comparison\data\FPC_Siddiki.xlsx - Camden Food Security.csv', usecols=[column_name])
-db2 = pd.read_csv(r'policy_comparison\data\FPC_Siddiki.xlsx - Connecticut Food Policy', usecols=[column_name])
+column_name = "Raw Institutional Statement"
+data = '/content/IG-SRL/policy_comparison/data'
+file_names = os.listdir(data)
+
+for file_name in file_names:
+    file_path = os.path.join(data, file_name)
+    if os.path.isfile(file_path):
+        if "FPC_Siddiki.xlsx - Camden Food Security.csv" in file_name:
+            db1 = pd.read_csv(file_path, usecols=[column_name])
+        elif "FPC_Siddiki.xlsx - Connecticut Food Policy.csv" in file_name:
+            db2 = pd.read_csv(file_path, usecols=[column_name])
 
 db1 = db1.dropna()
 db1 = db1.reset_index(drop=True)
