@@ -88,5 +88,5 @@ class semantic_search:
             wer.append(util.cos_sim(query_embed, example))
         return wer
     # save csv in descending sorted order of match
-    def sentence_embeddings_encode(word_embedding_model, data):
+    def sentence_embeddings_encode(self, word_embedding_model, data):
         return word_embedding_model.encode(data)
