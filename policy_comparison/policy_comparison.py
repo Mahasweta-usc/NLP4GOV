@@ -7,6 +7,22 @@ from mpl_toolkits.mplot3d import Axes3D
 from IPython.display import display, HTML
 from sentence_transformers import SentenceTransformer, util
 
+#read files
+# import pandas as pd
+column_name = "Raw Institutional Statement"
+
+db1 = pd.read_csv("IG-SRL\policy_comparison\data\FPC_Siddiki.xlsx - Camden Food Security.csv", usecols=[column_name])
+db2 = pd.read_csv("IG-SRL\policy_comparison\data\FPC_Siddiki.xlsx - Connecticut Food Policy.csv", usecols=[column_name])
+
+db1 = db1.dropna()
+db1 = db1.reset_index(drop=True)
+
+db2 = db2.dropna()
+db2 = db2.reset_index(drop=True)
+
+print(db1)
+print(db2)
+
 word_embedding_model = SentenceTransformer("Jainam/freeflow-biencoder")
 
 results_df = pd.DataFrame(columns=["Camden Food Security", "Connecticut Food Policy", "Similarity Score"])
