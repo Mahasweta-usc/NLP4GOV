@@ -20,9 +20,6 @@ db1 = db1.reset_index(drop=True)
 db2 = db2.dropna()
 db2 = db2.reset_index(drop=True)
 
-print(db1)
-print(db2)
-
 word_embedding_model = SentenceTransformer("Jainam/freeflow-biencoder")
 
 results_df = pd.DataFrame(columns=["Camden Food Security", "Connecticut Food Policy", "Similarity Score"])
@@ -33,6 +30,9 @@ class policy_comparison:
 
     def sentence_embeddings_encode(self, word_embedding_model, data):
         return word_embedding_model.encode(data)
+    
+    def show_db(self):
+        return db1, db2
     
     def show_results(self, search_results):
         # Retrieve and store the results in the DataFrame
