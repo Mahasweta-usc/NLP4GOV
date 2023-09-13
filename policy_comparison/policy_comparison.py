@@ -15,7 +15,7 @@ class policy_comparison:
     def __init__(self, agent=None):
         self.agent = agent
 
-    def sentence_embeddings_encode(word_embedding_model, data):
+    def sentence_embeddings_encode(self, word_embedding_model, data):
         return word_embedding_model.encode(data)
     
     def show_results(self, search_results):
