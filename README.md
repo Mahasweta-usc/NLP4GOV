@@ -1,188 +1,44 @@
- # IG-SRL
-<br />
-<p align="center">
-  <h2 align="center">Documentation</h2>
 
+# Contents
 
-## Google Colab 
+1. Recommended pipelines and applications
+2. Navigating Colaboratory 
+3. Tasks Overview
 
-Google Colab is a cloud-based platform provided by Google that allows you to run and execute Python code in a Jupyter Notebook environment. It offers free access to a GPU and is commonly used for machine learning, data analysis, and prototyping.
+# Recommended pipelines and applications
 
-### To get started with Google Colab, follow these steps:
+The repository is a joint effort led by <INSERT Labs/Organizations involved>. We present an extensive, curated collection of  functionalities and tasks in natural language processing, adapted to aid collective action research at scale. 
 
-- pen your web browser and go to the Google Colab website: https://colab.research.google.com/
-- You'll be presented with the Google Colab welcome page. Here, you have the option to create a new notebook or open an existing one from your Google Drive.
-- To create a new notebook, click on "New Notebook" or go to "File" -> "New Notebook."
-- A new notebook will open in a new tab, similar to a Jupyter Notebook interface. You can now write and execute Python code in the cells of the notebook.
-- To add a new cell, click on the "+" button in the toolbar or go to "Insert" -> "Code cell."
-- To execute a code cell, either click on the "Play" button in the left margin of the cell or use the keyboard shortcut "Shift + Enter." The code will be executed, and the output will be displayed below the cell.
-- To add text and documentation using Markdown cells. To add a Markdown cell, go to "Insert" -> "Text cell."
-- To install and import libraries, upload files, access Google Drive, and perform other operations just like in a regular Jupyter Notebook.
+Our Github currently hosts 5 (more soon!) versatile end to end applications to process raw policy corpus and extract meaningful features for research and analysis. Examples include but not limited to:
 
-## SRL- Semantic Role Labeling
+* **Identify community players, strength of regulation and interactions:** Preprocess documents > Extract ABDICO components > Network Analysis
+* **Policy diffusion/adaption over time:** Preprocess policy documents > Compare policies with interviews/conversations
+* **Compare Institutions:** Preprocess policy documents from different communities > Find most similar rules between two communities
+* **Power dynamics in communities:** Preprocess policy documents > Extract ABDICO components > cluster actors > Analyze inter group leverage
 
-### What is SRL?
-<br />
-SRL helps us understand sentences better. Imagine you have a sentence like "The cat chased the mouse." SRL helps us figure out what each word or phrase is doing in the sentence. For example, it tells us that "cat" is doing the action of chasing, and "mouse" is the thing being chased. It's like assigning roles to the words in a sentence!
+# Navigating Colaboratory
 
-### How Does SRL Work?
-<br />
+Colaboratory or Colab is a service provided by Google, which allows users to run and develop notebook applications while leveraging their infrastructure at very little cost.
+## Overview of Colab subscription plans:
 
-To use SRL, we need to train a computer program using lots of examples. These examples have sentences with annotated roles for each word or phrase. The program learns patterns from these examples to understand how words relate to each other in different roles.
-<br />
+* Free : Nvidia T4 GPU
+* Pro ($9.99/month) : Nvidia T4/ V100/ A100 + High RAM CPU. Check website for unit rate charges for different GPUs and their features.
 
-Once the program is trained, we can give it new sentences, and it will tell us the roles of the words. For example, if we give it the sentence "The cat chased the mouse," it will say that "cat" is the "chaser" and "mouse" is the "chased."
+For most notebooks here however, users should not require premium subscriptions. A free T4 GPU generally suffices, unless the specific use case involves high volumes (hundreds of MBs to several GBs) of text data and necessitates more compute/speed.
 
-### Why is SRL Useful?
-<br />
+## Getting Started
 
-SRL has many uses. Here are a few examples:
-<br />
-
-- Information Extraction: SRL helps us extract important information from sentences. We can find out who did what to whom and understand the relationships between different parts of the sentence.
-<br />
-
-- Question Answering: SRL helps us answer questions based on the information in a sentence. For example, if we're asked, "Who chased the mouse?" SRL can help us find the answer by identifying the role of the words in the sentence.
-<br />
-
-- Machine Translation: SRL can improve machine translation by understanding the roles and relationships of words in different languages. This helps in accurately translating sentences from one language to another.
-<br />
-
-### How Can We Use SRL?
-We can use a library called AllenNLP to work with SRL. AllenNLP provides pre-built models and tools to make it easier for us to use SRL in our projects.
-<br />
-
-### To use SRL with AllenNLP, we follow these steps:
-<br />
-
-- Prepare Data: We need to gather examples of sentences with annotated roles. These examples help the computer program learn the patterns.
-<br />
-
-- Train the Model: We train the computer program using the annotated examples. It learns to predict the roles of words based on the patterns it sees in the data.
-<br />
-
-- Evaluate the Model: We check how well the program performs by testing it on new examples that it hasn't seen before. This helps us understand if it can accurately predict the roles.
-<br />
-
-- Predict Roles: Once the program is trained and evaluated, we can use it to predict the roles of words in new sentences. It will tell us the roles of each word, like who is doing the action and who is receiving the action.
-<br />
-
-- SRL and tools like AllenNLP make it easier for computers to understand sentences and extract meaningful information. By using SRL, we can teach computers to understand language better and help them perform tasks like answering questions or translating languages.
-<br />
-
-## Institutional Grammar
-
-Institutional grammar is a way of looking at sentences and understanding how they work based on rules and relationships. It's like a set of guidelines that help us understand how words fit together to make sense.
-<br />
-
-Imagine you have a big box of puzzle pieces, and you want to put them together to create a beautiful picture. Institutional grammar is like having a set of rules that tell you how each puzzle piece should connect with the others. It helps you figure out the right places for each piece so that the puzzle makes sense as a whole.
-<br />
-
-Institutional grammar goes beyond just the words themselves. It also considers the bigger context, like the situation or the social interactions surrounding the sentence. It looks at how sentences are structured and the meanings behind them in specific situations, like in a legal case or a social interaction.
-<br />
-
-By following the rules of institutional grammar, we can analyze sentences and understand their deeper meaning. It helps us see the relationships between words and how they work together to convey information or express ideas.
-<br />
-
-So, institutional grammar is like a set of puzzle-solving rules for understanding sentences. It helps us put the pieces of a sentence together correctly and make sense of the bigger picture they create.
-
-
-<br />
-
-## Differences between the Approaches : Institutional Grammar & SRL
-<br />
-
-Institutional Grammar is a way to understand sentences by looking at the rules and logical relationships between the words. It focuses on how sentences are structured and the meanings behind them in specific situations, like in a legal or social context. It uses specific rules and principles to analyze sentences and figure out their meaning based on the actions and commitments involved.
-<br />
-
-On the other hand, Semantic Role Labeling (SRL) is all about understanding the roles of words in a sentence. It helps us figure out who is doing what in a sentence. For example, if we have the sentence "The dog chased the ball," SRL would tell us that "dog" is the one doing the action of chasing, and "ball" is the thing being chased. It labels the words in a sentence with specific roles, like "chaser" and "chased," to show how they relate to each other.
-<br />
-
-Institutional Grammar takes a more formal and rule-based approach to understand sentences, while SRL uses machine learning techniques to learn from examples and predict the roles of words in a sentence. Institutional Grammar looks at the bigger picture, considering social and institutional interactions, while SRL focuses on individual sentences and extracting meaningful information from them.
-<br />
-
-Institutional Grammar represents sentence structure and meaning using logical or symbolic representations, while SRL uses labels or tags to show the roles of words. For example, SRL might label a verb as the "action" and nouns as "doers" or "receivers" based on their roles in the sentence.
-<br />
-
-To summarize, Institutional Grammar helps us understand sentence structure and meaning in specific contexts, while SRL helps us identify the roles of words in sentences. Institutional Grammar uses rules and principles, while SRL uses machine learning to predict word roles.
-
-
-<br />
-
-
-
-
-
-
-
-
-
-## Datasets
-<br />
-
-Our main dataset is called the Standardized Siddiki Dataset which comprises of below given datasets-
-<br />
-
-### NationalOrganicProgramRegulations_Siddiki
-- Econ Development Mechanisms
-### FPC_Siddiki
-- Camden Food Security
-- Colorado Food systems Advisory
-- Connecticut Food policy
-- Denver Sustainable FPC
-- Douglas County FPC
-- Grant County FPC
-- Hartford Food Commission
-- Homegrown Minneapolis Council
-- Louisville FPC
-- Mass FPC
-- Michigan FPC
-- Nashville FPC
-- New Haven FPC
-- New Orleans Food advisory
-- NewYork Council on Food
-- San Francisco FPC
-- Rio Arriba County
-- Knoxville Knox County
-- Saint Paul Ramsey 
-### Colorado_AcquacultureRegulations_Siddiki
-- Fish Health Board
-- CAA Statute
-- CAA Rules
-
-<br />
-All of them have a raw institutional statement, and corresponding Attribute, Deontic, Aim, Object, Conditions columns respectively as the primary important columns.
-
-<br />
-
-
-
-
-
-
-
-
-##  Results
-
-### Comparison of IG vs SRL results
-<br />
-
-### Attribute 
-- {'rouge1': 0.5134343434343435, 'rouge2': 0.2074074074074074, 'rougeL': 0.5164646464646465, 'rougeLsum': 0.5162626262626263}
-- BLEU score for attribute: 0.00
-- F1 score for attribute: 0.3157894736842105
-
-### Object
-- {'rouge1': 0.47647072226019593, 'rouge2': 0.4330465622941684, 'rougeL': 0.4799605073289284, 'rougeLsum': 0.48310498468393204}
-- BLEU score for object: 0.00
-- F1 score for object: 0.32432432432432434
-
-### Deontic 
-- {'rouge1': 1.0, 'rouge2': 0.0, 'rougeL': 1.0, 'rougeLsum': 1.0}
-- BLEU score for deontic: 1.00
-- F1 score for deontic: 0
-
-### Aim
-- {'rouge1': 0.711111111111111, 'rouge2': 0.0, 'rougeL': 0.7222222222222221, 'rougeLsum': 0.711111111111111}
-- BLEU score for aim: 0.17
-- F1 score for aim: 0.15384615384615385
+1. Download this repository (compressed zip) to your local system
+      ![img.png](images/img1.png)
+2. Extract downloaded file. Notebook applications end in a '.ipynb' extension. 
+![img.png](images/img2.png)
+3. Go to https://colab.research.google.com/. Upload your selected notebook from the repo as shown
+![img.png](images/img3.png)
+4. Set notebook backend. Select Runtime (Upper left header). Make sure you are opting for a GPU and using Python 3.
+![img.png](images/img4.png)
+5. Run first cell of each notebook for installations and package imports
+![img.png](images/img5.png)
+6. Follow inline instructions to run the remaining notebook cells one by one
+![img.png](images/img6.png)
+7. Download the final file with the results (Generally "main.csv") from right hand directory panel.
+![img.png](images/img7.png)
