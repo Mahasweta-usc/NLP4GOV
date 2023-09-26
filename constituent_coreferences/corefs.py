@@ -18,7 +18,7 @@ predictor = Predictor.from_path("https://storage.googleapis.com/allennlp-public-
 
 
 PRN = ["her", "herself", "him", "himself", "his", "hisself", "it", "itself", "me", "myself", "one", "oneself", "ours",
-"ourselves", "ownself", "self",  "theirs", "them", "themselves", "they",'their', "she", "he", "us", 'you', 'yours']
+"ourselves", "ownself", "self",  "theirs", "them", "themselves", "they",'their', "she", "he", "us", 'you', 'yours', "this", "that", "these", "those"]
 poss_prn = ["her","his","ours","theirs",'their','yours']
 
 class corefs:
