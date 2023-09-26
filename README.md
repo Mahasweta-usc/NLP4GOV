@@ -9,7 +9,7 @@
 
 The repository is a joint effort led by <INSERT Labs/Organizations involved>. We present an extensive, curated collection of  functionalities and tasks in natural language processing, adapted to aid collective action research at scale. 
 
-Our Github currently hosts 5 (more soon!) versatile end to end applications to process raw policy corpus and extract meaningful features for research and analysis. Examples include but not limited to:
+Our Github currently hosts 5 (more soon!) versatile end to end applications. Each of these can be used alone or in combinations to process raw policy corpus and extract meaningful information and measurements for research and analysis. Examples include but not limited to:
 
 * **Identify community players, strength of regulation and interactions:** Preprocess documents > Extract ABDICO components > Network Analysis
 * **Policy diffusion/adaption over time:** Preprocess policy documents > Compare policies with interviews/conversations
@@ -43,13 +43,15 @@ For most notebooks here however, users should not require premium subscriptions.
 7. Download the final file with the results (Generally "main.csv") from right hand directory panel.
 ![img.png](images/img7.png)
 
+For further understanding of the Colab environment (How cells work, how to run cells, etc) : https://youtu.be/inN8seMm7UI?si=NpsCUBWeQM9W7kW8
+
 # Tasks Overview
 
 ## General Guidelines
 
 * All input files to notebooks must be .csv. If your data is in any other formal (xls/json), please make sure to convert appropriately before running a notebook.
 * Check comments in each notebook to understand how input data should be configured, i.e. upload file name, table headers/input data fields/output data fields.
-* When coding raw policy statements for some notebooks (e.g. ABDICO_parsing.ipynb, policies_compares, etc ), for interpretability as well as best results, it's recommended to present data in self contained statements with most IG components present than bullets.
+* When coding raw institutional statements for some notebooks (e.g. ABDICO_parsing.ipynb, policies_compares, etc ), for interpretability as well as best results, it's recommended to present data in self contained statements with most IG components present than bullets.
 
       E.g. "The Board should 1. conduct a vote every 3 years 2. review proposal for budgetary considerations"... can be coded as separate row entries such as:
       
@@ -57,7 +59,7 @@ For most notebooks here however, users should not require premium subscriptions.
       
       "The Board should review proposal for budgetary considerations."
 
-### Preprocessing/Anaphora Resolution (ABDICO_coreferences.ipynb)
+### Preprocessing/Anaphora Resolution (ABDICO_parsing.ipynb)
 
 Performs disambiguation of pronouns in policy documents or passages to resolve the absolute entity they are referring to.
 This preserves valuable information by identifying the exact individuals, groups or organizational instruments associated with different activities and contexts.
@@ -81,3 +83,12 @@ Example: After anaphora resolution, it becomes clear and specific that "them" in
 
 ### Institutional Grammar Parsing (ABDICO_coreferences.ipynb)
 
+Uses a linguistic task called semantic role labeling and maps their outputs to the Institutional Grammar (ABDICO) schema. Currently supports extractions of Attributes, Objects, Deontics and Aims.
+
+Input : .csv file where rows are raw institutional statements. These could be human coded policy statements or outputs from the anaphora resolution notebook (see previous task)
+
+Output : Extracted Attribute, Object, Deontic and Aim
+
+![img.png](images/img_srl.png)
+
+![img_1.png](images/img_srl_out.png)
