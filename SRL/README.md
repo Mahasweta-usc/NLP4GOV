@@ -138,32 +138,19 @@ All of them have a raw institutional statement, and corresponding Attribute, Deo
 
 
 
-
-
-
-
-
 ##  Results
 
 ### Comparison of IG vs SRL results
 <br />
 
 ### Attribute 
-- {'rouge1': 0.5134343434343435, 'rouge2': 0.2074074074074074, 'rougeL': 0.5164646464646465, 'rougeLsum': 0.5162626262626263}
-- BLEU score for attribute: 0.00
-- F1 score for attribute: 0.3157894736842105
+- F1 score for attribute: 0.7718360071301248
 
 ### Object
-- {'rouge1': 0.47647072226019593, 'rouge2': 0.4330465622941684, 'rougeL': 0.4799605073289284, 'rougeLsum': 0.48310498468393204}
-- BLEU score for object: 0.00
-- F1 score for object: 0.32432432432432434
+- F1 score for object: 0.6121417797888385
 
 ### Deontic 
-- {'rouge1': 1.0, 'rouge2': 0.0, 'rougeL': 1.0, 'rougeLsum': 1.0}
-- BLEU score for deontic: 1.00
-- F1 score for deontic: 0
+- F1 score for deontic: 0.9411764705882353
 
 ### Aim
-- {'rouge1': 0.711111111111111, 'rouge2': 0.0, 'rougeL': 0.7222222222222221, 'rougeLsum': 0.711111111111111}
-- BLEU score for aim: 0.17
-- F1 score for aim: 0.15384615384615385
+- F1 score for aim: 0.6862745098039216

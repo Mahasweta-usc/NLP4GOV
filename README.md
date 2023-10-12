@@ -92,3 +92,77 @@ Output : Extracted Attribute, Object, Deontic and Aim
 ![img.png](images/img_srl.png)
 
 ![img_1.png](images/img_srl_out.png)
+
+### Policy Comparison (policy_comparison.ipynb)
+
+# Policy Comparison Code Notebook
+
+## Overview
+
+The Policy Comparison Code Notebook is a tool that allows you to conduct a comprehensive analysis of policy sentences from two different sets. Regardless of the specific domain, this code notebook follows a series of steps to provide a deep understanding of the similarities between these policies and visualize the results.
+
+## How It Works
+
+1. **Input:** The notebook takes two sets of policy sentences databses in .csv format as input. These sets can be in the form of text files or data structures, depending on how you choose to implement it.
+
+![pol_comp_inp.png](images/pol_comp_inp.png)
+
+2. **Comparison:** The code conducts an "all-to-all" comparison. This means that every statement in the first file is compared to every statement in the second file. For example, if the first file has 10 statements, and the second has 15, the code will perform 150 pairwise comparisons in total.
+
+3. **Output:** A downloadable file with the results of these comparisons are stored with three columns:
+   - The statement from the first file.
+   - The statement from the second file.
+   - A numerical similarity score that quantifies how similar or dissimilar each pair of statements is. This score helps users gauge the degree of similarity between policy statements.
+
+![pol_comp_out.png](images/pol_comp_out.png)
+
+To enhance the user's understanding of the data, the code provides three visualizations:
+
+1. **Distribution of Similarity Scores:** This visualization offers a view of how similarity scores are distributed across the dataset. It helps users identify trends, such as whether policies tend to be more similar or dissimilar.
+
+![pol_comp_pdf.png](images/pol_comp_pdf.png)
+
+2. **Word Cloud:** A word cloud visually represents the most frequently occurring words in the policy statements. It offers a quick and intuitive way to identify prominent terms and themes within the policies.
+
+![pol_comp_wordCloud.png](images/pol_comp_wordCloud.png)
+
+3. **3D Plot:** This 3D scatter plot displays policy statements as data points in a 3D space. The x and y coordinates correspond to the IDs of the statements, while the z-axis represents the similarity scores. This plot allows users to explore how policies relate to each other in a multidimensional space.
+
+![pol_comp_3d.png](images/pol_comp_3d.png)
+
+While the code is initially designed to work with example datasets, it can be easily adapted to analyze and visualize user-provided policy data. This versatility makes it a valuable tool for comparing and understanding policy documents across various domains, facilitating data-driven decision-making and insights.
+
+
+### Policy Explore (policy_explore.ipynb)
+
+# Semantic Search Code Notebook
+
+## Overview
+This notebook leverages natural language processing to facilitate the mapping of informal statements to formal rules. It allows users to compare an institutional policy statement (the "needle") with a large corpus of narrative records (the "haystack"). The notebook returns the narrative statements from the haystack that closely match the query policy statement. This automated analysis enables the exploration of how well an institution's "rules-in-use" align with its "rules-in-form." It's a valuable tool for assessing policy implementation, internalization, and the emergence of norms. In the provided sample use case, it demonstrates how to identify narrative statements related to a specific community rule within a large collection of governance-related sentences from emails.
+
+## Overview
+
+The Institutional Statement Comparison Notebook is a tool designed to compare an "institutional statement" (the "needle") with a potentially large corpus of formal or informal institutional statements (the "haystack") from various domains. It utilizes natural language processing techniques to identify and return the most similar statements from the haystack in relation to the given institutional statement.
+
+## Functionality
+
+- **Input Data:** This notebook requires two sets of data:
+  1. The "needle": A single institutional statement that you want to query the corpus with.
+  2. The "haystack": A potentially large collection of formal or informal institutional statements.
+
+![pol_exp_inp.png](images/pol_exp_inp.png)
+
+- **Query Process:** The notebook performs the following tasks:
+  - Queries the corpus with the institutional statement ("needle").
+  - Calculates the numerical similarity between the "needle" and each statement in the "haystack."
+
+![pol_exp_query.png](images/pol_exp_query.png)
+
+- **Output Data:** The notebook generates a downloadable file with a dataframe with two columns:
+  1. Statements from the "haystack" that are most similar to the "needle."
+  2. The numerical similarity score, quantifying how similar each statement is to the "needle."
+
+![pol_exp_out.png](images/pol_exp_out.png)
+
+- **Customization:** While the notebook comes with a default dataset for demonstration, users can easily replace it with their own pair of datasets to perform custom comparisons. The notebook provides insights into the methods used, such as semantic similarity, semantic search, BM25Okapi, and transformer-based word embeddings.
+
