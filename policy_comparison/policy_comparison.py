@@ -7,6 +7,7 @@ from mpl_toolkits.mplot3d import Axes3D
 from IPython.display import display, HTML
 from sentence_transformers import SentenceTransformer, util
 
+
 #read files
 
 column_name = "Raw Institutional Statement"
@@ -27,7 +28,9 @@ db1 = db1.reset_index(drop=True)
 db2 = db2.dropna()
 db2 = db2.reset_index(drop=True)
 
-word_embedding_model = SentenceTransformer("Jainam/freeflow-biencoder")
+util.semantic_search.top_k = db2.shape[0]
+
+word_embedding_model = SentenceTransformer("all-mpnet-base-v2")
 
 class policy_comparison:
     def __init__(self, agent=None):
