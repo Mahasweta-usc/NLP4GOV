@@ -58,6 +58,8 @@ For further understanding of the Colab environment (How cells work, how to run c
       "The Board should conduct a vote every 3 years."
       
       "The Board should review proposal for budgetary considerations."
+      
+## Institutional Grammar Framework
 
 ### Preprocessing/Anaphora Resolution (ABDICO_coreferences.ipynb)
 
@@ -93,7 +95,11 @@ Uses a linguistic task called semantic role labeling and maps their outputs to t
 
 ![img_1.png](images/img_srl_out.png)
 
+### Categorizing Institutional Components (semantic_topic.ipynb)
 
+
+
+## Policy Search Engines
 
 ### Institutional Comparison (policy_comparison.ipynb)
 
@@ -131,7 +137,6 @@ To enhance the user's understanding of the data, the code provides three visuali
 While the code is initially designed to work with example datasets, it can be easily adapted to analyze and visualize user-provided policy data. This versatility makes it a valuable tool for comparing and understanding policy documents across various domains, facilitating data-driven decision-making and insights.
 
 ### Institutional Adoption (policy_explore.ipynb)
-
 
 Institutional Adoption pursues how policies diffuse and are invoked, interpreted and reinterpreted by a governed community over time. The policy_explore.ipynb notebook is designed to compare an "institutional statement" (the "needle") with a potentially large corpus of discourse, such as email communications, deliberations, interviews, user posts, dicussion threads or tweets, etc. It utilizes natural language processing techniques to score and retrieve exchanges related to the "query" institutional statement.
 

@@ -86,10 +86,10 @@ class policy_comparison:
             sentences_list = db["Raw Institutional Statement"].tolist()
             combined_text = ' '.join(sentences_list)
             wordcloud = WordCloud(width=800, height=400, background_color='white').generate(combined_text)
-            ax[item].imshow(wordcloud, interpolation='bilinear')
+            axs[item].imshow(wordcloud, interpolation='bilinear')
             title = "Policy Database 1" if not item else "Policy Database 2"
 
-            ax[item].set_title(title, pad=20)
+            axs[item].set_title(title, pad=20)
 
         fig.suptitle("Word Cloud of Policy Sets")
         plt.show()
