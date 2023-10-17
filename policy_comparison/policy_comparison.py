@@ -65,7 +65,7 @@ class policy_comparison:
                     seen_pairs.add(pair_key)
                     
         results_df = results_df.sort_values(by='Similarity Score', ascending=False)
-        display(HTML(results_df.to_html()))
+        display(HTML(results_df.head(10).to_html()))
         return results_df
 
     def plot_similarity_frequency(self, results_df):
