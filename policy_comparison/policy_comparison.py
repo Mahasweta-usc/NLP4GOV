@@ -28,8 +28,6 @@ db1 = db1.reset_index(drop=True)
 db2 = db2.dropna()
 db2 = db2.reset_index(drop=True)
 
-util.semantic_search.top_k = db2.shape[0]
-
 word_embedding_model = SentenceTransformer("all-mpnet-base-v2")
 
 class policy_comparison:
