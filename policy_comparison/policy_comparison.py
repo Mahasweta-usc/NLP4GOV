@@ -10,15 +10,15 @@ from sentence_transformers import SentenceTransformer, util
 #read files
 
 column_name = "Raw Institutional Statement"
-data = '/content/IG-SRL/policy_comparison/data'
-file_names = os.listdir(data)
+data = '/content/'
+file_names = ['db1.csv','db2.csv']
 
 for file_name in file_names:
     file_path = os.path.join(data, file_name)
     if os.path.isfile(file_path):
-        if "/content/db1.csv" in file_name:
+        if "db1.csv" in file_name:
             db1 = pd.read_csv(file_path, usecols=[column_name])
-        elif "/content/db2.csv" in file_name:
+        elif "db2.csv" in file_name:
             db2 = pd.read_csv(file_path, usecols=[column_name])
 
 db1 = db1.dropna()
