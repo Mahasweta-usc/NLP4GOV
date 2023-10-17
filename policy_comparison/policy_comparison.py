@@ -79,7 +79,7 @@ class policy_comparison:
     
     def plot_WordCloud(self, results_df):
 
-        ax = plt.subplot(1, 2, figsize=(10,4))
+        ax = plt.subplot(1, 2)
         plt.subplots_adjust(bottom=0.15)
 
         for item, db in enumerate([db1, db2]):
