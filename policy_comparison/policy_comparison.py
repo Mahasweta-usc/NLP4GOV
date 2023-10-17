@@ -16,9 +16,9 @@ file_names = os.listdir(data)
 for file_name in file_names:
     file_path = os.path.join(data, file_name)
     if os.path.isfile(file_path):
-        if "db1.csv" in file_name:
+        if "/content/db1.csv" in file_name:
             db1 = pd.read_csv(file_path, usecols=[column_name])
-        elif "db2.csv" in file_name:
+        elif "/content/db2.csv" in file_name:
             db2 = pd.read_csv(file_path, usecols=[column_name])
 
 db1 = db1.dropna()
