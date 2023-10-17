@@ -59,17 +59,17 @@ For further understanding of the Colab environment (How cells work, how to run c
       
       "The Board should review proposal for budgetary considerations."
 
-### Preprocessing/Anaphora Resolution (ABDICO_parsing.ipynb)
+### Preprocessing/Anaphora Resolution (ABDICO_coreferences.ipynb)
 
 Performs disambiguation of pronouns in policy documents or passages to resolve the absolute entity they are referring to.
 This preserves valuable information by identifying the exact individuals, groups or organizational instruments associated with different activities and contexts.
 Anaphora Resolution is recommended as a precursor preprocessing step to policy texts.
 
-Input : .csv file where rows are passages/sections of policy documents (Best practice : language models have text limits. For best results, limit passages to 4 - 5 sentences. For even longer documents, break them down to such appropriate segments in each .csv row)
+**Input** : .csv file where rows are passages/sections of policy documents (Best practice : language models have text limits. For best results, limit passages to 4 - 5 sentences. For even longer documents, break them down to such appropriate segments in each .csv row)
 
-Output : All individual sentences from the policy documents/sections after their anaphora resolution
+**Output** : All individual sentences from the policy documents/sections after their anaphora resolution
 
-Example: After anaphora resolution, it becomes clear and specific that "them" in the policy refers to Podling websites
+**Example** : After anaphora resolution, it becomes clear and specific that "them" in the policy refers to Podling websites
 
       Before:
             Statement: "there are restrictions on where podlings can host their websites and what branding they can use on them."
@@ -81,13 +81,13 @@ Example: After anaphora resolution, it becomes clear and specific that "them" in
             Attribute : "Podlings" (observing restrictions)
             Objects : "their websites", "their websites"
 
-### Institutional Grammar Parsing (ABDICO_coreferences.ipynb)
+### Institutional Grammar Parsing (ABDICO_parsing.ipynb)
 
 Uses a linguistic task called semantic role labeling and maps their outputs to the Institutional Grammar (ABDICO) schema. Currently supports extractions of Attributes, Objects, Deontics and Aims.
 
-Input : .csv file where rows are raw institutional statements. These could be human coded policy statements or outputs from the anaphora resolution notebook (see previous task)
+**Input** : .csv file where rows are raw institutional statements. These could be human coded policy statements or outputs from the anaphora resolution notebook (see previous task)
 
-Output : Extracted Attribute, Object, Deontic and Aim
+**Output** : Extracted Attribute, Object, Deontic and Aim
 
 ![img.png](images/img_srl.png)
 
@@ -95,13 +95,9 @@ Output : Extracted Attribute, Object, Deontic and Aim
 
 
 
-# Policy Comparison Code Notebook
-
 ### Policy Comparison (policy_comparison.ipynb)
 
-## Overview
-
-The Policy Comparison Code Notebook is a tool that allows you to conduct a comprehensive analysis of policy sentences from two different sets. Regardless of the specific domain, this code notebook follows a series of steps to provide a deep understanding of the similarities between these policies and visualize the results.
+The Policy Comparison Code Notebook is a tool that allows you to conduct a comparative analysis of policies across two different institutions. Regardless of the specific domain, this code notebook follows a series of steps to provide a deep understanding of the similarities between these policies and visualize the results.
 
 ## How It Works
 
@@ -134,19 +130,15 @@ To enhance the user's understanding of the data, the code provides three visuali
 
 While the code is initially designed to work with example datasets, it can be easily adapted to analyze and visualize user-provided policy data. This versatility makes it a valuable tool for comparing and understanding policy documents across various domains, facilitating data-driven decision-making and insights.
 
-# Semantic Search Code Notebook
+### Institutional Adoption (policy_explore.ipynb)
 
-### Policy Explore (policy_explore.ipynb)
 
-## Overview
+Institutional Adoption pursues how policies are adopted, invoked, interpreted and reinterpreted by a governed community over time. The policy_explore.ipynb notebook is designed to compare an "institutional statement" (the "needle") with a potentially large corpus of discourse, such as email communications, deliberations, interviews, user posts, dicussion threads or tweets, etc. It utilizes natural language processing techniques to score and retrieve exchanges related to the "query" institutional statement.
 
-The Semantic Search Code Notebook is designed to compare an "institutional statement" (the "needle") with a potentially large corpus of formal or informal institutional statements (the "haystack") from various domains. It utilizes natural language processing techniques to identify and return the most similar statements from the haystack in relation to the given institutional statement and returns close matches of the query policy statement .
-
-## Functionality
 
 - **Input Data:** This notebook requires two sets of data:
-  1. The "needle": A single institutional statement that you want to query the corpus with.
-  2. The "haystack": A potentially large collection of formal or informal institutional statements.
+  1. The "needle" or Query: A single institutional statement that you want to query the corpus with.
+  2. The "haystack" or Searchbase: Community discourse. A potentially large collection of emails, deliberations, interviews, user posts, dicussion threads/tweets, etc.
 
 ![pol_exp_inp.png](images/pol_exp_inp.PNG)
 
