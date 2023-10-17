@@ -80,6 +80,8 @@ class policy_comparison:
     def plot_WordCloud(self, results_df):
 
         fig, axs = plt.subplots(2)
+        fig.set_figheight(10)
+        fig.set_figwidth(6)
         plt.subplots_adjust(bottom=0.15)
 
         for item, db in enumerate([db1, db2]):
