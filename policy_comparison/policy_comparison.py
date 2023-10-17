@@ -77,7 +77,7 @@ class policy_comparison:
         plt.title('Similarity Score PDF')
         plt.show()
     
-    def plot_WordCloud(self, results_df):
+    def plot_WordCloud(self):
 
         fig, axs = plt.subplots(2)
         fig.set_figheight(10)
