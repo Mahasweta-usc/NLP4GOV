@@ -79,20 +79,19 @@ class policy_comparison:
     
     def plot_WordCloud(self, results_df):
 
-        ax = plt.subplot(1, 2)
+        fig, axs = plt.subplots(2)
         plt.subplots_adjust(bottom=0.15)
 
         for item, db in enumerate([db1, db2]):
             sentences_list = db["Raw Institutional Statement"].tolist()
             combined_text = ' '.join(sentences_list)
             wordcloud = WordCloud(width=800, height=400, background_color='white').generate(combined_text)
-            ax[0,item].imshow(wordcloud, interpolation='bilinear')
+            ax[item].imshow(wordcloud, interpolation='bilinear')
             title = "Policy Database 1" if not item else "Policy Database 2"
 
-            ax[0,item].set_title(title, pad=20)
+            ax[item].set_title(title, pad=20)
 
-        plt.axis("off")
-        plt.title("Word Cloud of Policy sests")
+        fig.suptitle("Word Cloud of Policy Sets")
         plt.show()
     
     def plot_Similarity_Scores_3D(self, results_df):
