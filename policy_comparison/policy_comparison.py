@@ -45,7 +45,7 @@ class policy_comparison:
     
     def show_results(self, search_results):
         # Retrieve and store the results in the DataFrame
-        results_df = pd.DataFrame(columns=["Camden Food Security", "Connecticut Food Policy", "Similarity Score"])
+        results_df = pd.DataFrame(columns=["Policy Database 1", "Policy Database 2", "Similarity Score"])
 
         seen_pairs = set()
         for i, query_result in enumerate(search_results):
@@ -78,13 +78,21 @@ class policy_comparison:
         plt.show()
     
     def plot_WordCloud(self, results_df):
-        sentences_list = results_df["Camden Food Security"].tolist() + results_df["Connecticut Food Policy"].tolist()
-        combined_text = ' '.join(sentences_list)
-        wordcloud = WordCloud(width=800, height=400, background_color='white').generate(combined_text)
-        plt.figure(figsize=(10, 6))
-        plt.imshow(wordcloud, interpolation='bilinear')
+
+        ax = [plt.figure(enum,figsize=(10,4),dpi=300) for enum in range(2)] 
+        plt.subplots_adjust(bottom=0.15)
+
+        for item, db in enumerate([db1, db2]):
+            sentences_list = db["Raw Institutional Statement"].tolist()
+            combined_text = ' '.join(sentences_list)
+            wordcloud = WordCloud(width=800, height=400, background_color='white').generate(combined_text)
+            ax[item].imshow(wordcloud, interpolation='bilinear')
+            title = "Policy Database 1" if not item else "Policy Database 2"
+
+            ax[item].set_title(title, pad=20)
+
         plt.axis("off")
-        plt.title("Word Cloud of Sentences")
+        plt.title("Word Cloud of Policy sests")
         plt.show()
     
     def plot_Similarity_Scores_3D(self, results_df):
