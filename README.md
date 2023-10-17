@@ -97,15 +97,11 @@ Uses a linguistic task called semantic role labeling and maps their outputs to t
 
 ### Categorizing Institutional Components (semantic_topic.ipynb)
 
-
-
 ## Policy Search Engines
 
 ### Institutional Comparison (policy_comparison.ipynb)
 
-The Policy Comparison Code Notebook is a tool that provides *comparative insight into the policies across two different institutions*. Regardless of the specific domain, this code notebook follows a series of steps to provide a deep understanding of the similarities between these policies and visualize the results.
-
-## How It Works
+The Policy Comparison Code Notebook is a tool that provides **comparative insight into the policies across two different institutions**. Regardless of the specific domain, this code notebook follows a series of steps to provide a deep understanding of the similarities between these policies and visualize the results.
 
 1. **Input:** The notebook takes two sets of policy sentences databses in .csv format as input. These sets can be in the form of text files or data structures, depending on how you choose to implement it.
 
@@ -122,23 +118,19 @@ The Policy Comparison Code Notebook is a tool that provides *comparative insight
 
 To enhance the user's understanding of the data, the code provides three visualizations:
 
-1. **Distribution of Similarity Scores:** This visualization offers a view of how similarity scores are distributed across the dataset. It helps users identify trends, such as whether policies tend to be more similar or dissimilar.
+1. **Distribution of Similarity Scores:** This visualization offers a view of how pairwise similarity scores are distributed. It helps users identify trends, such as how often and to what degree institutions tend to be more similar or dissimilar.
 
 ![pol_comp_pdf.png](images/pol_comp_pdf.png)
 
-2. **Word Cloud:** A word cloud visually represents the most frequently occurring words in the policy statements. It offers a quick and intuitive way to identify prominent terms and themes within the policies.
+2. **Word Cloud:** A word cloud visually represents the most frequently occurring words in each policy set. It offers a quick and intuitive way to identify prominent terms and themes within the policies.
 
 ![pol_comp_wordCloud.png](images/pol_comp_wordCloud.png)
-
-3. **3D Plot:** This 3D scatter plot displays policy statements as data points in a 3D space. The x and y coordinates correspond to the IDs of the statements, while the z-axis represents the similarity scores. This plot allows users to explore how policies relate to each other in a multidimensional space.
-
-![pol_comp_3d.png](images/pol_comp_3d.png)
 
 While the code is initially designed to work with example datasets, it can be easily adapted to analyze and visualize user-provided policy data. This versatility makes it a valuable tool for comparing and understanding policy documents across various domains, facilitating data-driven decision-making and insights.
 
 ### Institutional Adoption (policy_explore.ipynb)
 
-Institutional Adoption pursues *how policies diffuse and are invoked, interpreted and reinterpreted by a governed community over time* . The policy_explore.ipynb notebook is designed to compare an "institutional statement" (the "needle") with a potentially large corpus of discourse, such as email communications, deliberations, interviews, user posts, dicussion threads or tweets, etc. It utilizes natural language processing techniques to score and retrieve exchanges related to the "query" institutional statement.
+Institutional Adoption pursues **how policies diffuse and are invoked, interpreted and reinterpreted by a governed community over time** . The policy_explore.ipynb notebook is designed to compare an "institutional statement" (the "needle") with a potentially large corpus of discourse, such as email communications, deliberations, interviews, user posts, dicussion threads or tweets, etc. It utilizes natural language processing techniques to score and retrieve exchanges related to the "query" institutional statement.
 
 
 - **Input Data:** This notebook requires two sets of data:
