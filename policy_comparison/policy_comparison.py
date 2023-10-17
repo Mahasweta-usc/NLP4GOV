@@ -16,9 +16,9 @@ file_names = os.listdir(data)
 for file_name in file_names:
     file_path = os.path.join(data, file_name)
     if os.path.isfile(file_path):
-        if "FPC_Siddiki.xlsx - Camden Food Security.csv" in file_name:
+        if "db1.csv" in file_name:
             db1 = pd.read_csv(file_path, usecols=[column_name])
-        elif "FPC_Siddiki.xlsx - Connecticut Food Policy.csv" in file_name:
+        elif "db2.csv" in file_name:
             db2 = pd.read_csv(file_path, usecols=[column_name])
 
 db1 = db1.dropna()
@@ -37,8 +37,9 @@ class policy_comparison:
         return word_embedding_model.encode(data)
     
     def show_db(self):
-        print(db1)
-        print(db2)
+        print("Policy Database 1:", db1.head(5))
+        print("\n\n")
+        print("Policy Database 2:", db2.head(5))
         return db1, db2
     
     def show_results(self, search_results):
