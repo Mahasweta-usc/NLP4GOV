@@ -103,7 +103,7 @@ Uses a linguistic task called semantic role labeling and maps their outputs to t
 
 ### Institutional Comparison (policy_comparison.ipynb)
 
-The Policy Comparison Code Notebook is a tool that allows you to conduct a comparative analysis of policies across two different institutions. Regardless of the specific domain, this code notebook follows a series of steps to provide a deep understanding of the similarities between these policies and visualize the results.
+The Policy Comparison Code Notebook is a tool that provides *comparative insight into the policies across two different institutions*. Regardless of the specific domain, this code notebook follows a series of steps to provide a deep understanding of the similarities between these policies and visualize the results.
 
 ## How It Works
 
@@ -138,7 +138,7 @@ While the code is initially designed to work with example datasets, it can be ea
 
 ### Institutional Adoption (policy_explore.ipynb)
 
-Institutional Adoption pursues how policies diffuse and are invoked, interpreted and reinterpreted by a governed community over time. The policy_explore.ipynb notebook is designed to compare an "institutional statement" (the "needle") with a potentially large corpus of discourse, such as email communications, deliberations, interviews, user posts, dicussion threads or tweets, etc. It utilizes natural language processing techniques to score and retrieve exchanges related to the "query" institutional statement.
+Institutional Adoption pursues *how policies diffuse and are invoked, interpreted and reinterpreted by a governed community over time* . The policy_explore.ipynb notebook is designed to compare an "institutional statement" (the "needle") with a potentially large corpus of discourse, such as email communications, deliberations, interviews, user posts, dicussion threads or tweets, etc. It utilizes natural language processing techniques to score and retrieve exchanges related to the "query" institutional statement.
 
 
 - **Input Data:** This notebook requires two sets of data:

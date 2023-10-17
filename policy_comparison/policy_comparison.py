@@ -80,9 +80,9 @@ class policy_comparison:
     def plot_WordCloud(self):
 
         fig, axs = plt.subplots(2)
-        fig.set_figheight(10)
-        fig.set_figwidth(6)
-        plt.subplots_adjust(bottom=0.15)
+        fig.set_figheight(15)
+        fig.set_figwidth(10)
+        plt.subplots_adjust(left = 0.1, right = 0.1, bottom=0.15)
 
         for item, db in enumerate([db1, db2]):
             sentences_list = db["Raw Institutional Statement"].tolist()
