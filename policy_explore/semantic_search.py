@@ -29,7 +29,7 @@ stopwords.extend(all_words)
 
 from sentence_transformers import SentenceTransformer, util
 from rank_bm25 import BM25Okapi
-word_embedding_model = SentenceTransformer("Jainam/freeflow-biencoder")
+word_embedding_model = SentenceTransformer("msmarco-distilbert-base-v4")
 class semantic_search:
 
     def __init__(self):
