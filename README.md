@@ -97,7 +97,7 @@ Uses a linguistic task called semantic role labeling and maps their outputs to t
 
 ![img_1.png](images/img_srl_out.png)
 
-### Categorizing Institutional Components (semantic_topic.ipynb)
+### Categorizing Institutional Components (ABDICO_constitutent_groups.ipynb)
 
 ## Policy Search Engines
 
@@ -130,9 +130,9 @@ To enhance the user's understanding of the data, the code provides three visuali
 
 While the code is initially designed to work with example datasets, it can be easily adapted to analyze and visualize user-provided policy data. This versatility makes it a valuable tool for comparing and understanding policy documents across various domains, facilitating data-driven decision-making and insights.
 
-### Institutional Adoption (policy_explore.ipynb)
+### Institutional Evolution (policy_explore.ipynb)
 
-Institutional Adoption pursues **how policies diffuse and are invoked, interpreted and reinterpreted by a governed community over time** . The policy_explore.ipynb notebook is designed to compare an "institutional statement" (the "needle") with a potentially large corpus of discourse, such as email communications, deliberations, interviews, user posts, dicussion threads or tweets, etc. It utilizes natural language processing techniques to score and retrieve exchanges related to the "query" institutional statement.
+Institutional Evolution pursues **how policies diffuse in how they are invoked, interpreted and reinterpreted by a governed community over time** . The policy_explore.ipynb notebook is designed to compare an "institutional statement" (the "needle") with a potentially large corpus of discourse, such as email communications, deliberations, interviews, user posts, dicussion threads or tweets, etc. It utilizes natural language processing techniques to score and retrieve exchanges related to the "query" institutional statement.
 
 
 - **Input Data:** This notebook requires two sets of data:
@@ -153,5 +153,28 @@ Institutional Adoption pursues **how policies diffuse and are invoked, interpret
 
 ![pol_exp_out.png](images/pol_exp_out.PNG)
 
-- **Customization:** While the notebook comes with a default dataset for demonstration, users can easily replace it with their own pair of datasets to perform custom comparisons. The notebook provides insights into the methods used, such as semantic similarity, semantic search, BM25Okapi, and transformer-based word embeddings.
+- **Customization:** While the notebook comes with a default dataset for demonstration, users can easily replace it with their own pair of datasets to perform custom comparisons. The notebook provides insights into the methods used, such as semantic similarity, semantic search, BM25Okapi, and transformer-based word embeddings. You are encourage to explore https://huggingface.co/sentence-transformers for different semantic embedding models to run your policy search engine!
+
+# *Citations*
+
+This library was built over the contributions (data and code) of multiple collaborators. If you use this library, please cite:
+
+1. Semantic methods in online community behavior : 
+2. 
+3. 
+
+Additionally, depending on the application you incorporate in your work, please cite the amazing NLP research they build on :
+
+For policy search engines:
+
+
+
+For SRL based IG parsing:
+
+
+For coreference resolution in policy:
+
+
+For topic modeling:
+
 
