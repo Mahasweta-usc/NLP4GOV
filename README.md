@@ -132,7 +132,7 @@ While the code is initially designed to work with example datasets, it can be ea
 
 ### Institutional Evolution (policy_explore.ipynb)
 
-Institutional Evolution pursues **how policies diffuse in how they are invoked, interpreted and reinterpreted by a governed community over time** . The policy_explore.ipynb notebook is designed to compare an "institutional statement" (the "needle") with a potentially large corpus of discourse, such as email communications, deliberations, interviews, user posts, dicussion threads or tweets, etc. It utilizes natural language processing techniques to score and retrieve exchanges related to the "query" institutional statement.
+Institutional Evolution pursues **how policies diffuse in how they are invoked, interpreted and reinterpreted by a governed community over time** . The policy_explore.ipynb notebook is designed to compare an "institutional statement" (the "needle") with a potentially large corpus of discourse, such as email communications, deliberations, interviews, user posts, dicussion threads or tweets, etc. It utilizes natural language processing techniques to score and retrieve exchanges related to the "query" institutional statement. While institutional comparision deals with policies against policies, this notebook matches a policy with longer texts (email/tweets etc.). This is refered to as **asymmetric search** in information retrieval. 
 
 
 - **Input Data:** This notebook requires two sets of data:
@@ -157,37 +157,43 @@ Institutional Evolution pursues **how policies diffuse in how they are invoked, 
 
 # *Citations*
 
-This library was built over the contributions (data and code) of multiple collaborators. If you use this library, please cite:
+This library is the fruit of contributions (data and code) from multiple collaborators. If you use this library, please cite:
 
-1. Chakraborti, M., Atkisson, C., Stanciulescu, S., Filkov, V., & Frey, S. (2023). Do We Run How We Say We Run? Formalization and Practice of Governance in OSS Communities. arXiv preprint arXiv:2309.14245. 
-2. 
-3. 
 
-Additionally, depending on the application you incorporate in your work, please cite the amazing NLP research they build upon :
 
-* *For policy search engines:*
+Additionally, depending on the application you incorporate in your work, please also cite the amazing NLP research which made it possible:
+
+* **For policy search engines:**
 
 Reimers, N., & Gurevych, I. (2019). Sentence-bert: Sentence embeddings using siamese bert-networks. arXiv preprint arXiv:1908.10084.
 
-* *For SRL based IG parsing:*
+Chakraborti, M., Atkisson, C., Stanciulescu, S., Filkov, V., & Frey, S. (2023). Do We Run How We Say We Run? Formalization and Practice of Governance in OSS Communities. arXiv preprint arXiv:2309.14245. 
+
+* **For SRL based IG parsing:**
 
 Shi, P., & Lin, J. (2019). Simple bert models for relation extraction and semantic role labeling. arXiv preprint arXiv:1904.05255.
 
-* *For coreference resolution in policy:*
+Chakraborti, M., Atkisson, C., Stanciulescu, S., Filkov, V., & Frey, S. (2023). Do We Run How We Say We Run? Formalization and Practice of Governance in OSS Communities. arXiv preprint arXiv:2309.14245. 
+
+* **For coreference resolution in policy:**
 
 Lee, K., He, L., & Zettlemoyer, L. (2018). Higher-order coreference resolution with coarse-to-fine inference. arXiv preprint arXiv:1804.05392.
 
-* *For topic modeling:*
+* **For topic modeling:**
 
 Grootendorst, M. (2022). BERTopic: Neural topic modeling with a class-based TF-IDF procedure. arXiv preprint arXiv:2203.05794.
+
 Reimers, N., & Gurevych, I. (2019). Sentence-bert: Sentence embeddings using siamese bert-networks. arXiv preprint arXiv:1908.10084.
 
 
-*Data Sources :*
+**Data Sources:**
 
 * Apache Incubator Policies : Sen, A., Atkisson, C., & Schweik, C. (2022). Cui Bono. International Journal of the Commons, 16(1), 64-77.
 * Apache Incubator emails : Yin, L., Chen, Z., Xuan, Q., & Filkov, V. (2021, August). Sustainability forecasting for apache incubator projects. In Proceedings of the 29th ACM Joint Meeting on European Software Engineering Conference and Symposium on the Foundations of Software Engineering (pp. 1056-1067).
 * Food Policies : 
 * Economic Council Policies : 
 
+**Supporting Libraries**
 
+* Huggingface
+* AllenAI
