@@ -63,13 +63,13 @@ class semantic_search:
     ### -best matching passage for given query from data
     def lex_search(self, query, data):
         tokenized_corpus = []
-        for passage in tqdm(data["reply"]):
+        for passage in tqdm(data["corpus"]):
             tokenized_corpus.append(self.bm25_tokenizer(passage))
         bm25 = BM25Okapi(tokenized_corpus)
         ##### BM25 search (lexical search) #####
         bm25_scores = list(bm25.get_scores(self.bm25_tokenizer(query)))
         # top_n = np.argpartition(bm25_scores, -top_k)[-top_k:]
-        bm25_hits = [{'corpus_id': data["reply"][idx], 'score': bm25_scores[idx]} for idx, _ in enumerate(bm25_scores)]
+        bm25_hits = [{'corpus_id': data["corpus"][idx], 'score': bm25_scores[idx]} for idx, _ in enumerate(bm25_scores)]
         filtered_bm25_hits = [entry for entry in bm25_hits if entry['score'] > 0]
         filtered_bm25_hits = pd.DataFrame(filtered_bm25_hits)
         filtered_bm25_hits.sort_values(by=['score'], ascending=False, inplace=True)

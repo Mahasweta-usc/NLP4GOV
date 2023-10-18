@@ -24,7 +24,7 @@ Colaboratory or Colab is a service provided by Google, which allows users to run
 * Free : Nvidia T4 GPU
 * Pro ($9.99/month) : Nvidia T4/ V100/ A100 + High RAM CPU. Check website for unit rate charges for different GPUs and their features.
 
-For most notebooks here however, users should not require premium subscriptions. A free T4 GPU generally suffices, unless the specific use case involves high volumes (hundreds of MBs to several GBs) of text data and necessitates more compute/speed.
+For most notebooks here however, **users should not require premium subscriptions**. A free T4 GPU generally suffices, unless the specific use case involves high volumes (hundreds of MBs to several GBs) of text data and necessitates more compute/speed.
 
 ## Getting Started
 
@@ -44,6 +44,8 @@ For most notebooks here however, users should not require premium subscriptions.
 ![img.png](images/img7.png)
 
 For further understanding of the Colab environment (How cells work, how to run cells, etc) : https://youtu.be/inN8seMm7UI?si=NpsCUBWeQM9W7kW8
+
+**PLEASE FILE AN ISSUE IF YOU FACE TECHNICAL PROBLEMS IN IMPLEMENTATION/QUESTIONS ABOUT THE NOTEBOOKS**
 
 # Tasks Overview
 
