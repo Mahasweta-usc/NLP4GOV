@@ -262,9 +262,10 @@ class SRL:
 
     for file_name in file_names:
       eval_name = os.path.join('/content/IG-SRL/SRL/data', file_name)
-      self.inference(eval_name,file_name)
+      out_path = os.path.join('/content/IG-SRL/SRL/data',f"{file_name}_data_new.csv")
+      self.inference(eval_name,out_path)
 
-      df1 = pd.read_csv(os.path.join('/content',f"{file_name}_data_new.csv"))
+      df1 = pd.read_csv(out_path)
       df1 = df1[['raw institutional statement','attribute','deontic','aim','object','attribute_inf','object_inf','aim_inf','deontic_inf']]
 
 
