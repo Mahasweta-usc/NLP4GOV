@@ -1,4 +1,6 @@
 
+The repository is a joint effort led by <INSERT Labs/Organizations involved>. We present an extensive, curated collection of functionalities and tasks in natural language processing, adapted to aid empirical policy analysis at scale. 
+
 # Contents
 
 1. Applications: Overview
@@ -130,8 +132,6 @@ While institutional comparision deals with policies against policies, this noteb
 
    
 # Recommended pipelines and Applications
-
-The repository is a joint effort led by <INSERT Labs/Organizations involved>. We present an extensive, curated collection of functionalities and tasks in natural language processing, adapted to aid collective action research at scale. 
 
 Our Github currently hosts 5 (more soon!) versatile end to end applications. Each of these can be used alone or in combinations to process raw policy corpus and extract meaningful information and measurements for research and analysis. Examples include but not limited to:
 
