@@ -26,7 +26,7 @@ Colaboratory or Colab is a service provided by Google, which allows users to run
 
 For most notebooks here however, **users should not require premium subscriptions**. A free T4 GPU generally suffices, unless the specific use case involves high volumes (hundreds of MBs to several GBs) of text data and necessitates more compute/speed.
 
-## Getting Started
+## Getting Started with Colaboratory
 
 1. Download this repository (compressed zip) to your local system
       ![img.png](images/img1.png)
@@ -47,7 +47,7 @@ For further understanding of the Colab environment (How cells work, how to run c
 
 **IF YOU FACE TECHNICAL PROBLEMS IN IMPLEMENTATION/QUESTIONS ABOUT THE NOTEBOOKS, PLEASE POST AN ISSUE DESCRIBING YOUR PROBLEM ON GITHUB**
 
-# Tasks Overview
+# Applications : Overview
 
 ## General Guidelines
 
@@ -103,7 +103,7 @@ Uses a linguistic task called semantic role labeling and maps their outputs to t
 
 ### Categorizing Institutional Components (ABDICO_clustering.ipynb)
 
-Semantic clustering and categorizing of dominant actors, resources and activities. Helps identify scope of governance activities, levels of regulation, and distribution of power and responsibilities in an institution.
+Semantic clustering and categorizing of dominant actors, resources and activities. Helps identify scope of governance activities, levels of regulation, and distribution of power and responsibilities in a institutional networks.
 
 **Input** : main.csv file where columns contain a policy's "Attribute", "Object", "Deontic" and "Aim" respectively. These could be human annotations or outputs from the ABDICO parsing notebook
 
@@ -172,7 +172,6 @@ While institutional comparision deals with policies against policies, this noteb
 # *Citations*
 
 This library is the fruit of contributions (data and code) from multiple collaborators. If you use this library, please cite:
-
 
 
 Additionally, depending on the application you incorporate in your work, please also cite the amazing NLP research which made it possible:
