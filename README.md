@@ -11,7 +11,11 @@ The repository is a joint effort led by <INSERT Labs/Organizations involved>. We
 # Applications : Overview
 
 ## General Guidelines
-
+      
+* There are broadly two types of notebooks
+	* Implementing Elinor Ostrom's Institutional Grammar Framework
+	* Exploring governances through policies
+   
 * All input files to notebooks must be .csv. If your data is in any other formal (xls/json), please make sure to convert appropriately before running a notebook.
 * Check comments in each notebook to understand how input data should be configured, i.e. upload file name, table headers/input data fields/output data fields.
 * When coding raw institutional statements for some notebooks (e.g. ABDICO_parsing.ipynb, policies_compares, etc ), for interpretability as well as best results, it's recommended to present data in self contained statements with most IG components present than bullets.
@@ -21,10 +25,7 @@ The repository is a joint effort led by <INSERT Labs/Organizations involved>. We
       "The Board should conduct a vote every 3 years."
       
       "The Board should review proposal for budgetary considerations."
-      
-* There are broadly two types of notebooks
-	* Implementing the Institutional Grammar Framework
-	* Exploring governances through policies
+
       
 ## Institutional Grammar Framework
 
