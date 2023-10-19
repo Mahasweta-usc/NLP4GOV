@@ -250,7 +250,7 @@ class SRL:
 
 
 
-    data.to_csv(os.path.join('/content', out_path),index=False)
+    data.to_csv(os.path.join(out_path),index=False)
 
   def srl_eval(self):
 
