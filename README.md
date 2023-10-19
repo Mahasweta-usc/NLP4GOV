@@ -45,7 +45,7 @@ For most notebooks here however, **users should not require premium subscription
 
 For further understanding of the Colab environment (How cells work, how to run cells, etc) : https://youtu.be/inN8seMm7UI?si=NpsCUBWeQM9W7kW8
 
-**PLEASE FILE AN ISSUE IF YOU FACE TECHNICAL PROBLEMS IN IMPLEMENTATION/QUESTIONS ABOUT THE NOTEBOOKS**
+**IF YOU FACE TECHNICAL PROBLEMS IN IMPLEMENTATION/QUESTIONS ABOUT THE NOTEBOOKS, PLEASE POST AN ISSUE DESCRIBING YOUR PROBLEM ON GITHUB**
 
 # Tasks Overview
 
@@ -61,6 +61,10 @@ For further understanding of the Colab environment (How cells work, how to run c
       
       "The Board should review proposal for budgetary considerations."
       
+* There are broadly two types of notebooks
+	* Implementing the Institutional Grammar Framework
+	* Exploring governances through policies
+      
 ## Institutional Grammar Framework
 
 ### Preprocessing/Anaphora Resolution (ABDICO_coreferences.ipynb)
@@ -69,7 +73,7 @@ Performs disambiguation of pronouns in policy documents or passages to resolve t
 This preserves valuable information by identifying the exact individuals, groups or organizational instruments associated with different activities and contexts.
 Anaphora Resolution is recommended as a precursor preprocessing step to policy texts.
 
-**Input** : .csv file where rows are passages/sections of policy documents (Best practice : language models have text limits. For best results, limit passages to 4 - 5 sentences. For even longer documents, break them down to such appropriate segments in each .csv row)
+**Input** : main.csv file where rows are passages/sections of policy documents (Best practice : language models have text limits. For best results, limit passages to 4 - 5 sentences. For even longer documents, break them down to such appropriate segments in each .csv row)
 
 **Output** : All individual sentences from the policy documents/sections after their anaphora resolution
 
@@ -89,7 +93,7 @@ Anaphora Resolution is recommended as a precursor preprocessing step to policy t
 
 Uses a linguistic task called semantic role labeling and maps their outputs to the Institutional Grammar (ABDICO) schema. Currently supports extractions of Attributes, Objects, Deontics and Aims.
 
-**Input** : .csv file where rows are raw institutional statements. These could be human coded policy statements or outputs from the anaphora resolution notebook (see previous task)
+**Input** : main.csv file where rows are raw institutional statements. These could be human coded policy statements or outputs from the anaphora resolution notebook (see previous task)
 
 **Output** : Extracted Attribute, Object, Deontic and Aim
 
@@ -97,7 +101,13 @@ Uses a linguistic task called semantic role labeling and maps their outputs to t
 
 ![img_1.png](images/img_srl_out.png)
 
-### Categorizing Institutional Components (ABDICO_constitutent_groups.ipynb)
+### Categorizing Institutional Components (ABDICO_clustering.ipynb)
+
+Semantic clustering and categorizing of dominant actors, resources and activities. Helps identify scope of governance activities, levels of regulation, and distribution of power and responsibilities in an institution.
+
+**Input** : main.csv file where columns contain a policy's "Attribute", "Object", "Deontic" and "Aim" respectively. These could be human annotations or outputs from the ABDICO parsing notebook
+
+**Output** : Inferred categories (indicated by topic) for Attribute, Object, Deontic and Aim.
 
 ## Policy Search Engines
 
@@ -132,7 +142,11 @@ While the code is initially designed to work with example datasets, it can be ea
 
 ### Institutional Evolution (policy_explore.ipynb)
 
-Institutional Evolution pursues **how policies diffuse in how they are invoked, interpreted and reinterpreted by a governed community over time** . The policy_explore.ipynb notebook is designed to compare an "institutional statement" (the "needle") with a potentially large corpus of discourse, such as email communications, deliberations, interviews, user posts, dicussion threads or tweets, etc. It utilizes natural language processing techniques to score and retrieve exchanges related to the "query" institutional statement. While institutional comparision deals with policies against policies, this notebook matches a policy with longer texts (email/tweets etc.). This is refered to as **asymmetric search** in information retrieval. 
+Institutional Evolution pursues **how policies diffuse, as in how they are invoked, interpreted and reinterpreted by a governed community** . The policy_explore.ipynb notebook is designed to compare an "institutional statement" (the "needle") to entries from a large corpus of performative discourse (the "haystack"), such as email communications, deliberations, interviews, user posts, dicussion threads or tweets, etc. It utilizes natural language processing techniques to score and retrieve exchanges from the haystack or searchbase, and rank them in terms of resemblance to the "query" institutional statement. 
+
+The notebook is essentially a search engine, to be used to retrieve and analyze the most related conversations pertaining to community governance. Moreover, degrees of resemblance between the policy being queried and day to day operations and interactions, as indicated by the match score, reflects how practical relevance of an existing rule varies between different groups, application arenas over even across time. 
+
+While institutional comparision deals with policies against policies, this notebook matches a policy with longer texts (email/tweets etc.). This is refered to as **asymmetric search** in information retrieval. 
 
 
 - **Input Data:** This notebook requires two sets of data:
@@ -142,14 +156,14 @@ Institutional Evolution pursues **how policies diffuse in how they are invoked, 
 ![pol_exp_inp.png](images/pol_exp_inp.PNG)
 
 - **Query Process:** The notebook performs the following tasks:
-  - Queries the corpus with the institutional statement ("needle").
-  - Calculates the numerical similarity between the "needle" and each statement in the "haystack."
+  - Queries the corpus with an institutional statement ("needle").
+  - Calculates the semantic similarity between the "needle" and each text in the "haystack."
 
 ![pol_exp_query.png](images/pol_exp_query.PNG)
 
 - **Output Data:** The notebook generates a downloadable file with a dataframe with two columns:
-  1. Statements from the "haystack" that are most similar to the "needle."
-  2. The numerical similarity score, quantifying how similar each statement is to the "needle."
+  1. Texts from the searchbase that are most similar to the query.
+  2. The numerical similarity score, quantifying how similar texts are to the query.
 
 ![pol_exp_out.png](images/pol_exp_out.PNG)
 
