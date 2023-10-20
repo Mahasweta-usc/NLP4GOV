@@ -1,0 +1,11 @@
+{"Attribute": "Attribute refers to the actor (individual or corporate) that carries out, or is expected to/to not carry out, the action (i.e., Aim). The Attribute component may also contain descriptors of the actor. Find the attribute in the following Institutional Statement where {} is the aim:  \n",
+
+"Deontic": "Deontic is the prescriptive or permissive operator that defines to what extent the action of an institutional statement is compelled, restrained, or discretionary. Find the deontic in the following Institutional Statement where {} is the aim: \n",
+
+"Aim": "The goal or action of the statement assigned to the statement Attribute.",
+
+"Object": "Object is the inanimate or animate part of an institutional statement that is the receiver of the action/Aim. Objects can both be real-world entities, or abstract ones (e.g., beliefs, concepts, facts, procedures). Find the object in the following Institutional Statement where {} is the aim: \n",
+
+"Context": "The context component instantiates settings in which the focal action of a statement applies, or qualifies the action indicated in an institutional statement. Find the context in the following Institutional Statement where {} is the aim: \n",
+
+"Or else": "Or-else refers to the sanctioning provision associated with the action indicated in a particular institutional statement. Find the or-else in the following Institutional Statement where {} is the aim: "}
