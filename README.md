@@ -1,6 +1,10 @@
 
 The repository is a joint effort led by <INSERT Labs/Organizations involved>. We present an extensive, curated collection of functionalities and tasks in natural language processing, adapted to aid empirical policy analysis at scale. 
 
+We acknowledge the support of Co-NSF #1917908 ("RCN:Coordinating and Advancing Analytical Approaches for Policy Design"), as well as the Institutional Grammar Research Initiative ([URL]) and the Computational Institutional Science Lab (cisl.info)
+
+GCR: Collaborative: Jumpstarting Successful OSS Projects With Evidence Based Rules and Structures  (#2020751)
+
 # Contents
 
 1. Recommended pipelines and applications
