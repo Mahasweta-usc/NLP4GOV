@@ -1,9 +1,5 @@
 
-The repository is a joint effort led by <INSERT Labs/Organizations involved>. We present an extensive, curated collection of functionalities and tasks in natural language processing, adapted to aid empirical policy analysis at scale. 
-
-We acknowledge the support of Co-NSF #1917908 ("RCN:Coordinating and Advancing Analytical Approaches for Policy Design"), as well as the Institutional Grammar Research Initiative ([URL]) and the Computational Institutional Science Lab (cisl.info)
-
-GCR: Collaborative: Jumpstarting Successful OSS Projects With Evidence Based Rules and Structures  (#2020751)
+The repository was developed and is being maintained by the C^2 lab at the University of California Davis. It presents pipelines and applications to support empirical policy analysis at scale, and builds off an extensive survey of relevant tasks and functionalities in natural language processing. 
 
 # Contents
 
@@ -230,7 +226,9 @@ For further understanding of the Colab environment (How cells work, how to run c
 >>>>>>> 7a00d6b (Update README.md)
 # *Citations*
 
-This library is the fruit of contributions (data and code) from multiple collaborators. If you use this library, please cite:
+This library is the fruit of contributions (data and code) from multiple collaborators. We acknowledge the support of Co-NSF #1917908 ("RCN: Coordinating and Advancing Analytical Approaches for Policy Design"), NSF GCR #2020751 ("GCR: Jumpstarting Successful OSS Projects With Evidence Based Rules and Structures") as well as the Institutional Grammar Research Initiative ([https://institutionalgrammar.org/]) and the Computational Institutional Science Lab [(cisl.info)].
+
+If you use this library, please cite:
 
 
 
