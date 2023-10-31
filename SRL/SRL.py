@@ -262,7 +262,7 @@ class SRL:
 
     for file_name in file_names:
       eval_name = os.path.join('/content/IG-SRL/SRL/data', file_name)
-      out_path = os.path.join('/content/IG-SRL/SRL/data',f"{file_name}_data_new.csv")
+      out_path = os.path.join('/content',f"{file_name}_data_new.csv")
       self.inference(eval_name,out_path)
 
       df1 = pd.read_csv(out_path)
