@@ -304,9 +304,11 @@ class SRL:
 
       # Concatenate the current dataframe to the merged data
       merged_data = pd.concat([merged_data, df1])
-    
+      print(merged_data)
+
     # Sample 10-20 outputs from the merged data
     sampled_data = merged_data.sample(n=min(20, len(merged_data)))
+    print(sampled_data)
     
     # Create a 2x2 subplot
     fig, axes = plt.subplots(nrows=2, ncols=2, figsize=(10, 8))
