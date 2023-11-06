@@ -255,7 +255,6 @@ class SRL:
 
     column_names = ['attribute', 'object', 'deontic', 'aim']
     eval_scores = {name:[] for name in column_names}
-    merged_data = pd.DataFrame()
 
     file_names = os.listdir('/content/IG-SRL/SRL/data')
     # file_names = ['NationalOrganicProgramRegulations_Siddiki.xlsx - Econ Development Mechanisms.csv']
@@ -301,14 +300,6 @@ class SRL:
           eval_scores[col_name].append(np.mean(f1_score))
 
       df1.to_csv(os.path.join('/content', f"{file_name}_eval.csv"),index=False)
-
-      # Concatenate the current dataframe to the merged data
-      merged_data = pd.concat([merged_data, df1])
-      print(merged_data)
-
-    # Sample 10-20 outputs from the merged data
-    sampled_data = merged_data.sample(n=min(20, len(merged_data)))
-    print(sampled_data)
     
     # Create a 2x2 subplot
     fig, axes = plt.subplots(nrows=2, ncols=2, figsize=(10, 8))
@@ -321,5 +312,5 @@ class SRL:
       axes[row, col].set_title(f"{col_name}")
 
     fig.suptitle("Span selection match (F1) across multiple datasets")
-    return plt, sampled_data
+    return plt
 
