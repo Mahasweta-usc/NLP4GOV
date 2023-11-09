@@ -1,5 +1,5 @@
 
-The repository was developed and is being maintained by the C^2 lab at the University of California Davis. It presents pipelines and applications to support empirical policy analysis at scale, and builds off an extensive survey of relevant tasks and functionalities in natural language processing. 
+The repository was developed and is being maintained by the C^2 lab at the University of California Davis and Institutional-Grammar research. It presents pipelines and applications to support empirical policy analysis at scale, and builds off an extensive survey of relevant tasks and functionalities in natural language processing. 
 
 # Contents
 
@@ -9,7 +9,7 @@ The repository was developed and is being maintained by the C^2 lab at the Unive
 
 # Recommended pipelines and applications
 
-The repository is a joint effort led by <INSERT Labs/Organizations involved>. We present an extensive, curated collection of  functionalities and tasks in natural language processing, adapted to aid collective action research at scale. 
+We present an extensive, curated collection of  functionalities and tasks in natural language processing, adapted to aid collective action research at scale. 
 
 Our Github currently hosts 5 (more soon!) versatile end to end applications. Each of these can be used alone or in combinations to process raw policy corpus and extract meaningful information and measurements for research and analysis. Examples include but not limited to:
 
