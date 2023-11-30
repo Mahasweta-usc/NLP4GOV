@@ -124,7 +124,7 @@ class SRL:
     ##currently not considering multi level coding
     data.drop_duplicates(subset=['raw institutional statement'],inplace=True)
     data.fillna('', inplace=True)
-    data = data.applymap(lambda x : x.lower().strip())
+    data = data.applymap(lambda x : str(x).lower().strip())
 
     data['sentences'] = data['raw institutional statement'].apply(lambda x : [sentence.text.lower() for sentence in nlp(x).sentences][0])
     # data = data.explode('sentences')
