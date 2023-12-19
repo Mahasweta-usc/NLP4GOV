@@ -1,0 +1,221 @@
+raw institutional statement,interpretation,attribute,attribute_property,deontic,aim,direct_object,direct_object_property,indirect_object,ac_condition,ex_constraint
+Incubator Policy,,,,,,,,,,
+podling reporting,,,,,,,,,,
+each podling in incubation must report to the incubator pmc,,podling,each,must,report,ipmc,,,[always] ,
+"podlings shall report monthly for their first three months, after that quarterly.",,podling,,shall,report,[ipmc],,,,monthly for their first three months
+"the incubator pmc may, at their discretion, ask a podlings to report more frequently.",,ipmc,,may,ask to report,podling,,,at their discretion,
+"the ppmc with the mentor(s) help, must produce a report for the incubator pmc detailing overall progress toward graduation and any issues the podling has encountered.",,ppmc,,must,produce,report ,,for the pmc,,detailing overall progress toward graduation and any issues the podling has encountered.
+website,,,,,,,,,,
+there are restrictions on where podlings can host their websites and what branding they can use on them.,,podlings,,[cannot],host,their websites,,,,[without restrictions]
+,,podlings,,[cannot],use,branding,,,,[without restrictions]
+branding,,,,,,,,,,
+there are restrictions about how podlings can use their own and other asf brands and names.,,podlings,,[cannot],use,brands and names,their own,,,[without restrictions]
+,,podlings,,[cannot],use,brands and names,asf's,,,[without restrictions]
+publicity,,,,,,,,,,
+"there are some restrictions about how podlings can advertise themselves, especially in press releases related to podlings.",,podlings,,[cannot],advertise,themselves,,,in press releases related to podlings,[without restrictions]
+disclaimers,,,,,,,,,,
+"podling web sites must include a clear disclaimer on their website and in all documentation, releases and release announcements stating that they are in incubation.",,websites,podling's,must,include,disclaimer,clear,,stating that they are in incubation,
+,,documentation,podling's,must,include,disclaimer,clear,,stating that they are in incubation,
+,,releases,podling's,must,include,disclaimer,clear,,stating that they are in incubation,
+,,release announcements,podling's,must,include,disclaimer,clear,,stating that they are in incubation,
+a podling has a choice of two disclaimers: a standard disclaimer or a work-in-progress disclaimer.,,podling,,[may],choose,of two disclaimers,standard or a work-in-progress,,,
+podlings wishing to use a different disclaimer message must have the incubator pmc approve it before use.,,podlings,,must,have ,approval,,ipmc,[when] wishing to use a different disclaimer message,before use it
+standard disclaimer,,,,,,,,,,
+podlings wanting to follow all asf policy on releases should use the following text for all disclaimers (replace the underlined text as appropriate):,,podling,,should ,use,the following text ,,,[when] wanting to follow all asf policy on releases,for all disclaimers
+"apache podling-name is an effort undergoing incubation at the apache software foundation (asf), sponsored by the name of apache tlp sponsor .",,,,,,,,,,
+"incubation is required of all newly accepted projects until a further review indicates that the infrastructure, communications, and decision making process have stabilized in a manner consistent with other successful asf projects.",,projects,newly accepted,[shall],[have],incubation,,,"until a further review indicates that the infrastructure, communications, and decision making process have stabilized in a manner consistent with other successful asf projects.",
+"while incubation status is not necessarily a reflection of the completeness or stability of the code, it does indicate that the project has yet to be fully endorsed by the asf.",,,,,,,,,,
+"for releases, the text should be included in a separate disclaimer file stored alongside the notice and license files.",,[podling],,should,include,text,,,for releases,in a separate disclaimer file stored alongside the notice and license files.
+work in progress disclaimer,,,,,,,,,,
+podling wishing to make releases that may not follow all asf policy should use the following disclaimer (replace the underlined text where needed):,,podling,,should,use,following disclaimer,,,[when] wishing to make releases that may not follow all asf policy,
+"apache podling-name is an effort undergoing incubation at the apache software foundation (asf), sponsored by the name of apache tlp sponsor .",,,,,,,,,,
+some of the incubating project's releases may not be fully compliant with asf policy.,,releases ,some incubating project's,may not,be fully compliant with,asf policy,,,[always],
+"for example, releases may have incomplete or un-reviewed licensing conditions.",,releases ,,may,have,licensing conditions,incomplete,,[always],
+"for example, releases may have incomplete or un-reviewed licensing conditions.",,releases ,,may,have,licensing conditions,un-reviewed,,[always],
+what follows is a list of issues the project is currently aware of (this list is likely to be incomplete):,,,,,,,,,,
+list of known issues goes here,,,,,,,,,,
+"if you are planning to incorporate this work into your product/project, please be aware that you will need to conduct a thorough licensing review to determine the overall implications of including this work.",,[podling],,need to,conduct,licensing review,thorough,,if planning to incorporate this work into your product/project,
+"for the current status of this project through the apache incubator, visit: https://incubator.apache.org/projects/ apache podling-name .html",,,,,,,,,,
+"for releases, the text should be included in a separate disclaimer-wip file stored alongside the notice and license files.",,[podling] ,,should,include,text,,,for releases,in a separate disclaimer-wip file stored alongside the notice and license files.
+,,,,,,,,,,
+releases,,,,,,,,,,
+the podling can make non-asf releases while incubating as long as it is moving towards making asf releases.,,podling,,can,make,releases,non-asf,,while incubating,as long as it is moving towards making asf releases.
+podlings must not perform any asf releases of software without the approval of the incubator pmc.,,podlings,,must not,perform,releases of software,any asf,ipmc,,without the approval of the incubator pmc.
+"when a podling decides it wants to make an asf release, the podling must hold a vote on their public dev list.",,podling,,must,hold,a vote,,,when [deciding] to make an asf release,on their public dev list
+at least three +1 votes are required (see the apache voting process page) and more +1 votes than -1 votes.,,[podling],,[must],[have],three +1 votes,,,[always],
+,,[podling],,[must],[have],more +1 votes than -1 votes,,,[always],
+"if the vote passes, the podling must send a summary of that vote to the incubator's general list and request that the incubator pmc approve the release.",,[podling],,must,send,summary of vote,,incubator's general list,if the vote passes,
+,,[podling],,must,request,approval,,ipmc,if the vote passes,
+three +1 incubator pmc votes are required to approve a release.,,[podling],,[must],have,three +1 incubator pmc votes,,,[before] approve release,
+"should the incubator pmc vote to approve a release, the podling may make that release available to the public under these conditions:",,podling,,may,make available,release,,to the public,should the incubator pmc vote to approve a release,under these conditions
+"the release archive(s) must include the word ""incubating"" in the filename.",,[podling],,must,include,word incubating,,in the filename,[when] release,
+"the release archive(s) must contain a disclaimer (see above), which should be placed in a disclaimer or disclaimer-wip file.",,[podling],,must,[include],disclaimer,,,[when] release,placed in a disclaimer or disclaimer-wip file.
+releases for the podling must be distributed through http://www.apache.org/dist/incubator/ podling. ,,[podling],,must,distribute,releases,,,,through http://www.apache.org/dist/incubator/ podling. 
+the podling may choose to distribute approved releases through other channels by following the guidelines here .,,podling,,may,choose ,to distribute,,releases,approved,through other channels by following the guidelines here
+adding ppmc members,,,,,,,,,,
+"after voting someone into the ppmc on the ppmc private list, the podling must send a notice email to the private@incubator list.",,podling,,must,send,notice email,,private@incubator list,after voting someone into the ppmc on the ppmc private list,
+the ppmc must wait for 72 hours before inviting the new ppmc member to join the ppmc.,,ppmc,,must,invite,ppmc member,new,,after 72 hours,
+joining the ipmc,,,,,,,,,,
+"after a vote has finished, the ipmc must send a notice email to the board",,ipmc,,must,send,notice email,,board,after a vote has finished,
+and then wait for 72 hours before inviting the proposed member.,,[ipmc],,[must],invite,member,proposed,,after 72 hours,
+"any asf member can ask to be an ipmc member, without a vote, but the ipmc must still give notice to the board.",,asf member,any,can,ask to be ipmc member,,,board,,without a vote
+,,ipmc,,must,give,notice,,board,[when] asf member ask to be an ipmc member without a vote,
+termination,,,,,,,,,,
+the incubator pmc should notify a podling of any policy violations.,,ipmc,,should,notify,podling,,,[if] any policy violations,
+it may consider termination of a podling that does not correct such violations.,,[ipmc],,may,consider terminate,podling,,,[if] does not correct such violations,
+Community Guide,,,,,,,,,,
+what is an open and diverse community?,,,,,,,,,,
+a major criterion for podling graduation to top level project (tlp) status is to have developed an open and diverse meritocratic community.,,[podling],,[must],develope,meritocratic community,open and diverse,,for graduation,
+people,,,,,,,,,,
+"as a project grows, it needs to renew itself by accepting new committers.",,project,,needs to ,renew,itself,,,as a project grows,by accepting new committers
+a project needs to learn how it can recruit new developers and committers into the community.,,project,,needs to ,learn how it can recruit,developers and committers,new,,,
+community members must learn ways to resolve technical conflicts without destroying personal relationships.,,community members,,must,learn ways to resolve,technical conflicts,,,,without destroying personal relationships
+communication,,,,,,,,,,
+"projects need to preserve, and post back to the lists, significatn conversation threads in other channels.",,projects,,need to,preserve,conversation threads ,significant,,,to the lists
+,,projects,,need to,post back,conversation threads ,significant,,,in other channels
+project should post regular reminders that other secondary forms of communication exist.,,project,,should,post,remainders that other secondary forms of communication exist,,,,[regularly]
+community building,,,,,,,,,,
+"before a podling graduates, it must create a diverse and self-sustaining community.",,podling,,must,create,community,diverse self-sustaining,,,before graduates
+"to address this challenge, committers may need to devote more time to community-building and less to development.",,committers,,may,need to devote more time,community-building,,,,[before graduates]
+"if the podling's software has lots of users but very few new developers, the community needs to do more work to encourage users to become developers.",,community,,needs to,work to encourage to become developers,users,,,if the podling's software has lots of users but very few new developers,
+helping developers become committers,,,,,,,,,,
+"to become an apache committer, a developer needs to hang around long enough to accumulate a track record of contributions.",,developer,,needs to,hang around long enough to accumulate,track record of contributions,,,[if want to] become an apache committer,
+promptly reviewing patches or pull requests is essential.,,[developer],,[shall],review,patches,,,,promptly
+,,[developer],,[shall],pull,requests,,,,promptly
+provide credit in the commit message and when closing the issue.,,[developer],,[shall],provide,credit,,,when clossing the issue,in the commit message
+PPMC Guide,,,,,,,,,,
+podling project management committee (ppmc),,,,,,,,,,
+each podling project management committee (ppmc) helps its podling learn how to govern itself.,,ppmc,each,[shall],help learn how to govern itself,podling,,,[always],
+"the ppmc is directly responsible for the oversight of the podling, and it also decides who to add as a ppmc member.",,ppmc,,[shall],oversight,podling,,,[always],
+,,ppmc,,[shall],decide to add,ppmc member,,,[always],
+private email list,,,,,,,,,,
+the mentors should verify that all ppmc members are subscribed to the private list.,,mentors,,should,verify,suscription to private list,,[from] ppmc members,[always],
+"each member of the ppmc should be on the dev list, so posting to dev is sufficient.",,member of the ppmc,each,should,be on ,dev list ,,,[always],
+"each member of the incubator pmc is on the incubator general list, so posting to the general list is sufficient.",,member of the ipmc,each,[shall],[be] on,incubator general list,,,[always],
+podling status reports,,,,,,,,,,
+"on a monthly basis, the ipmc collects reports from each incubating project and sends them to the asf board.",,ipmc,,[shall],collect,reports,,incubation project,,on a monthly basis
+,,ipmc,,[shall],send,reports,,asf board,,on a monthly basis
+"currently, new podlings report to the incubator monthly for the first three months, then quarterly after that.",,podlings,new,[shall],report,incubator,,,"for the first three months,",monthly
+,,podlings,new,[shall],report,incubator,,,"after the first three months,",quarterly
+the ppmc does not have to fill out the report itself; the ppmc is just responsible for making sure that it gets filled out.,,ppmc,,[shall],make sure it is filled out,report,,,[always],
+mentors must sign off on podling reports.,,mentors,,must,sign off,podling reports,,podling,[always],
+"- if there is no mentor sign off, the ipmc will not accept the report from that podling; it will have to submit a new report in the following month.",,ipmc,,[shall] not,accept,report,from that podling,podling,"if there is no mentor sign off,",
+,,podling,,have to,submit,report,new,ipmc,"if there is no mentor sign off,",in the following month
+the podling incubator reports should document any committers added since the previous report.,,podling incubator,,should,document,any committer [addition],,,added since the previous report,[through] reports
+"if the nominee is already an apache committer on another project, the ipmc member can add the nominee as a committer on the podling via the whimsy podling roster .",,ipmc member,,can,add as a committer,nominee,,,"if the nominee is already an apache committer on another project,",on the podling via the whimsy podling roster
+voting in a new ppmc member,,,,,,,,,,
+it should be a goal of a podling to have all committers participate in the ppmc.,,podling,,should,have participate,committers,all,in the ppmc,[always],
+the ppmc should take an active role in watching committers develop as community participants.,,ppmc,,should,take an active role in watching,committers develop as community participants,,,[always],
+"they should identify those who are participating at a community level (not just a technical one), and approach them with an offer of ppmc membership.",,[ppmc],,should,identify,[participants] at a community level,,,[always],
+,,[ppmc],,should,approach to ,[participants] at a community level,,,,with an offer of ppmc membership
+any member of the ppmc can propose a new member of the ppmc.,,ppmc member,any,can,propose,member of the ppmc,new,,[always],
+"the proposal should be discussed in private on the ppmc's private email list, with a subject line of ""[discuss] joe bob ppmc membership"".",,[ppmc members],,should,discuss,proposals,,,,"in private on the ppmc's private email list, with a subject line of ""[discuss] joe bob ppmc membership"""
+"if there is consensus that the proposed member is suitable, there should be a formal vote with the subject line of ""[vote] joe bob ppmc membership"" on the ppmc's private email list.",,[ppmc members],,should,vote,[on member of the ppmc],[new],,if there is consensus that the proposed member is suitable,"with the subject line of ""[vote] joe bob ppmc membership"" on the ppmc's private email list."
+"if the vote is successful, a member of the ppmc sends a message to the ppmc private email list, with the subject line of ""[vote][result] joe bob ppmc membership"".",,ppmc member,,[shall],send,message,,ppmc private email list,if the vote is successful,"with the subject line of ""[vote][result] joe bob ppmc membership""."
+the nominating ppmc member should send a message to the ipmc ( private@incubator.apache.org ) with a reference to the vote result in the following form:,,ppmc member,nominating,should,send,message,,ipmc,,with a reference to the vote result in the following form:
+"once the proposed member has accepted, a moderator for the ppmc mail list accepts the new member's subscription request.",,[ppmc member],moderator for the ppmc mail list,[shall],accept,suscription request,new member's,,"once the proposed member has accepted,",
+adding mentors,,,,,,,,,,
+a mentor must be an ipmc member.,,mentor,,must,be an ipmc member,,,,[always],
+people who are not ipmc members can still help out in an informal capacity.,,people,not ipmc members,can ,help out ,,,,,in an informal capacity
+ipmc members are free to volunteer to mentor a podling.,,ipmc members,,[can],volunteer to mentor,a podling,,,[always],
+"to do so, they should mail the podling stating their intentions.",,[ipmc members],,[shall],mail,podling,,,[when volunteer to mentor],stating their intentions
+the podling should then decide whether it wants to add the mentor.,,podling,,should,decide to add,mentor,,,[when mailed by the ipmc members],
+"if the podling decides to add the mentor, it should do so in the whimsy podling roster .",,podling,,should,add ,mentor,,,if the podling decides to [do so],in the whimsy podling roster
+removing a mentor,,,,,,,,,,
+ppmc and binding votes,,,,,,,,,,
+Apache Cookbook,,,,,,,,,,
+does our project fit the apache incubator?,,,,,,,,,,
+what are the steps to becoming an apache software foundation top-level project?,,,,,,,,,,
+finding a champion and mentors,,,,,,,,,,
+"to enter the incubator, your project needs a champion and at least two or three mentors .",,project,,needs,[to have],champion,,,[if want] to enter the incubator,
+,,project,,needs,[to have],two or three mentors,,,[if want] to enter the incubator,
+"these people need to be part of the incubator pmc, which asf members can join just by asking.",,[champion],,need,to be part of,ipmc,,,[always],
+"these people need to be part of the incubator pmc, which asf members can join just by asking.",,[two or three mentors],,need,to be part of,ipmc,,,[always],
+they may stay on to act as a mentor after that.,,[champions],,may,stay on to act as a mentor,,,,after that,
+the mentors accompany the podling through all phases that lead to graduation as a top-level project.,,mentor,,[shall],accompany,podling,,,[before graduation],through all phases
+creating an incubation proposal,,,,,,,,,,
+the champion helps the podling prepare an incubation proposal that describes the incoming project for the initial discussions with the incubator pmc.,,champion,,[shall],help prepare an incubation proposal,podling,,,,proposal that describes the incoming project for the initial discussions with the incubator pmc.
+discussing the incubation proposal,,,,,,,,,,
+"once the proposal is ready, the podling representatives send it to the general@incubator.a.o list for discussion, with a subject line like [discuss] foo proposal to raise the incubator pmc's attention.",,podling,representatives,[shall],send ,proposal,,general@incubator.a.o list,once the proposal is ready,"to the general@incubator.a.o list for discussion, with a subject line like [discuss] foo proposal to raise the incubator pmc's attention."
+"once the discussion phase is finished, the champion or a podling representative starts a [vote] thread on the general@incubator.a.o list.",,champion,,[shall],start ,a vote thread,,,once the discussion phase is finished,on the general@incubator.a.o list.
+,,podling,,[shall],start ,a vote thread,,,once the discussion phase is finished,on the general@incubator.a.o list.
+the vote happens according to the asf voting rules .,,champion,,[shall],[carry on],vote,,,,according to the asf voting rules
+,,podling,,[shall],[carry on],vote,,,,according to the asf voting rules
+podling infrastructure setup,,,,,,,,,,
+"once the incubator pmc votes to establish the podling, its infrastructure can be set up. usually, the champion or incubation mentors drive this process.",,champion,,[may],drive,infrastructure set up process,,,once the incubator pmc votes to establish the podling,
+,,mentor,,[may],drive,infrastructure set up process,,,once the incubator pmc votes to establish the podling,
+"however, it can also be driven by podling community members if they know how to proceed.",,podling,community members,can,drive,infrastructure set up process,,,if they know how to proceed.,
+publicity and announcements,,,,,,,,,,
+project can not issue press releases or other public statements about joining the asf before the incubator pmc accepts the podling.,,project,,cannot,issue,releases about joining asf,press,,[before] incubator [have accepted] the podling,
+,,project,,cannot,issue,statements about joining asf,public,,[before] incubator [have accepted] the podling,
+there are also some restrictions about how podlings can advertise themselves and especially around press releases related to podlings.,,podlings,,[cannot],advertise,themselves ,,,,[without any restriction]
+importing the initial code,,,,,,,,,,
+"a specific process exists do donate code to the asf, which podlings also need to follow, based on software grants and/or cclas .",,podling,,need to ,follow ,process to donate code,specific,asf,,based on software grants and/or cclas
+community building,,,,,,,,,,
+"during incubation, the podling is expected to build and expand its community, which includes voting in new committers and ppmc members.",,podling,,[shall],build and expand,community,,,during incubation,
+,,podling,,[shall],voting in,committers,new,,during incubation,
+,,podling,,[shall],voting in,ppmc members,new,,during incubation,
+discussions of candidates and votes happen on the podling's private ppmc mailing list.,,podling,,[shall],discuss,candidates,,,,on the podling's private ppmc mailing list.
+discussions of candidates and votes happen on the podling's private ppmc mailing list.,,podling,,[shall],vote,candidates,,,,on the podling's private ppmc mailing list.
+podling releases,,,,,,,,,,
+producing fully-conformant releases is a condition for graduation.,,[podling],,[shall],produce,releases,fully-conformant,,,[if want to] graduate
+"podling releases must also include the word ""incubating"" in any release file names and include a disclaimer or disclaimer-wip as per the incubator releases guide , to prevent any confusion as to the project’s status.",,[podling],,must,include,"word ""incubating""",,release file names,[when releasing],as per the incubator releases guide
+,,[podling],,must,include,disclaimer,,release file names,[when releasing],as per the incubator releases guide
+two-phase vote on podling releases,,,,,,,,,,
+"then, if that first vote is successful, the incubator pmc holds a vote on the incubator general mailing list.",,ipmc,,[shall],vote,on releases,podling's,,"if that first vote is successful,",on the incubator general mailing list
+graduation readiness assessment,,,,,,,,,,
+"once the podling community starts feeling ready to graduate, they should make a self-assessment of that readiness.",,community,podling's,should,make a,self-assessment of readiness,,,once the podling community starts feeling ready to graduate,
+graduation discussion,,,,,,,,,,
+"once the community and its incubation mentors feel that the podling is ready to graduate, based on their readiness self-assessment, a mentor or a member of the ppmc starts a [discuss] thread on the incubator general email list, proposing graduation and asking the incubator pmc to review the podling.",,mentor,,[shall],discuss,thread proposing graduation,,,once the community and its incubation mentors feel that the podling is ready to graduate,"on the incubator general email list, proposing graduation and asking the incubator pmc to review the podling."
+,,member of the ppmc,,[shall],discuss,thread proposing graduation,,,once the community and its incubation mentors feel that the podling is ready to graduate,"on the incubator general email list, proposing graduation and asking the incubator pmc to review the podling."
+transfering trademarks to the asf,,,,,,,,,,
+"if the people or organizations that donated the podling code to the asf own trademarks that the podling needs, they must transfer the trademarks to the asf before the podling can graduate.",,[code donors],,must,transfer,trademarks,,to asf,before graduation,
+graduation vote,,,,,,,,,,
+"once the discussion dies down on the graduation proposal, a mentor or a member of the ppmc starts a [vote] thread on the incubator general mailing list, in which incubator pmc members cast their votes whether to recommend graduation to the asf's board of directors.",,mentor,,[shall],start a ,vote thread,,ipmc,,on the incubator general mailing list 
+,,member of the ppmc,,[shall],start a ,vote thread,,ipmc,,on the incubator general mailing list 
+asf board resolution,,,,,,,,,,
+"once the incubator pmc votes to graduate a podling, the ipmc sends the board resolution that was created for the vote to the asf's board of directors.",,ipmc,,[shall],send,board's resolution,created for the vote,asf's board of directors,once the ipmc votes to graduate a podling,
+post-graduation tasks,,,,,,,,,,
+"once graduated, the podling needs to reflect its new status on the incubator status pages and make a few changes to its resources and processes.",,podling ,,need to ,reflect,status,new,on incubator status page,once graduated,
+Mentor guide,,,,,,,,,,
+add to incubation summary file,,,,,,,,,,
+initialize podling status page,,,,,,,,,,
+a mentor needs to create the web page that will track the project's status.,,mentor,,needs to ,create,web page that will track the project status,,,,
+a mentor will also need to update it until others in the project's ppmc can update it .,,mentor,,needs to ,update ,web page,,,until others in the project's ppmc can update it,
+as the startup process continues and resources are created the status should be updated.,,[mentor],,should,update,web page,,,as the startup process continues and resources are created,
+mentors must be on the ipmc,,,,,,,,,,
+any prospective mentors who are not yet on the ipmc should ask to be added (by election).,,mentors,prospective who are not yet on the ipmc,should,ask to be added,ipmc,,,[if] not yet on the ipmc,
+email the application to private@incubator.apache.org .,,mentors,prospective who are not yet on the ipmc,[shall],email,application,,,,to private@incubator.apache.org
+cla and ccla submission,,,,,,,,,,
+prospective committers need to submit a contributor license agreement ( cla ).,,committers,prospective,need to ,submit,contributor license agreement,,,,
+Graduation guide,,,,,,,,,,
+checking the status file,,,,,,,,,,
+the incubator pmc will check this file when they vote on the graduation of your project.,,ipmc,,[shall],check,[graduation guide] file,,,when they vote on the graduation of your project.,
+creating an apache release,,,,,,,,,,
+projects need to cut releases. apache projects need to understand how to cut apache releases.,,projects,,need to,cut,releases,,,[always],
+,,projects,apache's,need to,understand how to cut,releases,apache's,,[always],
+creating an open and diverse community,,,,,,,,,,
+a major criterion for graduation is to have developed an open and diverse meritocratic community.,,[projects],,[shall],develop,meritocratic community,open and diverse,,before graduation,
+the recommendation vote ,,,,,,,,,,
+the resolution should be proposed on the general incubator list before a vote is started to allow feedback.,,XX,,should,propose,a resolution,,,before a vote is started to allow feedback,on incubator list
+"once a consensus has been reached, a vote should be started on the same general incubator list by a member of the ppmc proposing that the ipmc recommends the resolution to the board .",,XX,,should,start,vote ,,ipmc,once a consensus has been reached,on the same general incubator list by a member of the ppmc proposing that the ipmc recommends the resolution to the board .
+press releases for new tlps,,,,,,,,,,
+"once there is clear consensus that the recommendation will happen, a member of the ppmc should contact asf marketing publicity at press(at)apache(dot)org if your project is interested in a formal press release announcing your graduation.",,member of ppmc,,should,contact,asf marketing publicity,,,if your project is interested in a formal press release announcing your graduation.,at press(at)apache(dot)org
+graduating to a subproject,,,,,,,,,,
+the incubator project management committee needs to approve the graduation of the podling to a subproject.,,ipmc,,needs to,approve,graduation,,podling,[always],
+subproject acceptance vote,,,,,,,,,,
+a formal vote by the project pmc to accept the podling as a subproject is a prerequisite.,,ppmc,,[shall],vote,[podling's graduation],, ,before graduation,
+graduation approval vote,,,,,,,,,,
+"once the accepting tlp have voted to accept the podling and the podling has voted to become a subproject, noticed should be sent to the ipmc via general at incubator.a.o email list indicating that the podling will become a subproject.",,[ppmc],,should,send,notice,,ipmc,once the accepting tlp have voted to accept the podling and the podling has voted to become a subproject,via general at incubator.a.o email list indicating that the podling will become a subproject.
+"if after 72 hours no issues are raised, the podling may be considered a subproject of the accepting tlp.",,,,,,,,,,
+"likewise, if any ipmc member raises an issue, that should be discussed.",,[ppmc],,should,discuss,issues,raised by any ipmc member,ipmc member,if raised,
+"if the issue is addressed, the member raising the issue should indicate they rescind their concerns or otherwise consider them resolved.",,ipmc member,raising the issue,should,indicate they rescind their concerns,,,,if the issue is addressed,
+Retirement guide,,,,,,,,,,
+deciding to retire,,,,,,,,,,
+the final decision to retire the podling takes the form of a vote by the ipmc on general@incubator. the vote should be by lazy consensus.,,ipmc,,should,vote on [retiring],podling,,,,on general@incubator. the vote should be by lazy consensus.
+steps to retirement,,,,,,,,,,
+"once the ipmc vote to retire the podling has closed, a mentor or other volunteer needs to perform the following steps.",,mentor,,needs to,perform,following steps,,,once the ipmc vote to retire the podling has closed,
+,,volunteer,,needs to,perform,following steps,,,once the ipmc vote to retire the podling has closed,
+Release Management guide,,,,,,,,,,
+what goes into an asf release,,,,,,,,,,
+ipmc members will check for compliance with the asf policies and with incubator policies.,,ipmc members,,[shall],check for compliance with the asf policies and with incubator policies,[release],,,[always],

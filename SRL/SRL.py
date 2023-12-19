@@ -256,60 +256,62 @@ class SRL:
     column_names = ['attribute', 'object', 'deontic', 'aim']
     eval_scores = {name:[] for name in column_names}
 
-    file_names = os.listdir('/content/IG-SRL/SRL/data')
+    datasets = os.listdir('/content/IG-SRL/SRL/data')
     # file_names = ['NationalOrganicProgramRegulations_Siddiki.xlsx - Econ Development Mechanisms.csv']
 
-    for file_name in file_names:
-      eval_name = os.path.join('/content/IG-SRL/SRL/data', file_name)
-      out_path = os.path.join('/content',f"{file_name}_data_new.csv")
-      self.inference(eval_name,out_path)
+    for subdata in datasets:
+        sub_path = os.path.join('/content/IG-SRL/SRL/data', subdata)
+        for file_name in os.listdir(sub_path):
+            eval_name = os.path.join('/content/IG-SRL/SRL/data', subdata,file_name)
+            out_path = os.path.join('/content',f"{file_name}_data_new.csv")
+            self.inference(eval_name,out_path)
 
-      df1 = pd.read_csv(out_path)
-      df1 = df1[['raw institutional statement','attribute','deontic','aim','object','attribute_inf','object_inf','aim_inf','deontic_inf']]
-
-
-      ##exclude statements with no aim coded
-      df1.replace("",np.nan,inplace=True)
-      df1.dropna(subset=column_names,inplace=True,how='all')
-      df1.dropna(subset=['aim'],inplace=True)
-
-      df1.fillna("", inplace=True)
-      df1 = df1.applymap(lambda x : x.lower().strip())
+            df1 = pd.read_csv(out_path)
+            df1 = df1[['raw institutional statement','attribute','deontic','aim','object','attribute_inf','object_inf','aim_inf','deontic_inf']]
 
 
-      for col_name in column_names:
-          df = df1.copy()
-          ##remove inferred coding re.sub("[\(\[].*?[\)\]]", "<skipped>",x)
-          pattern = r'\[[^\]]*\]'
-          df[col_name] = df[col_name].apply(lambda x : "<skipped>" if x.startswith('[') else x)
-          df[col_name] = df[col_name].apply(lambda x : re.sub("[\(\[].*?[\)\]]", "",x))
+            ##exclude statements with no aim coded
+            df1.replace("",np.nan,inplace=True)
+            df1.dropna(subset=column_names,inplace=True,how='all')
+            df1.dropna(subset=['aim'],inplace=True)
 
-          ##remove inferred coding
-          df = df[df[col_name] != '<skipped>']
-          values1 = df[col_name].tolist()
-          values2 = df[col_name + '_inf'].tolist()
+            df1.fillna("", inplace=True)
+            df1 = df1.applymap(lambda x : x.lower().strip())
 
-          #do we need to compare missing entries?
-          values1 = [str(x).replace('nan', '') for x in values1]
-          values2 = [str(x).replace('nan', '') for x in values2]
 
-          f1_score = []
-          for x,y in zip(values1,values2):
-            f1_score.append((self.compute_f1(x,y)))
-          print(f" F1 score for {col_name}: {np.mean(f1_score)}")
-          eval_scores[col_name].append(np.mean(f1_score))
+            for col_name in column_names:
+                df = df1.copy()
+                ##remove inferred coding re.sub("[\(\[].*?[\)\]]", "<skipped>",x)
+                pattern = r'\[[^\]]*\]'
+                df[col_name] = df[col_name].apply(lambda x : "<skipped>" if x.startswith('[') else x)
+                df[col_name] = df[col_name].apply(lambda x : re.sub("[\(\[].*?[\)\]]", "",x))
 
-      df1.to_csv(os.path.join('/content', f"{file_name}_eval.csv"),index=False)
-    
+                ##remove inferred coding
+                df = df[df[col_name] != '<skipped>']
+                values1 = df[col_name].tolist()
+                values2 = df[col_name + '_inf'].tolist()
+
+                #do we need to compare missing entries?
+                values1 = [str(x).replace('nan', '') for x in values1]
+                values2 = [str(x).replace('nan', '') for x in values2]
+
+                f1_score = []
+                for x,y in zip(values1,values2):
+                f1_score.append((self.compute_f1(x,y)))
+                print(f" F1 score for {col_name}: {np.mean(f1_score)}")
+                eval_scores[col_name].append(np.mean(f1_score))
+
+            df1.to_csv(os.path.join('/content', f"{file_name}_eval.csv"),index=False)
+
     # Create a 2x2 subplot
     fig, axes = plt.subplots(nrows=2, ncols=2, figsize=(10, 8))
     for idx, col_name in enumerate(column_names):
-      eval_scores[col_name] = self.remove_outliers(eval_scores[col_name])
+        eval_scores[col_name] = self.remove_outliers(eval_scores[col_name])
 
-      # Plot each boxplot in a different subplot
-      row, col = int(idx/2),int(idx%2)
-      axes[row, col].boxplot(eval_scores[col_name])
-      axes[row, col].set_title(f"{col_name}")
+        # Plot each boxplot in a different subplot
+        row, col = int(idx/2),int(idx%2)
+        axes[row, col].boxplot(eval_scores[col_name])
+        axes[row, col].set_title(f"{col_name}")
 
     fig.suptitle("Span selection match (F1) across multiple datasets")
     return plt

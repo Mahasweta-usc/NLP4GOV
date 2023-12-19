@@ -1,0 +1,72 @@
+raw institutional statement,attribute,attribute_property,deontic,aim,direct object,direct object_property,indirect object,Act_Condition,Ex_Constraint
+assessing the status of the project on a regular basis,[mentor],,[shall],assess ,status of the project,,project,,on a regular basis
+reporting to the incubation committee on project status on a regular basis,[mentor],,[shall],report,incubation committee,,project,,on a regular basis
+making a recommendation to the incubation committee about the project (graduation or dismissal),[mentor],,[shall],make a recommendation,incubation committee,,project,,about graduation or dismissal
+advising the project on the incubation process,[mentor],,[shall],advise,project,,,,on the incubation process
+"identifying all documents the project must complete, and assisting where practical",[mentor],,[shall],identify,documents ,project must complete,project,[always],
+,[mentor],,[shall],assist,project,,,where practical,
+reviewing submitted documents,[mentor],,[shall],review,documents,submitted,project,[always],
+"establishing the necessary infrastructure for the project under incubation (wiki, web site, svn/cvs, mailing list) as required",[mentor],,[shall],establish,infrastructure,necessary,project,,as required
+"join the various project mailing lists, to assess community health, and answer questions about osgeo.",[mentor],,[shall],join,project mailing lists,,,,"[assessing] community health, and answer questions about osgeo."
+attend most project meetings.,[mentor],,[shall],attend,project meetings,most,project,[always],
+"investigate bug database, run software, etc to assess software quality and responsiveness of quality processes.",[mentor],,[shall],investigate,bug database,,,,[assessing] software quality and responsiveness of quality processes.
+"investigate bug database, run software, etc to assess software quality and responsiveness of quality processes.",[mentor],,[shall],run,software,,,,[assessing] software quality and responsiveness of quality processes.
+"evaluate if the project psc is really in control of the project, and is operating in a healthy fashion.",[mentor],,[shall],evaluate ,project psc,,,,"[assessing if] is really in control of the project, and is operating in a healthy fashion."
+spot check the code copyright review to see that it reflects reality.,[mentor],,[shall],spot check,code copyright review,,,,[assessing if] it reflects reality
+"open source license(s),",project,,[shall],[include],license,open source,,[always],
+"open communication channels,",project,,[shall],[include],communications channels,open,,[always],
+open decision making process.,project,,[shall],[include],decision making process,open,,[always],
+the project should have a community of developers and users who actively collaborate and support each other in a healthy way.,project,,[shall],have,community of developers,who actively collaborate and support each other in a healthy way.,,[always],
+,project,,[shall],have,community of users,who actively collaborate and support each other in a healthy way.,,[always],
+"decisions are made openly instead of behind closed doors, which empowers all developers to take ownership of the project and facilitates spreading of knowledge between current and future team members.",project,,[shall],make,decisions,,,,openly
+all project source code is available under an open source license.,project,,[shall],make available,code,,,,under an open source license
+project documentation is available under an open license.,project,,[shall],make available,documentation,,,,under an open source license
+the project maintains a list of all copyright holders identified in the provenance review document.,project,,[shall],mantain,list of all copyright holders ,,,,identified in the provenance review document.
+the project has code under configuration management.,project,,[shall],have,code,,,,under configuration management
+the project uses an issue tracker and keeps the status of the issue tracker up to date.,project,,[shall],use,issue tracker,,,[always],
+,project,,[shall],keep up to date,status of issue tracker,,,[always],
+the project has documented its management processes.,project,,[shall],document ,management processes,,,[always],
+"the project has a suitable open governance policy ensuring decisions are made, documented and adhered to in a public manner.",project,,[shall],have,governance policy,suitable open,,,"ensuring decisions are made, documented and adhered to in a public manner."
+the project uses public communication channels for decision making to maintain transparency.,project,,[shall],use,communication channels,public,,[when] decision making,
+including sufficient detail to guide a new user through performing the core functionality provided by the application.,project,,[shall],include,detail to guide a new user through performing the core functionality provided by the application.,sufficient,user,[always],
+including checkout and build instructions.,project,,[shall],include,checkout,,[user],[always],
+,project,,[shall],include,build instructions,,[user],[always],
+"including commented code, ideally published for developer use.",project,,[shall],have,"commented code, ideally published for developer use",,,,
+providing sufficient detail for an experienced programmer to contribute patches or a new module in accordance with the project's programming conventions.,project,,[shall],provide,sufficient detail for an experienced programmer to contribute patches or a new module,,experienced programmer,in accordance with the project's programming conventions.,
+"in order to maintain a consistent level of quality, the project should follow defined release and testing processes.",project,,should,follow,reseale,defined,,[if want] to mantain a consistent level of quality,
+,project,,should,follow,testing processes,,,[if want] to mantain a consistent level of quality,
+which includes execution of the testing process before releasing a stable release.,project,,[shall],execute,testing process,,,before releasing a stable release,
+"ideally, this includes both automated and manual testing",project,,[shall],[execute],testing,automated and manual,,[always],
+release and testing processes provide sufficient detail for an experienced programmer to follow.,project,,[shall],provide,detail on release and testing processes,sufficient,experienced programmer,[always],
+the project officer should be listed at officers and board of directors and contacts,project,,should,list,project officer,,,,at officers and board of directors and contacts
+this person is established when the incubation committee recommends the project for graduation,project,,[shall],establish,[project officer],,,when the incubation committee recommends the project for graduation,
+the system administration committee is available to help with infrastructure and facilities.,system administration committee,,[shall],help with infrastructure and facilities,[project],,,[always],
+a http://projectname.osgeo.org domain name,osgeo,,[shall],set up,domain name,,,,
+before graduating incubation projects should ensure that clear guidelines and procedures are put in place for all commiters.,incubation project,,should ,ensure ,clear guidelines and procedures are put in place ,,committers,,http://projectname.osgeo.org
+"it is important to the project-name users, developers and the osgeo foundation to avoid contributing any code to the project without it being clearly licensed under the project license.",users,project-name,[shall not],contribute,code,any,,[before] it being clearly licensed under the project license.,
+,developers,,[shall not],contribute,code,any,,[before] it being clearly licensed under the project license.,
+,osgeo foundation,,[shall not],contribute,code,any,,[before] it being clearly licensed under the project license.,
+"the arrangement should be cleared with an authorized supervisor/manager, etc.",[committers],,should,clear,arrangement,,,,"with an authorized supervisor/manager, etc."
+all unusual situations need to be discussed and/or documented.,[committers],,need to,discuss,situations,unusual,,[always],
+,[committers],,need to,document ,situations,unusual,,[always],
+make sure the contributor (and possibly employer) is aware of the contribution terms.,[committers],,[shall],make sure is aware of the contribution terms.,contributor,,,[always],
+"code coming from a source other than the contributor (such as adapted from another project) should be clearly marked as to the original source, copyright holders, license terms and so forth.",[committers],,should,mark,code coming from a source other than the contributor,,,,"clearly as to the original source, copyright holders, license terms and so forth."
+"this information can be in the file headers, but should also be added to the project licensing file if not exactly matching normal project licensing (license.txt).",[committers],,should,add,this information,,,if not exactly matching normal project licensing,
+existing copyright headers and license text should never be stripped from a file.,[committers],,should not,strip,existing copyright headers,from a file,,never,
+,[committers],,should not,strip,license text,from a file,,never,
+if a copyright holder wishes to give up copyright they must do so in writing to the foundation before copyright messages are removed.,copyright holder,,must,write,foundation,,,if wishes to give up copyright and  before copyright messages are removed,
+if license terms are changed it has to be by agreement (written in email is ok) of the copyright holders.,copyright holder,,have to,write,agreement,,,if license terms are changed,
+when substantial contributions are added to a file (such as substantial patches) the author/contributor should be added to the list of copyright holders for the file.,[project],,should,add to the list of copyright holders for the file,author/contributor,,,when substantial contributions are added to a file,
+all osgeo events should reference the berlin code of conduct using text similar to:,osgeo,,should,reference,berlin code of conduct,,,[when] events,
+all osgeo projects should reference the contributor covenant using text similar to:,project,,should,reference,contributor covenant,,,,using text simiar to 
+all osgeo groups should reference berlin code of conduct using text similar to:,osgeo groups,,should,reference,berlin code of conduct,,,,using text simiar to 
+participate in an authentic and active way.,[project],,[shall],participate,,,,,in an authentic and active way.
+exercise consideration and respect in your speech and actions.,[project],,[shall],exercise,consideration and respect,,,[when] speech and actions,
+attempt collaboration before conflict.,[project],,[shall],attempt,collaboration,,,before conflict,
+"refrain from demeaning, discriminatory, or harassing behavior and speech.",[project],,[shall],refrain from,"demeaning, discriminatory, or harassing behavior and speech",,,[always],
+be mindful of your surroundings and of your fellow participants.,[project],,[shall],be mindful of,surroundings and fellow participants,,,[always],
+"alert community leaders if you notice a dangerous situation, someone in distress, or violations of this code of conduct, even if they seem inconsequential.",[project],,[shall],alert,community leaders,,,"if notice a dangerous situation, someone in distress, or violations of this code of conduct, even if they seem inconsequential.",
+"unacceptable behaviors include: intimidating, harassing, abusive, discriminatory, derogatory or demeaning speech or actions by any participant in our community online, at all related events and in one-on-one communications carried out in the context of community business.",community participant,any,[should not],"intimidate, harass, abuse, discriminate, derogatory or demeaning speech or actions",,,,at all related events and in one-on-one communications carried out in the context of community business.,
+"community leaders have the right and responsibility to remove, edit, or reject comments, commits, code, wiki edits, issues, and other contributions that are not aligned to this code of conduct, and will communicate reasons for moderation decisions when appropriate.",community leaders,,have to,"remove, edit, or reject","comments, commits, code, wiki edits, issues, and other contributions",,,[when] not aligned to this code of conduct,
+"instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community leaders responsible for enforcement at",[community participant],[any],may,report,"instances of abusive, harassing, or otherwise unacceptable behavior ",,community leaders,[always],
+all community leaders are obligated to respect the privacy and security of the reporter of any incident.,community leaders,,[shall],respect provacy and security,reporter of any incident,,,[always],
