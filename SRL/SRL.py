@@ -297,9 +297,9 @@ class SRL:
 
                 f1_score = []
                 for x,y in zip(values1,values2):
-                f1_score.append((self.compute_f1(x,y)))
-                print(f" F1 score for {col_name}: {np.mean(f1_score)}")
-                eval_scores[col_name].append(np.mean(f1_score))
+                    f1_score.append((self.compute_f1(x,y)))
+                    print(f" F1 score for {col_name}: {np.mean(f1_score)}")
+                    eval_scores[col_name].append(np.mean(f1_score))
 
             df1.to_csv(os.path.join('/content', f"{file_name}_eval.csv"),index=False)
 
