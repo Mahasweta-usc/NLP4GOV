@@ -148,7 +148,7 @@ class SRL:
     return data[data['keep']]
 
   #argument matching
-  def argmatch(self,x,arg):
+  def argmatch(self,x,arg,agent):
     if arg == 'attribute_inf':
       #attribute usually found in ARG0 or ARG1
       if 'ARG0' in list(x.keys()) : return " ".join(x['ARG0'])
@@ -238,6 +238,8 @@ class SRL:
     return cleaned_data
 
   def inference(self,file_name,out_path=None):
+      if 'OSS' in out_path: self.agent= 'strict'
+      else: self.agent = None
     if not out_path : out_path = file_name
     data = self.file_read((file_name))
 
@@ -309,7 +311,7 @@ class SRL:
                 f1_score.append((self.compute_f1(x,y)))
                 eval_scores[col_name].append(self.compute_f1(x,y))
 
-            print(f" F1 score for {col_name}: {np.mean(f1_score)}")
+            print(f" F1 score for {col_name}: {np.mean(f1_score)} for {df1.shape[0]} entries")
         df1.to_csv(out_path,index=False)
 
     # Create a 2x2 subplot
