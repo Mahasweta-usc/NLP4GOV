@@ -236,7 +236,7 @@ class SRL:
 
   def inference(self,file_name,out_path=None):
     if not out_path : out_path = file_name
-    if isinstance(file_name,str): data = self.file_read(file_name)
+    if isinstance(file_name,str): data = pd.read_csv(file_name)
     else: data = file_name
 
 
