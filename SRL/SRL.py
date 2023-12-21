@@ -148,7 +148,8 @@ class SRL:
     return data[data['keep']]
 
   #argument matching
-  def argmatch(self,x,arg,agent):
+  def argmatch(self,x,arg):
+    print("Mode:",self.agent)
     if arg == 'attribute_inf':
       #attribute usually found in ARG0 or ARG1
       if 'ARG0' in list(x.keys()) : return " ".join(x['ARG0'])
