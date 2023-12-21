@@ -266,9 +266,9 @@ class SRL:
         sets = []
         for file_name in os.listdir(sub_path):
             eval_name = os.path.join('/content/IG-SRL/SRL/data', subdata,file_name)
+            print(eval_name)
             temp = pd.read_csv(eval_name)
             temp.columns = map(str.lower, temp.columns)
-            print(eval_name)
             sets.append(temp[['raw institutional statement','attribute','deontic','aim','object']])
 
 
