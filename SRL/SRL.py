@@ -301,7 +301,8 @@ class SRL:
             df[col_name] = df[col_name].apply(lambda x : re.sub("[\(\[].*?[\)\]]", "",x))
 
             ##remove inferred coding
-            df.replace("<skipped>", "", inplace=True)
+            # df.replace("<skipped>", "", inplace=True)
+            df = df[df[col_name] != '<skipped>']
             values1 = df[col_name].tolist()
             values2 = df[col_name + '_inf'].tolist()
 
