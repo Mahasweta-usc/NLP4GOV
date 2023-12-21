@@ -121,7 +121,7 @@ class SRL:
 
     if isinstance(file_name,str): data = pd.read_csv(file_name)
     else: data = file_name
-    
+
     data.columns = map(str.lower, data.columns)
     data.dropna(subset=['raw institutional statement'],inplace=True)
     ##currently not considering multi level coding
@@ -272,7 +272,7 @@ class SRL:
 
 
         df1 = pd.concat(sets)
-        print(df1.shape)
+        print(subdata)
         out_path = os.path.join('/content',f"{subdata}_data_new.csv")
         self.inference(df1, out_path)
         df1 = pd.read_csv(out_path)
@@ -307,9 +307,9 @@ class SRL:
             f1_score = []
             for x,y in zip(values1,values2):
                 f1_score.append((self.compute_f1(x,y)))
-                print(f" F1 score for {col_name}: {np.mean(f1_score)}")
-                eval_scores[col_name].append(np.mean(f1_score))
+                eval_scores[col_name].append(self.compute_f1(x,y))
 
+            print(f" F1 score for {col_name}: {np.mean(f1_score)}")
         df1.to_csv(out_path,index=False)
 
     # Create a 2x2 subplot
