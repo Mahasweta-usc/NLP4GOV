@@ -194,16 +194,18 @@ class SRL:
           return [word for word in text if word not in all_words]
 
       def tokens(text):
-          return word_tokenize(text)
+          doc= nlp(text)
+          return ([word.lemma for sent in doc.sentences for word in sent.words if not word.text in all_words])
+          # return word_tokenize(text)
 
       def remove_punc(text):
           exclude = set(string.punctuation)
-          return " ".join(ch for ch in text if ch not in exclude)
+          return "".join(ch for ch in text if ch not in exclude)
 
       def lower(text):
           return text.lower().strip()
 
-      return remove_stopwords(tokens(remove_punc(lower(s))))
+      return tokens(remove_punc(lower(s)))
 
   def compute_exact_match(self,prediction, truth):
       return int(self.normalize_text(prediction) == self.normalize_text(truth))
@@ -299,7 +301,7 @@ class SRL:
             df[col_name] = df[col_name].apply(lambda x : re.sub("[\(\[].*?[\)\]]", "",x))
 
             ##remove inferred coding
-            df = df[df[col_name] != '<skipped>']
+            df.replace("<skipped>", "", inplace=True)
             values1 = df[col_name].tolist()
             values2 = df[col_name + '_inf'].tolist()
 
