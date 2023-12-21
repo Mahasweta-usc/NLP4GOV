@@ -268,6 +268,7 @@ class SRL:
             eval_name = os.path.join('/content/IG-SRL/SRL/data', subdata,file_name)
             temp = pd.read_csv(eval_name)
             temp.columns = map(str.lower, temp.columns)
+            print(eval_name)
             sets.append(temp[['raw institutional statement','attribute','deontic','aim','object']])
 
 
