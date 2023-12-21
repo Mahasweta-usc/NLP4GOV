@@ -266,13 +266,13 @@ class SRL:
         sets = []
         for file_name in os.listdir(sub_path):
             eval_name = os.path.join('/content/IG-SRL/SRL/data', subdata,file_name)
-            print(eval_name)
             temp = pd.read_csv(eval_name)
             temp.columns = map(str.lower, temp.columns)
             sets.append(temp[['raw institutional statement','attribute','deontic','aim','object']])
 
 
         df1 = pd.concat(sets)
+        print(df1.shape)
         out_path = os.path.join('/content',f"{subdata}_data_new.csv")
         self.inference(df1, out_path)
         df1 = pd.read_csv(out_path)
