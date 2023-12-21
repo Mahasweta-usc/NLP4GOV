@@ -198,7 +198,7 @@ class SRL:
 
       def remove_punc(text):
           exclude = set(string.punctuation)
-          return "".join(ch for ch in text if ch not in exclude)
+          return " ".join(ch for ch in text if ch not in exclude)
 
       def lower(text):
           return text.lower().strip()
@@ -318,7 +318,7 @@ class SRL:
     # Create a 2x2 subplot
     fig, axes = plt.subplots(nrows=2, ncols=2, figsize=(10, 8))
     for idx, col_name in enumerate(column_names):
-        eval_scores[col_name] = self.remove_outliers(eval_scores[col_name])
+        # eval_scores[col_name] = self.remove_outliers(eval_scores[col_name])
 
         # Plot each boxplot in a different subplot
         row, col = int(idx/2),int(idx%2)
