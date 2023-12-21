@@ -236,11 +236,10 @@ class SRL:
 
   def inference(self,file_name,out_path=None):
     if not out_path : out_path = file_name
-
-    print(file_name)
-    if isinstance(file_name,str):
-        data = self.file_read(file_name)
+    if isinstance(file_name,str): data = self.file_read(file_name)
     else: data = file_name
+
+
     data.columns = map(str.lower, data.columns)
     ##exclude empty entries
     data.dropna(subset=['raw institutional statement'],inplace=True)
@@ -254,7 +253,6 @@ class SRL:
     data.to_csv(os.path.join(out_path),index=False)
 
   def srl_eval(self):
-
     column_names = ['attribute', 'object', 'deontic', 'aim']
     eval_scores = {name:[] for name in column_names}
 
