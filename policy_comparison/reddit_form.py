@@ -51,10 +51,15 @@ dependent_drop_down = widgets.Dropdown(options=subs_list)
 
 def dropdown_handler(change):
     global drop_down_input
-    print('\r','Dropdown: ' + str(change.new),end='')
+    # print('\r','Dropdown: ' + str(change.new),end='')
     drop_down_input = change.new
-    dependent_drop_down.options=dependent_drop_down
 drop_down.observe(dropdown_handler, names='value')
+
+def dep_dropdown_handler(change):
+    global dependent_drop_down_input
+    # print('\r','Dropdown: ' + str(change.new),end='')
+    dependent_drop_down_input = change.new
+dependent_drop_down.observe(dep_dropdown_handler, names='value')
 
 # Button
 
