@@ -6,7 +6,7 @@ f = open('/content/IG-SRL/policy_comparison/data/reddit_rules_top_100.json')
 # returns JSON object as
 # a dictionary
 data = json.load(f)
-
+print(f"Retrieving datasets for {drop_down.value} and {dependent_drop_down.value}")
 community1 = data[drop_down.value]['rules']
 db1 = pd.DataFrame(community1, columns=["Raw Institutional Statement"])
 community2 = data[dependent_drop_down.value]['rules']
