@@ -240,7 +240,7 @@ class SRL:
     return cleaned_data
 
   def inference(self,file_name,out_path=None):
-    if 'Food' in out_path: self.agent= None
+    if 'Food' in file_name: self.agent= None
     else: self.agent = 'strict'
     if not out_path : out_path = file_name
     data = self.file_read((file_name))
