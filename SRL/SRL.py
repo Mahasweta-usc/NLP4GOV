@@ -122,7 +122,7 @@ class SRL:
     data = data.applymap(lambda x : str(x).lower().strip())
 
     data['sentences'] = data['raw institutional statement'].apply(lambda x : [sentence.text.lower() for sentence in nlp(x).sentences])
-    # data = data.explode('sentences')
+    data = data.explode('sentences')
 
     #find root verb through stanza
     data['ROOT'] = data['sentences'].apply(lambda x : [word.text for sent in nlp(x).sentences for word in sent.words  if word.deprel == 'root'][0])
