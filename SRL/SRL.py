@@ -142,7 +142,7 @@ class SRL:
 
   def detect_sub(self,text):
       doc = nlp_spacy(text)
-      sub_toks = [tok for tok in doc if tok.dep_ in ['nsubj', 'csubj']]
+      sub_toks = [tok for tok in doc if 'subj' in tok.dep_ ]
       if sub_toks: return True
       else: return False
   #argument matching
