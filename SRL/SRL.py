@@ -149,7 +149,6 @@ class SRL:
 
   #argument matching
   def argmatch(self,x,arg):
-    print("Mode:",self.agent)
     if arg == 'attribute_inf':
       #attribute usually found in ARG0 or ARG1
       if 'ARG0' in list(x.keys()) : return " ".join(x['ARG0'])
@@ -241,8 +240,8 @@ class SRL:
     return cleaned_data
 
   def inference(self,file_name,out_path=None):
-    # if 'OSS' in out_path: self.agent= 'strict'
-    # else: self.agent = None
+    if 'Food' in out_path: self.agent= None
+    else: self.agent = 'strict'
     if not out_path : out_path = file_name
     data = self.file_read((file_name))
 
