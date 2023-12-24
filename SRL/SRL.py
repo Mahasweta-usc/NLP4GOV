@@ -153,7 +153,7 @@ class SRL:
       else: keys = list(set(main_arguments[1:]) & set(x.keys()))
 
       if  keys:
-        return x[sorted(keys)[0]]
+        return ", ".join(x[sorted(keys)[0]])
 
       else: return ""
 
