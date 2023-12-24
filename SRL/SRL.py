@@ -39,7 +39,10 @@ import json
 import re
 import stanza
 stanza.download('en')
-#
+
+import spacy
+nlp = spacy.load('en')
+
 nlp = stanza.Pipeline(lang='en', processors='tokenize,mwt,pos,lemma,depparse',use_gpu=True)
 import string
 import jiwer
@@ -118,8 +121,8 @@ class SRL:
     data.fillna('', inplace=True)
     data = data.applymap(lambda x : str(x).lower().strip())
 
-    data['sentences'] = data['raw institutional statement'].apply(lambda x : [sentence.text.lower() for sentence in nlp(x).sentences][0])
-    # data = data.explode('sentences')
+    data['sentences'] = data['raw institutional statement'].apply(lambda x : [sentence.text.lower() for sentence in nlp(x).sentences])
+    data = data.explode('sentences')
 
     #find root verb through stanza
     data['ROOT'] = data['sentences'].apply(lambda x : [word.text for sent in nlp(x).sentences for word in sent.words  if word.deprel == 'root'][0])
@@ -136,34 +139,29 @@ class SRL:
 
     return data[data['keep']]
 
+  def detect_sub(self,text):
+      doc = nlp(text)
+      sub_toks = [tok for tok in doc if (tok.dep_ == "nsubj")]
+      if sub_toks: return True
+      else: return False
   #argument matching
-  def argmatch(self,x,arg):
-    if arg == 'attribute_inf':
-      #attribute usually found in ARG0 or ARG1
-      if 'ARG0' in list(x.keys()) : return " ".join(x['ARG0'])
-      elif 'ARG1' in list(x.keys()) and not self.agent : return " ".join(x['ARG1'])
-      else: return ""
+  def argmatch(self,x,text, arg):
+    keys = sorted(list(set(main_arguments[1:]) & set(x.keys())))
+    if self.detect_sub(text):
+        if arg == 'attribute_inf':
+            try: return ", ".join(x[sorted(keys)[0]])
+            except: return ""
 
-    if arg == 'object_inf':
-
-      if not self.agent and 'ARG0' not in x: keys = list(set(main_arguments[2:]) & set(x.keys()))
-          # if 'ARG0' in x or 'ARG1' in x : keys = set(main_arguments[1:]) & set(x.keys())
-          # else: keys = set(main_arguments) & set(x.keys())
-
-      else: keys = list(set(main_arguments[1:]) & set(x.keys()))
-
-      if  keys:
-        return ", ".join(x[sorted(keys)[0]])
-
-      else: return ""
-
-      # obj = []
-      # for argument in sorted(keys): obj.extend(x[argument])
-      # return ", ".join(obj)
+        if arg == 'object_inf':
+            try: return ", ".join(x[sorted(keys)[1]])
+            except: return ""
+    else:
+        if arg == 'attribute_inf': return ""
+        if arg == 'object_inf':
+            try: return ", ".join(x[sorted(keys)[0]])
+            except: return ""
 
     if arg == 'aim_inf': return " ".join(x['V'])
-
-
     if arg == 'deontic_inf':
         if 'ARGM-MOD' in list(x.keys()) : return " ".join(x['ARGM-MOD'])
         else: return ""
@@ -237,7 +235,7 @@ class SRL:
     data = data[(data['raw institutional statement'] != "")]
 
     for arg in ['attribute_inf','object_inf','aim_inf','deontic_inf']:
-      data[arg] = data['srl_parsed'].apply(lambda x : self.argmatch(x,arg))
+      data[arg] = data.apply(lambda x : self.argmatch(x.srl_parsed,x.sentences,arg))
 
 
 
