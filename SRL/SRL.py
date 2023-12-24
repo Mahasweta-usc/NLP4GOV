@@ -166,11 +166,11 @@ class SRL:
       #   if 'ARG2' in list(x.keys()) : return " ".join(x['ARG2'])
       #   else: return ""
 
-        if not self.agent:
-            if 'ARG0' in x or 'ARG1' in x : keys = set(main_arguments[1:]) & set(x.keys())
-            else: keys = set(main_arguments) & set(x.keys())
+        if not self.agent and 'ARG0' not in x: keys = set(main_arguments[2:]) & set(x.keys())
+            # if 'ARG0' in x or 'ARG1' in x : keys = set(main_arguments[1:]) & set(x.keys())
+            # else: keys = set(main_arguments) & set(x.keys())
 
-        else: keys = set(main_arguments) & set(x.keys())
+        else: keys = set(main_arguments[1]) & set(x.keys())
 
         obj = []
         for argument in keys: obj.extend(x[argument])
