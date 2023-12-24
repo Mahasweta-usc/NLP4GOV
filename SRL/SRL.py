@@ -149,24 +149,25 @@ class SRL:
   def argmatch(self, x, text, arg):
     if arg == 'attribute_inf':
         if 'ARG0' in x:
-            self.agent = 'ARG0'
             return ", ".join(x['ARG0'])
 
         if self.detect_sub(text) and 'ARG1' in x:
-            self.agent = 'ARG1'
             return ", ".join(x['ARG1'])
 
-        self.agent = None
         return ""
 
 
 
     if arg == 'object_inf':
         keys = sorted(list(set(main_arguments) & set(x.keys())))
-        print(keys, self.agent)
-        if self.agent: keys.remove(self.agent)
-        try: return ", ".join(x[keys[0]])
-        except: return ""
+        if 'ARG0' in x:
+            keys.remove('ARG0')
+
+        if self.detect_sub(text) and 'ARG1' in x:
+            keys.remove('ARG1')
+
+        if keys : return ", ".join(x[keys[0]])
+        else: return ""
 
     if arg == 'aim_inf': return " ".join(x['V'])
     if arg == 'deontic_inf':
