@@ -142,29 +142,34 @@ class SRL:
 
   def detect_sub(self,text):
       doc = nlp_spacy(text)
-      sub_toks = [tok for tok in doc if tok.dep_ in ['nsubj', 'nsubjpass']]
+      sub_toks = [tok for tok in doc if tok.dep_ in ['nsubj', 'csubj']]
       if sub_toks: return True
       else: return False
   #argument matching
   def argmatch(self, x, text, arg):
-    keys = sorted(list(set(main_arguments) & set(x.keys())))
     if arg == 'attribute_inf':
-        if self.detect_sub(text):
-            try: return ", ".join(x[keys[0]])
-            except: return ""
-        else: return ""
+        try:
+            _ = ", ".join(x['ARGO'])
+            self.agent = 'ARG0'
+            return ", ".join(x['ARGO'])
+        except:
+            if self.detect_sub(text):
+                try:
+                    _ = ", ".join(x['ARG1'])
+                    self.agent = 'ARG1'
+                    return ", ".join(x['ARG1'])
+                except:
+                    self.agent = None
+                    return ""
+            else:
+                self.agent = None
+                return ""
+
+
+    keys = sorted(list(set(main_arguments) & set(x.keys())))
+    if self.agent: keys.remove(self.agent)
 
     if arg == 'object_inf':
-        if self.detect_sub(text):
-            try: return ", ".join(x[keys[1]])
-            except: return ""
-        else:
-            try: return ", ".join(x[keys[0]])
-            except: return ""
-
-    else:
-        if arg == 'attribute_inf': return ""
-        if arg == 'object_inf':
             try: return ", ".join(x[keys[0]])
             except: return ""
 
