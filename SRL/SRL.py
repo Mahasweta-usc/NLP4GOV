@@ -168,6 +168,7 @@ class SRL:
 
     keys = sorted(list(set(main_arguments) & set(x.keys())))
     if self.agent: keys.remove(self.agent)
+    print(self.agent)
 
     if arg == 'object_inf':
             try: return ", ".join(x[keys[0]])
