@@ -49,8 +49,8 @@ import jiwer
 import pprint
 
 
-from transformers import BertTokenizer
-tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+# from transformers import BertTokenizer
+# tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 
 import math
 from scipy.spatial import distance

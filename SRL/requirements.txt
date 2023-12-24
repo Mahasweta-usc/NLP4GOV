@@ -1,10 +1,6 @@
 allennlp
 allennlp-models
-joblib
 tbb
 stanza
-jsonlines
-jiwer
 spacy[transformers]
-sentence-transformers
 urllib3
