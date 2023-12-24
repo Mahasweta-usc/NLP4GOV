@@ -148,14 +148,20 @@ class SRL:
   #argument matching
   def argmatch(self, x, text, arg):
     keys = sorted(list(set(main_arguments) & set(x.keys())))
-    if self.detect_sub(text):
-        if arg == 'attribute_inf':
+    if arg == 'attribute_inf':
+        if self.detect_sub(text):
+            try: return ", ".join(x[keys[0]])
+            except: return ""
+        else: return ""
+
+    if arg == 'object_inf':
+        if self.detect_sub(text):
+            try: return ", ".join(x[keys[1]])
+            except: return ""
+        else:
             try: return ", ".join(x[keys[0]])
             except: return ""
 
-        if arg == 'object_inf':
-            try: return ", ".join(x[keys[1]])
-            except: return ""
     else:
         if arg == 'attribute_inf': return ""
         if arg == 'object_inf':
