@@ -41,7 +41,7 @@ import stanza
 stanza.download('en')
 
 import spacy
-nlp = spacy.load("en_core_web_sm")
+nlp_spacy = spacy.load("en_core_web_sm")
 
 nlp = stanza.Pipeline(lang='en', processors='tokenize,mwt,pos,lemma,depparse',use_gpu=True)
 import string
@@ -140,7 +140,7 @@ class SRL:
     return data[data['keep']]
 
   def detect_sub(self,text):
-      doc = nlp(text)
+      doc = nlp_spacy(text)
       sub_toks = [tok for tok in doc if (tok.dep_ == "nsubj")]
       if sub_toks: return True
       else: return False
