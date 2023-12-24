@@ -152,12 +152,14 @@ class SRL:
 
       else: keys = list(set(main_arguments[1:]) & set(x.keys()))
 
-      print(sorted(keys)[0])
+      if  keys:
+        return x[sorted(keys)[0]]
+
+      else: return ""
 
       # obj = []
       # for argument in sorted(keys): obj.extend(x[argument])
       # return ", ".join(obj)
-      return x[sorted(keys)[0]]
 
     if arg == 'aim_inf': return " ".join(x['V'])
 
