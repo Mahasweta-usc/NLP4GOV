@@ -8,11 +8,18 @@ from matplotlib.pyplot import figure
 
 figure(figsize=(18, 15), dpi=300)
 
+deontic_map = {"must": 'black',
+               "should": "blue",
+               "can": 'gray',
+               "may": 'gray',
+               "might": "gray",
+               "could": 'gray'}
+
 components = ['Attribute', 'Deontic', 'Object']
 result = pd.read_csv('main.csv', usecols=components)
 result.replace("", np.nan, inplace=True)
 result.dropna(how='any', inplace=True)
-result = result[result['Deontic'].isin(['should', 'may', 'can', 'must', 'could'])]
+result = result[result['Deontic'].isin(list(deontic_map.keys()))]
 
 entries = result['Attribute'].tolist()
 entries.extend(result['Object'].tolist())
@@ -33,25 +40,27 @@ for component in ['Attribute', 'Object']:
     result.dropna(inplace=True)
     result[component + '_group'] = result[component + '_group'].apply(
         lambda x: freq[freq['Topic'] == x]['Name'].to_list()[0])
+    result[component + '_group'] = result[component + '_group'].apply(lambda x: ", ".join(x.split('_')[1:]))
 
+result['Deontic'] = result['Deontic'].apply(lambda x: deontic_map[x])
 G = nx.MultiDiGraph()
 
 for _, row in result.iterrows():
-    G.add_edge(row.Attribute_group, row.Object_group)
+    G.add_edge(row.Attribute_group, row.Object_group, row.Deontic)
 
-pos = nx.random_layout(G)
+pos = nx.circular_layout(G)
 nx.draw_networkx_nodes(G, pos, node_color='r', node_size=100, alpha=1)
+print(G)
 ax = plt.gca()
 
 for e in G.edges:
     ax.annotate("",
                 xy=pos[e[0]], xycoords='data',
                 xytext=pos[e[1]], textcoords='data',
-                arrowprops=dict(arrowstyle="->", color="0.5",
+                arrowprops=dict(arrowstyle="->,head_length=1.2,head_width=.6", color=e[2],
                                 shrinkA=5, shrinkB=5,
                                 patchA=None, patchB=None,
-                                connectionstyle="arc3,rad=rrr".replace('rrr', str(0.3 * e[2])
-                                                                       ),
+                                connectionstyle="arc3,rad=0.5"
                                 ),
                 )
 
