@@ -15,7 +15,7 @@ result.dropna(how='any', inplace=True)
 result = result[result['Deontic'].isin(['should', 'may', 'can', 'must', 'could'])]
 
 entries = result['Attribute'].tolist()
-entries.append(result['Object'].tolist())
+entries.extend(result['Object'].tolist())
 hdbscan_model = HDBSCAN(metric='euclidean', cluster_selection_method='eom', min_cluster_size=2,
                         prediction_data=True)
 topic_model = BERTopic(top_n_words=3, hdbscan_model=hdbscan_model)
