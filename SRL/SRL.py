@@ -41,7 +41,7 @@ import stanza
 stanza.download('en')
 
 import spacy
-nlp = spacy.load('en')
+nlp = spacy.load("en_core_web_sm")
 
 nlp = stanza.Pipeline(lang='en', processors='tokenize,mwt,pos,lemma,depparse',use_gpu=True)
 import string
@@ -235,7 +235,7 @@ class SRL:
     data = data[(data['raw institutional statement'] != "")]
 
     for arg in ['attribute_inf','object_inf','aim_inf','deontic_inf']:
-      data[arg] = data.apply(lambda x : self.argmatch(x.srl_parsed,x.sentences,arg))
+      data[arg] = data.apply(lambda x : self.argmatch(x.srl_parsed,x.sentences,arg),axis=1)
 
 
 
