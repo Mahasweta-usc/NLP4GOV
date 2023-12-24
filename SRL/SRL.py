@@ -168,9 +168,9 @@ class SRL:
 
         if not self.agent:
             if 'ARG0' in x or 'ARG1' in x : keys = set(main_arguments[1:]) & set(x.keys())
-            else : keys = set(main_arguments) & set(x.keys())
+            else: keys = set(main_arguments) & set(x.keys())
 
-        else : keys = set(main_arguments[1:]) & set(x.keys())
+        else: keys = set(main_arguments) & set(x.keys())
 
         obj = []
         for argument in keys: obj.extend(x[argument])

@@ -80,9 +80,9 @@ button.on_click(on_button_clicked)
 # Form items
 
 form_items = [
-    Box([Label(value='Community 1'),
+    Box([Label(value='Policy Database 1'),
          drop_down], layout=form_item_layout),
-    Box([Label(value='Community 2'),
+    Box([Label(value='Policy Database 2'),
          dependent_drop_down], layout=form_item_layout)
          ]
 
