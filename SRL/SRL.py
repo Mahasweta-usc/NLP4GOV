@@ -45,7 +45,6 @@ nlp_spacy = spacy.load("en_core_web_sm")
 
 nlp = stanza.Pipeline(lang='en', processors='tokenize,mwt,pos,lemma,depparse',use_gpu=True)
 import string
-import jiwer
 import pprint
 
 
@@ -149,22 +148,15 @@ class SRL:
   #argument matching
   def argmatch(self, x, text, arg):
     if arg == 'attribute_inf':
-        try:
-            _ = ", ".join(x['ARGO'])
+        if 'ARG0' in x:
             self.agent = 'ARG0'
             return ", ".join(x['ARGO'])
-        except:
-            if self.detect_sub(text):
-                try:
-                    _ = ", ".join(x['ARG1'])
-                    self.agent = 'ARG1'
-                    return ", ".join(x['ARG1'])
-                except:
-                    self.agent = None
-                    return ""
-            else:
-                self.agent = None
-                return ""
+        elif self.detect_sub(text) and 'ARG1' in x:
+                self.agent = 'ARG1'
+                return ", ".join(x['ARG1'])
+        else:
+            self.agent = None
+            return ""
 
 
 
