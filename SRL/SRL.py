@@ -122,7 +122,7 @@ class SRL:
     data = data.applymap(lambda x : str(x).lower().strip())
 
     data['sentences'] = data['raw institutional statement'].apply(lambda x : [sentence.text.lower() for sentence in nlp(x).sentences])
-    data = data.explode('sentences')
+    # data = data.explode('sentences')
 
     #find root verb through stanza
     data['ROOT'] = data['sentences'].apply(lambda x : [word.text for sent in nlp(x).sentences for word in sent.words  if word.deprel == 'root'][0])
@@ -145,20 +145,20 @@ class SRL:
       if sub_toks: return True
       else: return False
   #argument matching
-  def argmatch(self,x,text, arg):
-    keys = sorted(list(set(main_arguments[1:]) & set(x.keys())))
+  def argmatch(self, x, text, arg):
+    keys = sorted(list(set(main_arguments) & set(x.keys())))
     if self.detect_sub(text):
         if arg == 'attribute_inf':
-            try: return ", ".join(x[sorted(keys)[0]])
+            try: return ", ".join(x[keys[0]])
             except: return ""
 
         if arg == 'object_inf':
-            try: return ", ".join(x[sorted(keys)[1]])
+            try: return ", ".join(x[keys[1]])
             except: return ""
     else:
         if arg == 'attribute_inf': return ""
         if arg == 'object_inf':
-            try: return ", ".join(x[sorted(keys)[0]])
+            try: return ", ".join(x[keys[0]])
             except: return ""
 
     if arg == 'aim_inf': return " ".join(x['V'])
