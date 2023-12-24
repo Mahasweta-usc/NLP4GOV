@@ -146,15 +146,18 @@ class SRL:
 
     if arg == 'object_inf':
 
-      if not self.agent and 'ARG0' not in x: keys = set(main_arguments[2:]) & set(x.keys())
+      if not self.agent and 'ARG0' not in x: keys = list(set(main_arguments[2:]) & set(x.keys()))
           # if 'ARG0' in x or 'ARG1' in x : keys = set(main_arguments[1:]) & set(x.keys())
           # else: keys = set(main_arguments) & set(x.keys())
 
-      else: keys = set(main_arguments[1]) & set(x.keys())
+      else: keys = list(set(main_arguments[1:]) & set(x.keys()))
 
-      obj = []
-      for argument in keys: obj.extend(x[argument])
-      return ", ".join(obj)
+      print(sorted(keys)[0])
+
+      # obj = []
+      # for argument in sorted(keys): obj.extend(x[argument])
+      # return ", ".join(obj)
+      return x[sorted(keys)[0]]
 
     if arg == 'aim_inf': return " ".join(x['V'])
 
