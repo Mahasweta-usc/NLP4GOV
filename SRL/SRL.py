@@ -119,6 +119,7 @@ class SRL:
     ##currently not considering multi level coding
     data.drop_duplicates(subset=['raw institutional statement'],inplace=True)
     data.fillna('', inplace=True)
+    data = data[data['aim']!=""]
     data = data.applymap(lambda x : str(x).lower().strip())
 
     # data['sentences'] = data['raw institutional statement'].apply(lambda x : [sentence.text.lower() for sentence in nlp(x).sentences])
@@ -166,13 +167,13 @@ class SRL:
                 return ""
 
 
-    keys = sorted(list(set(main_arguments) & set(x.keys())))
-    if self.agent: keys.remove(self.agent)
-    print(self.agent)
 
     if arg == 'object_inf':
-            try: return ", ".join(x[keys[0]])
-            except: return ""
+        keys = sorted(list(set(main_arguments) & set(x.keys())))
+        print(keys, self.agent)
+        if self.agent: keys.remove(self.agent)
+        try: return ", ".join(x[keys[0]])
+        except: return ""
 
     if arg == 'aim_inf': return " ".join(x['V'])
     if arg == 'deontic_inf':
