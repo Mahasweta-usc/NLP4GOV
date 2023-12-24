@@ -162,6 +162,7 @@ class SRL:
         keys = sorted(list(set(main_arguments) & set(x.keys())))
         if 'ARG0' in x:
             keys.remove('ARG0')
+            if keys: return ", ".join(x[keys[0]])
 
         if self.detect_sub(text) and 'ARG1' in x:
             keys.remove('ARG1')
