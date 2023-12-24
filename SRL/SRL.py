@@ -150,7 +150,7 @@ class SRL:
     if arg == 'attribute_inf':
         if 'ARG0' in x:
             self.agent = 'ARG0'
-            return ", ".join(x['ARGO'])
+            return ", ".join(x['ARG0'])
         elif self.detect_sub(text) and 'ARG1' in x:
                 self.agent = 'ARG1'
                 return ", ".join(x['ARG1'])
