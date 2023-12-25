@@ -18,7 +18,7 @@ deontic_map = {"must": 'black',
 components = ['Attribute', 'Deontic', 'Object']
 result = pd.read_csv('main.csv', usecols=components)
 result.replace("", np.nan, inplace=True)
-result.dropna(how='any', inplace=True)
+result.dropna(subset=components, how='any', inplace=True)
 result = result[result['Deontic'].isin(list(deontic_map.keys()))]
 
 entries = result['Attribute'].tolist()
