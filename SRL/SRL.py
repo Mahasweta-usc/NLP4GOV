@@ -116,7 +116,9 @@ class SRL:
   def find_root(self,text):
       candidates = [word.text for sent in nlp(text).sentences for word in sent.words if word.deprel == 'root' and any(it in word.xpos.lower() for it in ['aux','vb'])]
       if candidates: return candidates[0]
-      else: return "<longest>"
+      else:
+          print("longest")
+          return "<longest>"
 
   def file_read(self,file_name):
     if isinstance(file_name,str): data = pd.read_csv(file_name)
@@ -147,7 +149,7 @@ class SRL:
 
     #find root verb through stanza
     # data['ROOT'] = data['sentences'].apply(lambda x : [word.text for sent in nlp(x).sentences for word in sent.words  if word.deprel == 'root'][0])
-    data['ROOT'] = data['raw institutional statement'].apply(lambda x : self.find_root(x))
+    data['ROOT'] = data['sentences'].apply(lambda x : self.find_root(x))
 
     data['srl_ip'] = data['raw institutional statement'].apply(lambda x : [{'sentence' : x}])
     data['srl_parsed'] = data.apply(lambda x: self.srl_arg(x['srl_ip'])[x['raw institutional statement']],axis=1)
@@ -164,7 +166,7 @@ class SRL:
 
     ret_val = data[data['keep']]
     ret_val.drop_duplicates(subset=['raw institutional statement'], keep = 'first', inplace=True)
-
+    print(len(ret_val))
     data[~data['raw institutional statement'].isin(ret_val['raw institutional statement'].to_list())].drop_duplicates(
                                     subset=['raw institutional statement']).to_csv("/content/testing.csv", index=False)
     return ret_val
