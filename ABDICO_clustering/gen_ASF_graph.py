@@ -19,7 +19,7 @@ deontic_map = {"must": 'black',
 components = ['Attribute', 'Deontic', 'Object']
 result = pd.read_csv('main.csv', usecols=components)
 result.replace("", np.nan, inplace=True)
-result.dropna(subset=["Attribute", "Object"], how='any', inplace=True)
+result.dropna(subset=["Attribute", "Object"], how='any', inplace=True); print(result.shape[0])
 
 result.fillna("",inplace=True)
 result['Deontic'] = result['Deontic'].apply(lambda x : x if x in deontic_map else "other")
@@ -61,7 +61,7 @@ for e in G.edges:
     ax.annotate("",
                 xy=pos[e[0]], xycoords='data',
                 xytext=pos[e[1]], textcoords='data',
-                arrowprops=dict(arrowstyle="-|>,head_length=1.2,head_width=.6", color=e[2],
+                arrowprops=dict(arrowstyle="-|>,head_length=1,head_width=.5", color=e[2],
                                 shrinkA=5, shrinkB=5,
                                 patchA=None, patchB=None,
                                 connectionstyle="arc3,rad=0.3"
