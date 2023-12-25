@@ -150,12 +150,12 @@ class SRL:
     data = data[data['srl_parsed'].map(lambda d: len(d)) > 0]
 
     data = data.explode('srl_parsed')
+    data['srl_verb'] = data['srl_parsed'].apply(lambda x : x['V'][0])
     #keep best parsing
     data['arg_len'] = data['srl_parsed'].apply(lambda x : len(x))
     data.sort_values(by=['arg_len'], inplace=True, ascending=False)
     data.drop_duplicates(subset=['raw institutional statement', 'srl_verb'], keep = 'first', inplace=True)
 
-    data['srl_verb'] = data['srl_parsed'].apply(lambda x : x['V'][0])
     #only keep frame parsed for root verbs and has agents/objects
     data['keep'] = data.apply(lambda x : (x['ROOT'] == x['srl_verb']) & (any(elem in x['srl_parsed'] for elem in main_arguments)),axis=1)
 
