@@ -278,11 +278,11 @@ class SRL:
 
     print("Dataset after removing incomplete annotations: ", data.shape[0])
     data.to_csv(out_path.replace(".csv","_int.csv"), index=False)
-    
+
     data['attribute'] = data.apply( lambda x : "<skipped>" if x.attribute and (x.attribute not in x['raw institutional statement']) else x.attribute, axis=1)
     data['object'] = data.apply( lambda x : "<skipped>" if x.object and (x.object not in x['raw institutional statement']) else x.object, axis=1)
 
-    data = data[(data['attribute'] != '<skipped>') & (data['object'] != '<skipped>')]
+    data = data[(data['attribute'] != '<skipped>') | (data['object'] != '<skipped>')]
 
     #SRL inference
     for arg in ['attribute_inf','object_inf','aim_inf','deontic_inf']:
