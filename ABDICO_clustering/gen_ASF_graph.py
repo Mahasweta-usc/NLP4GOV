@@ -10,11 +10,11 @@ figure(figsize=(18, 15), dpi=300)
 
 deontic_map = {"must": 'black',
                "should": "blue",
-               "can": 'green',
-               "may": 'green',
-               "might": "green",
-               "could": 'green',
-               "other": "gray"}
+               "can": 'limegreen',
+               "may": 'limegreen',
+               "might": "limegreen",
+               "could": 'limegreen',
+               "other": "gainsboro"}
 
 components = ['Attribute', 'Deontic', 'Object']
 result = pd.read_csv('main.csv', usecols=components)
@@ -64,7 +64,7 @@ for e in G.edges:
                 arrowprops=dict(arrowstyle="->,head_length=1.2,head_width=.6", color=e[2],
                                 shrinkA=5, shrinkB=5,
                                 patchA=None, patchB=None,
-                                connectionstyle="arc3,rad=0.5"
+                                connectionstyle="arc3,rad=0.8"
                                 ),
                 )
 
