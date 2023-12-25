@@ -240,14 +240,26 @@ class SRL:
 
 
     data.columns = map(str.lower, data.columns)
+
     ##exclude empty entries
     data.dropna(subset=['raw institutional statement'],inplace=True)
     data = data[(data['raw institutional statement'] != "")]
 
+    for col_name in df.columns:
+        ##remove inferred coding re.sub("[\(\[].*?[\)\]]", "<skipped>",x)
+        pattern = r'\[[^\]]*\]'
+        df[col_name] = df[col_name].apply(lambda x: "<skipped>" if x.startswith('[') else x)
+        df[col_name] = df[col_name].apply(lambda x: re.sub("[\(\[].*?[\)\]]", "", x))
+
+        ##remove inferred coding
+        # df.replace("<skipped>", "", inplace=True)
+        df = df[df[col_name] != '<skipped>']
+
+
     for arg in ['attribute_inf','object_inf','aim_inf','deontic_inf']:
       data[arg] = data.apply(lambda x : self.argmatch(x.srl_parsed,x.sentences,arg),axis=1)
 
-    data[['raw institutional statement', "object", "object_inf", "aim", "aim_inf"]].to_csv(os.path.join(out_path),index=False)
+    data.to_csv(os.path.join(out_path),index=False)
 
   def srl_eval(self):
     column_names = ['attribute', 'object', 'deontic', 'aim']
@@ -285,14 +297,6 @@ class SRL:
 
         for col_name in column_names:
             df = df1.copy()
-            ##remove inferred coding re.sub("[\(\[].*?[\)\]]", "<skipped>",x)
-            pattern = r'\[[^\]]*\]'
-            df[col_name] = df[col_name].apply(lambda x : "<skipped>" if x.startswith('[') else x)
-            df[col_name] = df[col_name].apply(lambda x : re.sub("[\(\[].*?[\)\]]", "",x))
-
-            ##remove inferred coding
-            # df.replace("<skipped>", "", inplace=True)
-            df = df[df[col_name] != '<skipped>']
             values1 = df[col_name].tolist()
             values2 = df[col_name + '_inf'].tolist()
 
