@@ -179,15 +179,13 @@ class SRL:
 
     if arg == 'object_inf':
         keys = sorted(list(set(main_arguments) & set(x.keys())))
-        if 'ARG0' in x:
-            keys.remove('ARG0')
-
         if 'ARG0' not in x and (self.detect_sub(text) and 'ARG1' in x):
             keys.remove('ARG1')
 
-        if keys:
-            # print(keys, "obj", keys[0])
-            return ", ".join(x[keys[0]])
+        if 'ARG0' in x:
+            keys.remove('ARG0')
+
+        if keys: return ", ".join(x[keys[0]])
         else: return ""
 
     if arg == 'aim_inf': return " ".join(x['V'])
