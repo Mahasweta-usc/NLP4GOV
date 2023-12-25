@@ -162,12 +162,12 @@ class SRL:
         keys = sorted(list(set(main_arguments) & set(x.keys())))
         if 'ARG0' in x or (self.detect_sub(text) and 'ARG1' in x):
             try:
-                print(keys, keys[1])
+                print(keys, "obj", keys[1])
                 return ", ".join(x[keys[1]])
             except: return ""
 
         if keys:
-            print(keys, keys[0])
+            print(keys, "obj", keys[0])
             return ", ".join(x[keys[0]])
         else: return ""
 
@@ -248,12 +248,12 @@ class SRL:
     for col_name in df.columns:
         ##remove inferred coding re.sub("[\(\[].*?[\)\]]", "<skipped>",x)
         pattern = r'\[[^\]]*\]'
-        df[col_name] = df[col_name].apply(lambda x: "<skipped>" if x.startswith('[') else x)
-        df[col_name] = df[col_name].apply(lambda x: re.sub("[\(\[].*?[\)\]]", "", x))
+        data[col_name] = data[col_name].apply(lambda x: "<skipped>" if x.startswith('[') else x)
+        data[col_name] = data[col_name].apply(lambda x: re.sub("[\(\[].*?[\)\]]", "", x))
 
         ##remove inferred coding
         # df.replace("<skipped>", "", inplace=True)
-        df = df[df[col_name] != '<skipped>']
+        data = data[data[col_name] != '<skipped>']
 
 
     for arg in ['attribute_inf','object_inf','aim_inf','deontic_inf']:
