@@ -132,8 +132,6 @@ class SRL:
     # #currently not considering multi level coding
     # data.fillna('', inplace=True)
     # data = data[data['aim'] != ""]
-
-    print(data.shape[0])
     #keep only verbs in aim
 
     data['sentences'] = data['raw institutional statement'].apply(lambda x : [sentence.text.lower() for sentence in nlp(x).sentences][0])
