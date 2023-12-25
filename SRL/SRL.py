@@ -143,7 +143,7 @@ class SRL:
     #keep best parsing
     data['arg_len'] = data['srl_parsed'].apply(lambda x : len(x))
     data.sort_values(by=['arg_len'], inplace=True, ascending=False)
-    data.drop_duplicates(subset=['raw institutional statement', 'srl_verb'], how = 'all', keep_first = True, inplace=True)
+    data.drop_duplicates(subset=['raw institutional statement', 'srl_verb'], keep_first = True, inplace=True)
 
     data['srl_verb'] = data['srl_parsed'].apply(lambda x : x['V'][0])
     #only keep frame parsed for root verbs and has agents/objects
