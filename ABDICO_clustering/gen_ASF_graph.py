@@ -64,7 +64,7 @@ for e in G.edges:
                 arrowprops=dict(arrowstyle="->,head_length=1.2,head_width=.6", color=e[2],
                                 shrinkA=5, shrinkB=5,
                                 patchA=None, patchB=None,
-                                connectionstyle="arc3,rad=0.8"
+                                connectionstyle="arc3,rad=0.3"
                                 ),
                 )
 
