@@ -27,7 +27,7 @@ result = result[result['Deontic'].isin(list(deontic_map.keys()))]
 
 entries = result['Attribute'].tolist()
 entries.extend(result['Object'].tolist())
-hdbscan_model = HDBSCAN(metric='euclidean', cluster_selection_method='eom', min_cluster_size=2,
+hdbscan_model = HDBSCAN(metric='euclidean', cluster_selection_method='eom',
                         prediction_data=True)
 topic_model = BERTopic(top_n_words=3, hdbscan_model=hdbscan_model, nr_topics='auto')
 topic_model.hdbscan_model.gen_min_span_tree = True
