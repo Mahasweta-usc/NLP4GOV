@@ -337,7 +337,7 @@ class SRL:
                 f1_score.append((self.compute_f1(x,y)))
                 eval_scores[col_name].append(self.compute_f1(x,y))
 
-            print(f" F1 score for {col_name}: {np.mean(f1_score)} for {df1.shape[0]} entries")
+            print(f" F1 score for {col_name}: {np.mean(f1_score)}")
         # df1.to_csv(out_path,index=False)
 
     for k, v in eval_scores.items():
