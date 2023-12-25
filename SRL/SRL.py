@@ -292,8 +292,8 @@ class SRL:
         # data['object'] = data.apply( lambda x : "<skipped>" if x.object and (x.object not in x['raw institutional statement']) else x.object, axis=1)
 
         #atleast Actor or object is span
-        print("Dataset after removing abstractive aims: ", data.shape[0])
         data = data[(data['aim'] != '<skipped>')]
+        print("Dataset after removing abstractive aims: ", data.shape[0])
         data = data[(data['attribute'] != '<skipped>') | (data['object'] != '<skipped>')]
 
         #lemmatize aims
