@@ -131,7 +131,6 @@ class SRL:
     #statement needs to contain aim and recipient of action at the least
     if self.agent == "eval":
         data.dropna(subset=['raw institutional statement', "aim", "object"], how='any', inplace=True)
-        data['aim'] = data['aim'].apply(lambda x: self.process_aim(x))
         print("Dataset after removing incomplete annotations: ", data.shape[0])
     else:
         data.dropna(subset=['raw institutional statement'], how='any', inplace=True)
@@ -295,6 +294,8 @@ class SRL:
         data = data[(data['aim'] != '<skipped>')]
         data = data[(data['attribute'] != '<skipped>') | (data['object'] != '<skipped>')]
 
+        #lemmatize aims
+        data['aim'] = data['aim'].apply(lambda x: self.process_aim(x))
         print("Dataset after removing abstractive annotations: ", data.shape[0])
 
     #SRL inference
