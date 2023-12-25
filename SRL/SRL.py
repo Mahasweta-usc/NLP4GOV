@@ -127,7 +127,7 @@ class SRL:
 
     data.drop_duplicates(subset=['raw institutional statement'],inplace=True)
 
-    data['sentences'] = data['raw institutional statement'].apply(lambda x : [sentence.text.lower() for sentence in nlp(x).sentences[0]])
+    data['sentences'] = data['raw institutional statement'].apply(lambda x : [sentence.text.lower() for sentence in nlp(x).sentences][0])
     # data = data.explode('sentences')
     # data['sentences'] = data['raw institutional statement'].apply(lambda x : x.lower())
 
