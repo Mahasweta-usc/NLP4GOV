@@ -258,7 +258,6 @@ class SRL:
 
         ##remove inferred coding
         # df.replace("<skipped>", "", inplace=True)
-        data = data[data[col_name] != '<skipped>']
 
 
     for arg in ['attribute_inf','object_inf','aim_inf','deontic_inf']:
@@ -295,6 +294,8 @@ class SRL:
 
         for col_name in column_names:
             df = df1.copy()
+            #remove [implied]
+            data = data[data[col_name] != '<skipped>']
             values1 = df[col_name].tolist()
             values2 = df[col_name + '_inf'].tolist()
 
