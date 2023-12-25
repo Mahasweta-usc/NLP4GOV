@@ -112,6 +112,12 @@ class SRL:
       types = [word.lemma for sent in nlp(x).sentences for word in sent.words if 'verb' in word.upos.lower()]
       if types: return ", ".join(set(types))
       else: return x
+
+  def find_root(self,text):
+      candidates = [word.text for sent in nlp(text).sentences for word in sent.words if word.deprel == 'root' and any(it in word.xpos.lower() for it in ['aux','vb'])]
+      if candidates: return candidates[0]
+      else: return "<longest>"
+
   def file_read(self,file_name):
     if isinstance(file_name,str): data = pd.read_csv(file_name)
     else: data = file_name
@@ -140,7 +146,8 @@ class SRL:
     # data['sentences'] = data['raw institutional statement'].apply(lambda x : x.lower())
 
     #find root verb through stanza
-    data['ROOT'] = data['sentences'].apply(lambda x : [word.text for sent in nlp(x).sentences for word in sent.words  if word.deprel == 'root'][0])
+    # data['ROOT'] = data['sentences'].apply(lambda x : [word.text for sent in nlp(x).sentences for word in sent.words  if word.deprel == 'root'][0])
+    data['ROOT'] = data['sentences'].apply(lambda x : self.find_root(x))
     data = data[(data['ROOT'] != '')]
 
     data['srl_ip'] = data['raw institutional statement'].apply(lambda x : [{'sentence' : x}])
@@ -152,12 +159,13 @@ class SRL:
     #keep best parsing
     data['arg_len'] = data['srl_parsed'].apply(lambda x : len(x))
     data.sort_values(by=['arg_len'], inplace=True, ascending=False)
-    data.drop_duplicates(subset=['raw institutional statement', 'srl_verb'], keep = 'first', inplace=True)
 
     #only keep frame parsed for root verbs and has agents/objects  & (any(elem in x['srl_parsed'] for elem in main_arguments))
-    data['keep'] = data.apply(lambda x : x['ROOT'] == x['srl_verb'], axis=1)
+    data['keep'] = data.apply(lambda x : x['ROOT'] == x['srl_verb'] or x['ROOT'] == "<longest>", axis=1)
 
     ret_val = data[data['keep']]
+    ret_val.drop_duplicates(subset=['raw institutional statement'], keep = 'first', inplace=True)
+
     data[~data['raw institutional statement'].isin(ret_val['raw institutional statement'].to_list())].drop_duplicates(
                                     subset=['raw institutional statement']).to_csv("/content/testing.csv", index=False)
     return ret_val
