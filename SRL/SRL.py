@@ -112,7 +112,8 @@ class SRL:
       types = [word.text for sent in nlp(x).sentences for word in sent.words if 'vb' in word.deprel]
       if types: return ", ".join(types)
 
-      types = [word.text for sent in nlp(x).sentences for word in sent.words if any(elem in word.deprel for elem in ['vb','aux'])]
+      types2 = [word.text for sent in nlp(x).sentences for word in sent.words if any(elem in word.deprel for elem in ['vb','aux'])]
+      print(types, types2)
       if types: return ", ".join(types)
       else: return x
   def file_read(self,file_name):
@@ -135,7 +136,7 @@ class SRL:
     data.drop_duplicates(subset=['raw institutional statement'],inplace=True)
 
     ##keep only verbs in aim
-    data['aim'] = data['aim'].apply(lambda x: self.process_aim(x))
+    # data['aim'] = data['aim'].apply(lambda x: self.process_aim(x))
 
     data['sentences'] = data['raw institutional statement'].apply(lambda x : [sentence.text.lower() for sentence in nlp(x).sentences][0])
     # data = data.explode('sentences')
@@ -172,7 +173,7 @@ class SRL:
         if 'ARG0' in x:
             return ", ".join(x['ARG0'])
 
-        if self.detect_sub(text) and 'ARG1' in x:
+        if 'ARG0' not in x and (self.detect_sub(text) and 'ARG1' in x):
             return ", ".join(x['ARG1'])
 
         return ""
@@ -327,7 +328,7 @@ class SRL:
                 eval_scores[col_name].append(self.compute_f1(x,y))
 
             print(f" F1 score for {col_name}: {np.mean(f1_score)} for {df1.shape[0]} entries")
-        df1.to_csv(out_path,index=False)
+        # df1.to_csv(out_path,index=False)
 
     for k, v in eval_scores.items():
         print(f"Mean F1 score for {k}: {np.mean(v)} for {len(v)} entries")
