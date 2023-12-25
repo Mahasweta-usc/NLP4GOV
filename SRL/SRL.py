@@ -307,7 +307,7 @@ class SRL:
 
 
         df1 = pd.concat(sets)
-        print(subdata)
+        print(subdata, "Dataset: ", df1.shape[0])
         out_path = os.path.join('/content',f"{subdata}_data_new.csv")
         self.inference(df1, out_path)
         df1 = pd.read_csv(out_path)
