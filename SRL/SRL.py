@@ -109,11 +109,7 @@ class SRL:
 
   #read a file and apply preprocessing
   def process_aim(self, x):
-      types = [word.text for sent in nlp(x).sentences for word in sent.words if 'vb' in word.deprel]
-      if types: return ", ".join(types)
-
-      types2 = [word.text for sent in nlp(x).sentences for word in sent.words if any(elem in word.deprel for elem in ['vb','aux'])]
-      print(types, types2)
+      types = [word.text for sent in nlp(x).sentences for word in sent.words if 'verb' in word.upos.lower()]
       if types: return ", ".join(types)
       else: return x
   def file_read(self,file_name):
@@ -135,8 +131,8 @@ class SRL:
 
     data.drop_duplicates(subset=['raw institutional statement'],inplace=True)
 
-    ##keep only verbs in aim
-    # data['aim'] = data['aim'].apply(lambda x: self.process_aim(x))
+    #keep only verbs in aim
+    data['aim'] = data['aim'].apply(lambda x: self.process_aim(x))
 
     data['sentences'] = data['raw institutional statement'].apply(lambda x : [sentence.text.lower() for sentence in nlp(x).sentences][0])
     # data = data.explode('sentences')
@@ -281,8 +277,9 @@ class SRL:
     for arg in ['attribute_inf','object_inf','aim_inf','deontic_inf']:
         data[arg] = data.apply(lambda x : self.argmatch(x.srl_parsed,x.sentences,arg),axis=1)
 
-    print(data.columns)
+
     data.to_csv(out_path,index=False)
+    data.to_csv("/content/final.csv", index=False)
 
   def srl_eval(self):
     column_names = ['attribute', 'object', 'deontic', 'aim']
