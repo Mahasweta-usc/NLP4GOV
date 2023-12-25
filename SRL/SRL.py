@@ -182,7 +182,7 @@ class SRL:
 
     if arg == 'object_inf':
         keys = sorted(list(set(main_arguments) & set(x.keys())))
-        if 'ARG0' in x or (self.detect_sub(text) and 'ARG1' in x):
+        if 'ARG0' in x or ('ARG0' not in x and (self.detect_sub(text) and 'ARG1' in x)):
             try:
                 # print(keys, "obj", keys[1])
                 return ", ".join(x[keys[1]])
