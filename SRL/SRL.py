@@ -283,7 +283,7 @@ class SRL:
     data['object'] = data.apply( lambda x : "<skipped>" if x.object and (x.object not in x['raw institutional statement']) else x.object, axis=1)
 
     #atleast Actor or object is span
-    data = data[(data['deontic'] != '<skipped>')]
+    # data = data[(data['deontic'] != '<skipped>')]
     data = data[(data['attribute'] != '<skipped>') | (data['object'] != '<skipped>')]
 
     print("Dataset after removing abstractive annotations: ", data.shape[0])
