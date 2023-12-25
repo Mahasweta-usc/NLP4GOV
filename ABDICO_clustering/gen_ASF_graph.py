@@ -27,7 +27,7 @@ result = result[result['Deontic'].isin(list(deontic_map.keys()))]
 
 entries = result['Attribute'].tolist()
 entries.extend(result['Object'].tolist())
-hdbscan_model = HDBSCAN(metric='euclidean', cluster_selection_method='leaf',
+hdbscan_model = HDBSCAN(metric='euclidean', cluster_selection_method='eom',
                         prediction_data=True)
 topic_model = BERTopic(top_n_words=3, hdbscan_model=hdbscan_model, nr_topics='auto')
 topic_model.hdbscan_model.gen_min_span_tree = True
@@ -40,8 +40,8 @@ for component in ['Attribute', 'Object']:
     entries = result[component].tolist()
     result[component + '_group'] = topic_model.transform(entries)[0]
     # remove outliers
-    result[component + '_group'].replace("-1", np.nan)
-    result.dropna(inplace=True)
+    # result[component + '_group'].replace("-1", np.nan)
+    # result.dropna(inplace=True)
     result[component + '_group'] = result[component + '_group'].apply(
         lambda x: freq[freq['Topic'] == x]['Name'].to_list()[0])
     result[component + '_group'] = result[component + '_group'].apply(lambda x: ", ".join(x.split('_')[1:]))
