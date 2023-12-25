@@ -157,8 +157,10 @@ class SRL:
     #only keep frame parsed for root verbs and has agents/objects  & (any(elem in x['srl_parsed'] for elem in main_arguments))
     data['keep'] = data.apply(lambda x : x['ROOT'] == x['srl_verb'], axis=1)
 
-    data[data['keep']==False].drop_duplicates(subset=['raw institutional statement']).to_csv("/content/testing.csv",index=False)
-    return data[data['keep']]
+    ret_val = data[data['keep']]
+    data[~data['raw institutional statement'].isin(ret_val['raw institutional statement'])].drop_duplicates(
+                                    subset=['raw institutional statement']).to_csv("/content/testing.csv",index=False)
+    return ret_val
 
   def detect_sub(self,text):
       doc = nlp(text)
