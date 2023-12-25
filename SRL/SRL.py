@@ -125,6 +125,7 @@ class SRL:
     if self.agent == "eval":
         data.dropna(subset=['raw institutional statement', "aim", "object"], how='any', inplace=True)
         data['aim'] = data['aim'].apply(lambda x: self.process_aim(x))
+        print("Dataset after removing incomplete annotations: ", data.shape[0])
     else:
         data.dropna(subset=['raw institutional statement'], how='any', inplace=True)
 
@@ -156,7 +157,7 @@ class SRL:
     #only keep frame parsed for root verbs and has agents/objects
     data['keep'] = data.apply(lambda x : (x['ROOT'] == x['srl_verb']) & (any(elem in x['srl_parsed'] for elem in main_arguments)),axis=1)
 
-    data[data['keep']==False].to_csv("/content/testing.csv",index=False)
+    data[data['keep']==False].drop_duplicates(subset=['raw institutional statement']).to_csv("/content/testing.csv",index=False)
     return data[data['keep']]
 
   def detect_sub(self,text):
@@ -276,7 +277,7 @@ class SRL:
             data[col_name] = data[col_name].apply(lambda x: "<skipped>" if x.startswith('[') else x)
             data[col_name] = data[col_name].apply(lambda x: re.sub("[\(\[].*?[\)\]]", "", x))
 
-        print("Dataset after removing incomplete annotations: ", data.shape[0])
+
         data.to_csv(out_path.replace(".csv","_int.csv"), index=False)
 
         data['attribute'] = data.apply( lambda x : "<skipped>" if x.attribute and (x.attribute not in x['raw institutional statement']) else x.attribute, axis=1)
