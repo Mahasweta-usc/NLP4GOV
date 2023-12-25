@@ -154,8 +154,8 @@ class SRL:
     data.sort_values(by=['arg_len'], inplace=True, ascending=False)
     data.drop_duplicates(subset=['raw institutional statement', 'srl_verb'], keep = 'first', inplace=True)
 
-    #only keep frame parsed for root verbs and has agents/objects
-    data['keep'] = data.apply(lambda x : (x['ROOT'] == x['srl_verb']) & (any(elem in x['srl_parsed'] for elem in main_arguments)),axis=1)
+    #only keep frame parsed for root verbs and has agents/objects  & (any(elem in x['srl_parsed'] for elem in main_arguments))
+    data['keep'] = data.apply(lambda x : x['ROOT'] == x['srl_verb'], axis=1)
 
     data[data['keep']==False].drop_duplicates(subset=['raw institutional statement']).to_csv("/content/testing.csv",index=False)
     return data[data['keep']]
