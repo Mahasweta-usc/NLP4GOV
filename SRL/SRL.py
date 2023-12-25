@@ -140,6 +140,11 @@ class SRL:
     data = data[data['srl_parsed'].map(lambda d: len(d)) > 0]
 
     data = data.explode('srl_parsed')
+    #keep best parsing
+    data['arg_len'] = data['srl_parsed'].apply(lambda x : len(x))
+    data.sort_values(by=['arg_len'], inplace=True, ascending=False)
+    data.drop_duplicates(subset=['raw institutional statement', 'srl_verb'], how = 'all', keep_first = True, inplace=True)
+
     data['srl_verb'] = data['srl_parsed'].apply(lambda x : x['V'][0])
     #only keep frame parsed for root verbs and has agents/objects
     data['keep'] = data.apply(lambda x : (x['ROOT'] == x['srl_verb']) & (any(elem in x['srl_parsed'] for elem in main_arguments)),axis=1)
@@ -148,7 +153,7 @@ class SRL:
 
   def detect_sub(self,text):
       doc = nlp(text)
-      sub_toks = [word.text for sent in doc.sentences for word in sent.words if 'subj' in word.deprel]
+      sub_toks = [word.text for sent in doc.sentences for word in sent.words if word.deprel in ["nsubj",'csubj']]
       if sub_toks: return True
       else: return False
   #argument matching
@@ -298,7 +303,7 @@ class SRL:
         for col_name in column_names:
             df = df1.copy()
             #remove [implied]
-            df = df[data[col_name] != '<skipped>']
+            df = df[df[col_name] != '<skipped>']
             values1 = df[col_name].tolist()
             values2 = df[col_name + '_inf'].tolist()
 
