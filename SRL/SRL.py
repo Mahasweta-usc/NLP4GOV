@@ -129,7 +129,7 @@ class SRL:
     # data.fillna('', inplace=True)
     # data = data[data['aim'] != ""]
 
-    data.drop_duplicates(subset=['raw institutional statement'],inplace=True)
+    data.drop_duplicates(subset=['raw institutional statement'], inplace=True)
 
     #keep only verbs in aim
     data['aim'] = data['aim'].apply(lambda x: self.process_aim(x))
@@ -276,10 +276,10 @@ class SRL:
         data[col_name] = data[col_name].apply(lambda x: "<skipped>" if x.startswith('[') else x)
         data[col_name] = data[col_name].apply(lambda x: re.sub("[\(\[].*?[\)\]]", "", x))
 
-    data['attribute'] = data.apply( lambda x : "<skipped>" if x.attribute not in x['raw institutional statement'] else x.attribute, axis=1)
-    data['object'] = data.apply( lambda x : "<skipped>" if x.object not in x['raw institutional statement'] else x.object, axis=1)
-
-    data = data[(data['attribute'] != '<skipped>') & (data['object'] != '<skipped>')]
+    # data['attribute'] = data.apply( lambda x : "<skipped>" if x.attribute not in x['raw institutional statement'] else x.attribute, axis=1)
+    # data['object'] = data.apply( lambda x : "<skipped>" if x.object not in x['raw institutional statement'] else x.object, axis=1)
+    #
+    # data = data[(data['attribute'] != '<skipped>') & (data['object'] != '<skipped>')]
 
     #SRL inference
     for arg in ['attribute_inf','object_inf','aim_inf','deontic_inf']:
