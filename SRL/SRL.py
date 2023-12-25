@@ -127,15 +127,15 @@ class SRL:
 
     data.drop_duplicates(subset=['raw institutional statement'],inplace=True)
 
-    # data['sentences'] = data['raw institutional statement'].apply(lambda x : [sentence.text.lower() for sentence in nlp(x).sentences])
+    data['sentences'] = data['raw institutional statement'].apply(lambda x : [sentence.text.lower() for sentence in nlp(x).sentences[0]])
     # data = data.explode('sentences')
-    data['sentences'] = data['raw institutional statement'].apply(lambda x : x.lower())
+    # data['sentences'] = data['raw institutional statement'].apply(lambda x : x.lower())
 
     #find root verb through stanza
     data['ROOT'] = data['sentences'].apply(lambda x : [word.text for sent in nlp(x).sentences for word in sent.words  if word.deprel == 'root'][0])
     data = data[(data['ROOT'] != '')]
 
-    data['srl_ip'] = data['raw institutional statement'].apply(lambda x : [{'sentence' : x}])
+    data['srl_ip'] = data['sentences'].apply(lambda x : [{'sentence' : x}])
     data['srl_parsed'] = data.apply(lambda x: self.srl_arg(x['srl_ip'])[x['raw institutional statement']],axis=1)
     data = data[data['srl_parsed'].map(lambda d: len(d)) > 0]
 
@@ -147,8 +147,8 @@ class SRL:
     return data[data['keep']]
 
   def detect_sub(self,text):
-      doc = nlp_spacy(text)
-      sub_toks = [tok for tok in doc if 'subj' in tok.dep_ ]
+      doc = nlp(text)
+      sub_toks = [word.text for sent in doc.sentences for word in sent.words if 'subj' in word.deprel]
       if sub_toks: return True
       else: return False
   #argument matching
@@ -298,7 +298,7 @@ class SRL:
         for col_name in column_names:
             df = df1.copy()
             #remove [implied]
-            data = data[data[col_name] != '<skipped>']
+            df = df[data[col_name] != '<skipped>']
             values1 = df[col_name].tolist()
             values2 = df[col_name + '_inf'].tolist()
 
