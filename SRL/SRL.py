@@ -198,7 +198,7 @@ class SRL:
         if 'ARG0' in x:
             keys.remove('ARG0')
 
-        if keys: return ", ".join([", ".join(x[key]) for key in keys])
+        if keys: return ", ".join(x[keys[0]])
         else: return ""
 
     if arg == 'aim_inf': return " ".join(x['V'])
@@ -285,13 +285,14 @@ class SRL:
             pattern = r'\[[^\]]*\]'
             data[col_name] = data[col_name].apply(lambda x: "<skipped>" if x.startswith('[') else x)
             data[col_name] = data[col_name].apply(lambda x: re.sub("[\(\[].*?[\)\]]", "", x))
+            data[col_name] = data.apply(lambda x: "<skipped>" if x[col_name] and (
+                        x[col_name] not in x['raw institutional statement']) else x[col_name], axis=1)
 
-
-        data['attribute'] = data.apply( lambda x : "<skipped>" if x.attribute and (x.attribute not in x['raw institutional statement']) else x.attribute, axis=1)
-        data['object'] = data.apply( lambda x : "<skipped>" if x.object and (x.object not in x['raw institutional statement']) else x.object, axis=1)
+        # data['attribute'] = data.apply( lambda x : "<skipped>" if x.attribute and (x.attribute not in x['raw institutional statement']) else x.attribute, axis=1)
+        # data['object'] = data.apply( lambda x : "<skipped>" if x.object and (x.object not in x['raw institutional statement']) else x.object, axis=1)
 
         #atleast Actor or object is span
-        # data = data[(data['deontic'] != '<skipped>')]
+        data = data[(data['aim'] != '<skipped>')]
         data = data[(data['attribute'] != '<skipped>') | (data['object'] != '<skipped>')]
 
         print("Dataset after removing abstractive annotations: ", data.shape[0])
