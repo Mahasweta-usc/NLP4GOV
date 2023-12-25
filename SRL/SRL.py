@@ -148,7 +148,6 @@ class SRL:
     #find root verb through stanza
     # data['ROOT'] = data['sentences'].apply(lambda x : [word.text for sent in nlp(x).sentences for word in sent.words  if word.deprel == 'root'][0])
     data['ROOT'] = data['sentences'].apply(lambda x : self.find_root(x))
-    data = data[(data['ROOT'] != '')]
 
     data['srl_ip'] = data['raw institutional statement'].apply(lambda x : [{'sentence' : x}])
     data['srl_parsed'] = data.apply(lambda x: self.srl_arg(x['srl_ip'])[x['raw institutional statement']],axis=1)
