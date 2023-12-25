@@ -118,7 +118,8 @@ class SRL:
 
     data.replace("", np.nan, inplace=True)
     data.replace("nan", np.nan, inplace=True)
-    data.dropna(subset=['raw institutional statement', "aim"], how='any', inplace=True)
+    #statement needs to contain aim and recipient of action at the least
+    data.dropna(subset=['raw institutional statement', "aim", "object"], how='any', inplace=True)
     data.dropna(subset=column_names, inplace=True, how='all')
     # #currently not considering multi level coding
     # data.fillna('', inplace=True)
@@ -242,13 +243,14 @@ class SRL:
     # else: self.agent = 'strict'
     # if not out_path : out_path = file_name
     data = self.file_read((file_name))
+    data.fillna('', inplace=True)
 
 
-    data.columns = map(str.lower, data.columns)
+    # data.columns = map(str.lower, data.columns)
 
     ##exclude empty entries
-    data.dropna(subset=['raw institutional statement'],inplace=True)
-    data = data[(data['raw institutional statement'] != "")]
+    # data.dropna(subset=['raw institutional statement'],inplace=True)
+    # data = data[(data['raw institutional statement'] != "")]
 
     for col_name in ['attribute', 'object', 'aim', 'deontic']:
         ##remove inferred coding re.sub("[\(\[].*?[\)\]]", "<skipped>",x)
