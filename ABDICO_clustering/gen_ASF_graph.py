@@ -19,7 +19,7 @@ deontic_map = {"must": 'black',
 components = ['Attribute', 'Deontic', 'Object']
 result = pd.read_csv('main.csv', usecols=components)
 result.replace("", np.nan, inplace=True)
-result.dropna(subset=["Attribute", "Object"], how='any', inplace=True); print(result.shape[0])
+result.dropna(subset=["Attribute", "Object"], how='any', inplace=True)
 
 result.fillna("",inplace=True)
 result['Deontic'] = result['Deontic'].apply(lambda x : x if x in deontic_map else "other"); print(result.shape[0])
@@ -46,6 +46,8 @@ for component in ['Attribute', 'Object']:
     result[component + '_group'] = result[component + '_group'].apply(lambda x: ", ".join(x.split('_')[1:]))
 
 result['Deontic'] = result['Deontic'].apply(lambda x: deontic_map[x])
+
+print(result.shape)
 G = nx.MultiDiGraph()
 
 for _, row in result.iterrows():
