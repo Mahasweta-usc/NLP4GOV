@@ -109,17 +109,22 @@ class SRL:
 
   #read a file and apply preprocessing
   def file_read(self,file_name):
-
     if isinstance(file_name,str): data = pd.read_csv(file_name)
     else: data = file_name
 
+    column_names = ['attribute', 'object', 'aim', 'deontic']
     data.columns = map(str.lower, data.columns)
-    data.dropna(subset=['raw institutional statement'],inplace=True)
-    ##currently not considering multi level coding
-    data.drop_duplicates(subset=['raw institutional statement'],inplace=True)
-    data.fillna('', inplace=True)
-    data = data[data['aim']!=""]
+
+    data.replace("", np.nan, inplace=True)
+    data.replace("nan", np.nan, inplace=True)
+    data.dropna(subset=['raw institutional statement', "aim"],how='any',inplace=True)
+    data.dropna(subset=column_names, inplace=True, how='all')
+    # #currently not considering multi level coding
+    # data.fillna('', inplace=True)
+    # data = data[data['aim'] != ""]
+
     data = data.applymap(lambda x : str(x).lower().strip())
+    data.drop_duplicates(subset=['raw institutional statement'],inplace=True)
 
     # data['sentences'] = data['raw institutional statement'].apply(lambda x : [sentence.text.lower() for sentence in nlp(x).sentences])
     # data = data.explode('sentences')
@@ -245,7 +250,7 @@ class SRL:
     data.dropna(subset=['raw institutional statement'],inplace=True)
     data = data[(data['raw institutional statement'] != "")]
 
-    for col_name in df.columns:
+    for col_name in ['attribute', 'object', 'aim', 'deontic']:
         ##remove inferred coding re.sub("[\(\[].*?[\)\]]", "<skipped>",x)
         pattern = r'\[[^\]]*\]'
         data[col_name] = data[col_name].apply(lambda x: "<skipped>" if x.startswith('[') else x)
@@ -257,7 +262,7 @@ class SRL:
 
 
     for arg in ['attribute_inf','object_inf','aim_inf','deontic_inf']:
-      data[arg] = data.apply(lambda x : self.argmatch(x.srl_parsed,x.sentences,arg),axis=1)
+        data[arg] = data.apply(lambda x : self.argmatch(x.srl_parsed,x.sentences,arg),axis=1)
 
     data.to_csv(os.path.join(out_path),index=False)
 
@@ -285,13 +290,6 @@ class SRL:
         df1 = pd.read_csv(out_path)
         df1 = df1[['raw institutional statement','attribute','deontic','aim','object','attribute_inf','object_inf','aim_inf','deontic_inf']]
 
-
-        ##exclude statements with no aim coded
-        df1.replace("",np.nan,inplace=True)
-        df1.dropna(subset=column_names,inplace=True,how='all')
-        df1.dropna(subset=['aim'],inplace=True)
-
-        df1.fillna("", inplace=True)
         df1 = df1.applymap(lambda x : x.lower().strip())
 
 
