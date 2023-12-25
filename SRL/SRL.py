@@ -134,7 +134,7 @@ class SRL:
     # data = data[data['aim'] != ""]
 
     data.drop_duplicates(subset=['raw institutional statement'], inplace=True)
-
+    print(data.shape[0])
     #keep only verbs in aim
 
     data['sentences'] = data['raw institutional statement'].apply(lambda x : [sentence.text.lower() for sentence in nlp(x).sentences][0])
@@ -159,6 +159,7 @@ class SRL:
     #only keep frame parsed for root verbs and has agents/objects
     data['keep'] = data.apply(lambda x : (x['ROOT'] == x['srl_verb']) & (any(elem in x['srl_parsed'] for elem in main_arguments)),axis=1)
 
+    print(data.shape[0])
     return data[data['keep']]
 
   def detect_sub(self,text):
@@ -288,7 +289,7 @@ class SRL:
         # data = data[(data['deontic'] != '<skipped>')]
         data = data[(data['attribute'] != '<skipped>') | (data['object'] != '<skipped>')]
 
-    print("Dataset after removing abstractive annotations: ", data.shape[0])
+        print("Dataset after removing abstractive annotations: ", data.shape[0])
 
     #SRL inference
     for arg in ['attribute_inf','object_inf','aim_inf','deontic_inf']:
