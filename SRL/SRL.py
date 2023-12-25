@@ -286,6 +286,8 @@ class SRL:
     data = data[(data['deontic'] != '<skipped>')]
     data = data[(data['attribute'] != '<skipped>') | (data['object'] != '<skipped>')]
 
+    print("Dataset after removing abstractive annotations: ", data.shape[0])
+
     #SRL inference
     for arg in ['attribute_inf','object_inf','aim_inf','deontic_inf']:
         data[arg] = data.apply(lambda x : self.argmatch(x.srl_parsed,x.sentences,arg),axis=1)
@@ -341,7 +343,7 @@ class SRL:
         # df1.to_csv(out_path,index=False)
 
     for k, v in eval_scores.items():
-        print(f"Mean F1 score for {k}: {np.mean(v)} for {len(v)} entries")
+        print(f"Mean F1 score for {k}: {np.mean(v)}")
     # Create a 2x2 subplot
     # fig, axes = plt.subplots(nrows=2, ncols=2, figsize=(10, 8))
     # for idx, col_name in enumerate(column_names):
