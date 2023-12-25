@@ -108,6 +108,13 @@ class SRL:
 #############################################################################################################################################
 
   #read a file and apply preprocessing
+  def process_aim(self, x):
+      types = [word.text for sent in nlp(x).sentences for word in sent.words if 'vb' in word.deprel]
+      if types: return ", ".join(types)
+
+      types = [word.text for sent in nlp(x).sentences for word in sent.words if any(elem in word.deprel for elem in ['vb','aux'])]
+      if types: return ", ".join(types)
+      else: return x
   def file_read(self,file_name):
     if isinstance(file_name,str): data = pd.read_csv(file_name)
     else: data = file_name
@@ -127,6 +134,9 @@ class SRL:
 
     data.drop_duplicates(subset=['raw institutional statement'],inplace=True)
 
+    ##keep only verbs in aim
+    data['aim'] = data['aim'].apply(lambda x: self.process_aim(x))
+
     data['sentences'] = data['raw institutional statement'].apply(lambda x : [sentence.text.lower() for sentence in nlp(x).sentences][0])
     # data = data.explode('sentences')
     # data['sentences'] = data['raw institutional statement'].apply(lambda x : x.lower())
@@ -143,7 +153,7 @@ class SRL:
     #keep best parsing
     data['arg_len'] = data['srl_parsed'].apply(lambda x : len(x))
     data.sort_values(by=['arg_len'], inplace=True, ascending=False)
-    data.drop_duplicates(subset=['raw institutional statement', 'srl_verb'], keep_first = True, inplace=True)
+    data.drop_duplicates(subset=['raw institutional statement', 'srl_verb'], keep = 'first', inplace=True)
 
     data['srl_verb'] = data['srl_parsed'].apply(lambda x : x['V'][0])
     #only keep frame parsed for root verbs and has agents/objects
