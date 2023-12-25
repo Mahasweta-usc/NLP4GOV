@@ -10,15 +10,17 @@ figure(figsize=(18, 15), dpi=300)
 
 deontic_map = {"must": 'black',
                "should": "blue",
-               "can": 'gray',
-               "may": 'gray',
-               "might": "gray",
-               "could": 'gray'}
+               "can": 'green',
+               "may": 'green',
+               "might": "green",
+               "could": 'green',
+               "other": "gray"}
 
 components = ['Attribute', 'Deontic', 'Object']
 result = pd.read_csv('main.csv', usecols=components)
 result.replace("", np.nan, inplace=True)
 result.dropna(subset=components, how='any', inplace=True)
+result['Deontic'] = result['Deontic'].apply(lambda x : x if x in deontic_map else "other")
 result = result[result['Deontic'].isin(list(deontic_map.keys()))]
 
 entries = result['Attribute'].tolist()
