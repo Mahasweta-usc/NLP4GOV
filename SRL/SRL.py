@@ -114,16 +114,16 @@ class SRL:
 
     column_names = ['attribute', 'object', 'aim', 'deontic']
     data.columns = map(str.lower, data.columns)
+    data = data.applymap(lambda x : str(x).lower().strip())
 
     data.replace("", np.nan, inplace=True)
     data.replace("nan", np.nan, inplace=True)
-    data.dropna(subset=['raw institutional statement', "aim"],how='any',inplace=True)
+    data.dropna(subset=['raw institutional statement', "aim"], how='any', inplace=True)
     data.dropna(subset=column_names, inplace=True, how='all')
     # #currently not considering multi level coding
     # data.fillna('', inplace=True)
     # data = data[data['aim'] != ""]
 
-    data = data.applymap(lambda x : str(x).lower().strip())
     data.drop_duplicates(subset=['raw institutional statement'],inplace=True)
 
     # data['sentences'] = data['raw institutional statement'].apply(lambda x : [sentence.text.lower() for sentence in nlp(x).sentences])
@@ -167,12 +167,12 @@ class SRL:
         keys = sorted(list(set(main_arguments) & set(x.keys())))
         if 'ARG0' in x or (self.detect_sub(text) and 'ARG1' in x):
             try:
-                print(keys, "obj", keys[1])
+                # print(keys, "obj", keys[1])
                 return ", ".join(x[keys[1]])
             except: return ""
 
         if keys:
-            print(keys, "obj", keys[0])
+            # print(keys, "obj", keys[0])
             return ", ".join(x[keys[0]])
         else: return ""
 
