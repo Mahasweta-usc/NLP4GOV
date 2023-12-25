@@ -109,8 +109,8 @@ class SRL:
 
   #read a file and apply preprocessing
   def process_aim(self, x):
-      types = [word.text for sent in nlp(x).sentences for word in sent.words if 'verb' in word.upos.lower()]
-      if types: return ", ".join(types)
+      types = [word.lemma for sent in nlp(x).sentences for word in sent.words if 'verb' in word.upos.lower()]
+      if types: return ", ".join(set(types))
       else: return x
   def file_read(self,file_name):
     if isinstance(file_name,str): data = pd.read_csv(file_name)
@@ -160,7 +160,8 @@ class SRL:
 
   def detect_sub(self,text):
       doc = nlp(text)
-      sub_toks = [word.text for sent in doc.sentences for word in sent.words if word.deprel in ["nsubj",'csubj']]
+      sub_toks = [word.text for sent in doc.sentences for word in sent.words if 'subj' in word.deprel]
+      # sub_toks = [word.text for sent in doc.sentences for word in sent.words if word.deprel in ["nsubj",'csubj']]
       if sub_toks: return True
       else: return False
   #argument matching
