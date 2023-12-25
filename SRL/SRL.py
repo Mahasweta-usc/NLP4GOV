@@ -82,7 +82,7 @@ predictor._model = predictor._model.cuda()
 """##**Class & Methods**##"""
 
 class SRL:
-  def __init__(self, agent="strict"):
+  def __init__(self, agent=None):
         self.agent = agent
 
   #pass list of sentences as [{'sentence':...},{'sentence':...}]
@@ -116,14 +116,18 @@ class SRL:
     if isinstance(file_name,str): data = pd.read_csv(file_name)
     else: data = file_name
 
-    column_names = ['attribute', 'object', 'aim', 'deontic']
     data.columns = map(str.lower, data.columns)
     data = data.applymap(lambda x : str(x).lower().strip())
 
     data.replace("", np.nan, inplace=True)
     data.replace("nan", np.nan, inplace=True)
     #statement needs to contain aim and recipient of action at the least
-    data.dropna(subset=['raw institutional statement', "aim", "object"], how='any', inplace=True)
+    if self.agent == "eval":
+        data.dropna(subset=['raw institutional statement', "aim", "object"], how='any', inplace=True)
+        data['aim'] = data['aim'].apply(lambda x: self.process_aim(x))
+    else:
+        data.dropna(subset=['raw institutional statement'], how='any', inplace=True)
+
     # data.dropna(subset=column_names, inplace=True, how='all')
     # #currently not considering multi level coding
     # data.fillna('', inplace=True)
@@ -132,7 +136,6 @@ class SRL:
     data.drop_duplicates(subset=['raw institutional statement'], inplace=True)
 
     #keep only verbs in aim
-    data['aim'] = data['aim'].apply(lambda x: self.process_aim(x))
 
     data['sentences'] = data['raw institutional statement'].apply(lambda x : [sentence.text.lower() for sentence in nlp(x).sentences][0])
     # data = data.explode('sentences')
@@ -256,9 +259,7 @@ class SRL:
     return cleaned_data
 
   def inference(self,file_name,out_path=None):
-    # if 'Food' in file_name: self.agent= None
-    # else: self.agent = 'strict'
-    # if not out_path : out_path = file_name
+    if not out_path : out_path = file_name
     data = self.file_read((file_name))
     data.fillna('', inplace=True)
 
@@ -269,22 +270,23 @@ class SRL:
     # data.dropna(subset=['raw institutional statement'],inplace=True)
     # data = data[(data['raw institutional statement'] != "")]
 
-    # remove inferred coding
-    for col_name in ['attribute', 'object', 'aim', 'deontic']:
-        ##remove inferred coding re.sub("[\(\[].*?[\)\]]", "<skipped>",x)
-        pattern = r'\[[^\]]*\]'
-        data[col_name] = data[col_name].apply(lambda x: "<skipped>" if x.startswith('[') else x)
-        data[col_name] = data[col_name].apply(lambda x: re.sub("[\(\[].*?[\)\]]", "", x))
+    if self.agent =='eval':
+        # remove inferred coding
+        for col_name in ['attribute', 'object', 'aim', 'deontic']:
+            ##remove inferred coding re.sub("[\(\[].*?[\)\]]", "<skipped>",x)
+            pattern = r'\[[^\]]*\]'
+            data[col_name] = data[col_name].apply(lambda x: "<skipped>" if x.startswith('[') else x)
+            data[col_name] = data[col_name].apply(lambda x: re.sub("[\(\[].*?[\)\]]", "", x))
 
-    print("Dataset after removing incomplete annotations: ", data.shape[0])
-    data.to_csv(out_path.replace(".csv","_int.csv"), index=False)
+        print("Dataset after removing incomplete annotations: ", data.shape[0])
+        data.to_csv(out_path.replace(".csv","_int.csv"), index=False)
 
-    data['attribute'] = data.apply( lambda x : "<skipped>" if x.attribute and (x.attribute not in x['raw institutional statement']) else x.attribute, axis=1)
-    data['object'] = data.apply( lambda x : "<skipped>" if x.object and (x.object not in x['raw institutional statement']) else x.object, axis=1)
+        data['attribute'] = data.apply( lambda x : "<skipped>" if x.attribute and (x.attribute not in x['raw institutional statement']) else x.attribute, axis=1)
+        data['object'] = data.apply( lambda x : "<skipped>" if x.object and (x.object not in x['raw institutional statement']) else x.object, axis=1)
 
-    #atleast Actor or object is span
-    # data = data[(data['deontic'] != '<skipped>')]
-    data = data[(data['attribute'] != '<skipped>') | (data['object'] != '<skipped>')]
+        #atleast Actor or object is span
+        # data = data[(data['deontic'] != '<skipped>')]
+        data = data[(data['attribute'] != '<skipped>') | (data['object'] != '<skipped>')]
 
     print("Dataset after removing abstractive annotations: ", data.shape[0])
 
