@@ -269,16 +269,17 @@ class SRL:
     # data.dropna(subset=['raw institutional statement'],inplace=True)
     # data = data[(data['raw institutional statement'] != "")]
 
+    # remove inferred coding
     for col_name in ['attribute', 'object', 'aim', 'deontic']:
         ##remove inferred coding re.sub("[\(\[].*?[\)\]]", "<skipped>",x)
         pattern = r'\[[^\]]*\]'
         data[col_name] = data[col_name].apply(lambda x: "<skipped>" if x.startswith('[') else x)
         data[col_name] = data[col_name].apply(lambda x: re.sub("[\(\[].*?[\)\]]", "", x))
 
-        ##remove inferred coding
-        # df.replace("<skipped>", "", inplace=True)
 
+    data['attribute'] = data.apply( lambda x : "<skipped>" if x.attribute not in x['raw institutional statement'] else x.attribute, axis=1)
 
+    #SRL inference
     for arg in ['attribute_inf','object_inf','aim_inf','deontic_inf']:
         data[arg] = data.apply(lambda x : self.argmatch(x.srl_parsed,x.sentences,arg),axis=1)
 
