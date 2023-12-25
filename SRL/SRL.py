@@ -190,8 +190,12 @@ class SRL:
 
     if arg == 'aim_inf': return " ".join(x['V'])
     if arg == 'deontic_inf':
-        if 'ARGM-MOD' in list(x.keys()) : return " ".join(x['ARGM-MOD'])
-        else: return ""
+        if 'ARGM-MOD' in x and 'ARGM-NEG' in x:
+            return " ".join([x['ARGM-MOD'][0], x['ARGM-NEG'][0]])
+        elif 'ARGM-MOD' in x:
+            return x['ARGM-MOD']
+        else:
+            return ""
 
   # normalize the texts
   def normalize_text(self,s):
