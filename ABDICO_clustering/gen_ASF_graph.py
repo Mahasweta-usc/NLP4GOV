@@ -61,7 +61,7 @@ for e in G.edges:
     ax.annotate("",
                 xy=pos[e[0]], xycoords='data',
                 xytext=pos[e[1]], textcoords='data',
-                arrowprops=dict(arrowstyle="->,head_length=1.2,head_width=.6", color=e[2],
+                arrowprops=dict(arrowstyle="wedge,head_length=1.2,head_width=.6", color=e[2],
                                 shrinkA=5, shrinkB=5,
                                 patchA=None, patchB=None,
                                 connectionstyle="arc3,rad=0.3"
