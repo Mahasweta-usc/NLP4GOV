@@ -308,16 +308,18 @@ class SRL:
             print(f" F1 score for {col_name}: {np.mean(f1_score)} for {df1.shape[0]} entries")
         df1.to_csv(out_path,index=False)
 
+    for k, v in eval_scores.items():
+        print(f"Mean F1 score for {k}: {np.mean(v)} for {len(v)} entries")
     # Create a 2x2 subplot
-    fig, axes = plt.subplots(nrows=2, ncols=2, figsize=(10, 8))
-    for idx, col_name in enumerate(column_names):
-        # eval_scores[col_name] = self.remove_outliers(eval_scores[col_name])
-
-        # Plot each boxplot in a different subplot
-        row, col = int(idx/2),int(idx%2)
-        axes[row, col].boxplot(eval_scores[col_name])
-        axes[row, col].set_title(f"{col_name}")
-
-    fig.suptitle("Span selection match (F1) across multiple datasets")
-    return plt
+    # fig, axes = plt.subplots(nrows=2, ncols=2, figsize=(10, 8))
+    # for idx, col_name in enumerate(column_names):
+    #     # eval_scores[col_name] = self.remove_outliers(eval_scores[col_name])
+    #
+    #     # Plot each boxplot in a different subplot
+    #     row, col = int(idx/2),int(idx%2)
+    #     axes[row, col].boxplot(eval_scores[col_name])
+    #     axes[row, col].set_title(f"{col_name}")
+    #
+    # fig.suptitle("Span selection match (F1) across multiple datasets")
+    # return plt
 
