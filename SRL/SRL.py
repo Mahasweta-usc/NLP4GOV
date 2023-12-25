@@ -147,7 +147,9 @@ class SRL:
 
     data['srl_ip'] = data['raw institutional statement'].apply(lambda x : [{'sentence' : x}])
     data['srl_parsed'] = data.apply(lambda x: self.srl_arg(x['srl_ip'])[x['raw institutional statement']],axis=1)
+    print(data.shape[0])
     data = data[data['srl_parsed'].map(lambda d: len(d)) > 0]
+    print(data.shape[0])
 
     data = data.explode('srl_parsed')
     data['srl_verb'] = data['srl_parsed'].apply(lambda x : x['V'][0])
@@ -159,7 +161,7 @@ class SRL:
     #only keep frame parsed for root verbs and has agents/objects
     data['keep'] = data.apply(lambda x : (x['ROOT'] == x['srl_verb']) & (any(elem in x['srl_parsed'] for elem in main_arguments)),axis=1)
 
-    print(data.shape[0])
+    print(data[data['keep']].shape[0])
     return data[data['keep']]
 
   def detect_sub(self,text):
