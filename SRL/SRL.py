@@ -166,11 +166,14 @@ class SRL:
       else: return False
   #argument matching
   def argmatch(self, x, text, arg):
+
+    keys = sorted(list(set(main_arguments) & set(x.keys())))
     if arg == 'attribute_inf':
         if 'ARG0' in x:
             return ", ".join(x['ARG0'])
 
-        if 'ARG0' not in x and (self.detect_sub(text) and 'ARG1' in x):
+        ##object present
+        if len(keys) > 1 and (self.detect_sub(text) and 'ARG1' in x):
             return ", ".join(x['ARG1'])
 
         return ""
@@ -178,8 +181,7 @@ class SRL:
 
 
     if arg == 'object_inf':
-        keys = sorted(list(set(main_arguments) & set(x.keys())))
-        if 'ARG0' not in x and (self.detect_sub(text) and 'ARG1' in x):
+        if 'ARG0' not in x and (self.detect_sub(text) and 'ARG1' in x) and len(keys) > 1:
             keys.remove('ARG1')
 
         if 'ARG0' in x:
@@ -193,7 +195,7 @@ class SRL:
         if 'ARGM-MOD' in x and 'ARGM-NEG' in x:
             return " ".join([x['ARGM-MOD'][0], x['ARGM-NEG'][0]])
         elif 'ARGM-MOD' in x:
-            return x['ARGM-MOD']
+            return x['ARGM-MOD'][0]
         else:
             return ""
 
