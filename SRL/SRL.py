@@ -247,9 +247,7 @@ class SRL:
     for arg in ['attribute_inf','object_inf','aim_inf','deontic_inf']:
       data[arg] = data.apply(lambda x : self.argmatch(x.srl_parsed,x.sentences,arg),axis=1)
 
-
-
-    data.to_csv(os.path.join(out_path),index=False)
+    data[['raw institutional statement', "object", "object_inf", "aim", "aim_inf"]].to_csv(os.path.join(out_path),index=False)
 
   def srl_eval(self):
     column_names = ['attribute', 'object', 'deontic', 'aim']
