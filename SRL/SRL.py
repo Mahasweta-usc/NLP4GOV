@@ -124,7 +124,7 @@ class SRL:
     data.replace("nan", np.nan, inplace=True)
     #statement needs to contain aim and recipient of action at the least
     data.dropna(subset=['raw institutional statement', "aim", "object"], how='any', inplace=True)
-    data.dropna(subset=column_names, inplace=True, how='all')
+    # data.dropna(subset=column_names, inplace=True, how='all')
     # #currently not considering multi level coding
     # data.fillna('', inplace=True)
     # data = data[data['aim'] != ""]
@@ -276,9 +276,8 @@ class SRL:
         data[col_name] = data[col_name].apply(lambda x: "<skipped>" if x.startswith('[') else x)
         data[col_name] = data[col_name].apply(lambda x: re.sub("[\(\[].*?[\)\]]", "", x))
 
-
     data['attribute'] = data.apply( lambda x : "<skipped>" if x.attribute not in x['raw institutional statement'] else x.attribute, axis=1)
-    data['object'] = data.apply( lambda x : "<skipped>" if x.attribute not in x['raw institutional statement'] else x.object, axis=1)
+    data['object'] = data.apply( lambda x : "<skipped>" if x.object not in x['raw institutional statement'] else x.object, axis=1)
 
     data = data[(data['attribute'] != '<skipped>') & (data['object'] != '<skipped>')]
 
