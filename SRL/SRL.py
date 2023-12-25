@@ -151,8 +151,9 @@ class SRL:
 
     data['srl_ip'] = data['raw institutional statement'].apply(lambda x : [{'sentence' : x}])
     data['srl_parsed'] = data.apply(lambda x: self.srl_arg(x['srl_ip'])[x['raw institutional statement']],axis=1)
-    data = data[data['srl_parsed'].map(lambda d: len(d)) > 0]
-
+    # data = data[data['srl_parsed'].map(lambda d: len(d)) > 0]
+    data['ROOT'] = data.apply(lambda x: "<longest>" if x.ROOT not in [it['V'][0] for it in x.srl_parsed] else x.ROOT, axis=1)
+    
     data = data.explode('srl_parsed')
     data['srl_verb'] = data['srl_parsed'].apply(lambda x : x['V'][0])
     #keep best parsing
@@ -291,12 +292,13 @@ class SRL:
         # data['object'] = data.apply( lambda x : "<skipped>" if x.object and (x.object not in x['raw institutional statement']) else x.object, axis=1)
 
         #atleast Actor or object is span
+        print("Dataset after removing abstractive aims: ", data.shape[0])
         data = data[(data['aim'] != '<skipped>')]
         data = data[(data['attribute'] != '<skipped>') | (data['object'] != '<skipped>')]
 
         #lemmatize aims
         data['aim'] = data['aim'].apply(lambda x: self.process_aim(x))
-        print("Dataset after removing abstractive annotations: ", data.shape[0])
+        print("Dataset after removing abstractive attribute/objects: ", data.shape[0])
 
     #SRL inference
     for arg in ['attribute_inf','object_inf','aim_inf','deontic_inf']:
