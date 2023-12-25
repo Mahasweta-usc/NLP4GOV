@@ -278,6 +278,9 @@ class SRL:
 
 
     data['attribute'] = data.apply( lambda x : "<skipped>" if x.attribute not in x['raw institutional statement'] else x.attribute, axis=1)
+    data['object'] = data.apply( lambda x : "<skipped>" if x.attribute not in x['raw institutional statement'] else x.object, axis=1)
+
+    data = data[(data['attribute'] != '<skipped>') & (data['object'] != '<skipped>')]
 
     #SRL inference
     for arg in ['attribute_inf','object_inf','aim_inf','deontic_inf']:
