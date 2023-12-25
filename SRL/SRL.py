@@ -276,6 +276,7 @@ class SRL:
         data[col_name] = data[col_name].apply(lambda x: "<skipped>" if x.startswith('[') else x)
         data[col_name] = data[col_name].apply(lambda x: re.sub("[\(\[].*?[\)\]]", "", x))
 
+    print("Dataset after removing incomplete annotations: ", data.shape[0])
     data['attribute'] = data.apply( lambda x : "<skipped>" if x.attribute and (x.attribute not in x['raw institutional statement']) else x.attribute, axis=1)
     data['object'] = data.apply( lambda x : "<skipped>" if x.object and (x.object not in x['raw institutional statement']) else x.object, axis=1)
 
