@@ -117,7 +117,6 @@ class SRL:
       candidates = [word.text for sent in nlp(text).sentences for word in sent.words if word.deprel == 'root' and any(it in word.xpos.lower() for it in ['aux','vb'])]
       if candidates: return candidates[0]
       else:
-          print("longest")
           return "<longest>"
 
   def file_read(self,file_name):
@@ -166,9 +165,8 @@ class SRL:
 
     ret_val = data[data['keep']]
     ret_val.drop_duplicates(subset=['raw institutional statement'], keep = 'first', inplace=True)
-    print(len(ret_val))
-    data[~data['raw institutional statement'].isin(ret_val['raw institutional statement'].to_list())].drop_duplicates(
-                                    subset=['raw institutional statement']).to_csv("/content/testing.csv", index=False)
+    # data[~data['raw institutional statement'].isin(ret_val['raw institutional statement'].to_list())].drop_duplicates(
+    #                                 subset=['raw institutional statement']).to_csv("/content/testing.csv", index=False)
     return ret_val
 
   def detect_sub(self,text):
