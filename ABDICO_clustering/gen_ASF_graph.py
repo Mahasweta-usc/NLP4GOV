@@ -22,9 +22,8 @@ def topic_name(x):
     x = set([" ".join([word.lemma for sent in nlp(elem).sentences for word in sent.words]) for elem in x])
     words = []
     for elem in x:
-        for item in stopwords:
-            elem = elem.replace(item,"").strip()
-        if elem: words.append(elem)
+        elem = set(elem.split()) and set(stopwords)
+        if elem: words.append(" ".join(elem))
     return ",\n".join(words)
 
 deontic_map = {"must": 'black',
