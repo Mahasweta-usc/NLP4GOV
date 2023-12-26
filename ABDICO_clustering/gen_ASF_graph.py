@@ -89,6 +89,7 @@ for _, row in result.iterrows():
         assert G[row.Attribute_group][row.Object_group]['color'] == row.Deontic
         G[row.Attribute_group][row.Object_group]['weight'] += 1
     except Exception as exp:
+        print(exp)
         G.add_edge(row.Attribute_group, row.Object_group, weight = 1, color=row.Deontic)
 
 pos = nx.spring_layout(G)
