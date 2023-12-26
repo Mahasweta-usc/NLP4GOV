@@ -39,11 +39,17 @@ result.dropna(subset=["Attribute", "Object"], how='any', inplace=True)
 
 #replace first person
 for col in ["Attribute", "Object"]:
-    result[col] = result[col].apply(lambda x: x.replace("we", "asf"))
-    result[col] = result[col].apply(lambda x: x.replace("our", "asf"))
-    result[col] = result[col].apply(lambda x: x.replace("your", "project"))
-    result[col] = result[col].apply(lambda x: x.replace("you", "project"))
-    result[col] = result[col].apply(lambda x: x.replace("us", "asf"))
+    result[col] = result[col].apply(lambda x: x.replace(" we ", " asf "))
+    result[col] = result[col].apply(lambda x: x.replace("our ", "asf "))
+    result[col] = result[col].apply(lambda x: x.replace("your ", "project "))
+    result[col] = result[col].apply(lambda x: x.replace("you ", "project "))
+    result[col] = result[col].apply(lambda x: x.replace(" us ", " asf  "))
+
+    result[col] = result[col].replace("we","asf")
+    result[col] = result[col].replace("our", "asf")
+    result[col] = result[col].replace("your", "project")
+    result[col] = result[col].replace("you", "project")
+    result[col] = result[col].replace("us", "asf")
 
 result.fillna("",inplace=True)
 result['Deontic'] = result['Deontic'].apply(lambda x : x if x in deontic_map else "other")
