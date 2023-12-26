@@ -87,6 +87,7 @@ G = nx.MultiDiGraph()
 for _, row in result.iterrows():
     data = G.get_edge_data(row.Attribute_group, row.Object_group, default =[])
     try:
+        print(data)
         data = [elem for elem in data if elem["color"] == row.Deontic][0]
         print(data)
         data = list(data.values())[0]
