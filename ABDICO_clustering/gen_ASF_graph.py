@@ -28,7 +28,7 @@ def topic_name(x):
     return ",\n".join(set(words))
 
 deontic_map = {"must": 'black',
-               "should": "purple",
+               "should": "mediumpurple",
                "can": 'green',
                "may": 'green',
                "might": "green",
@@ -123,7 +123,7 @@ for node in G.nodes:
 
 custom_lines = [Line2D([0], [0], color='lightblue', lw=4),
                 Line2D([0], [0], color='green', lw=4),
-                Line2D([0], [0], color='purple', lw=4),
+                Line2D([0], [0], color='mediumpurple', lw=4),
                 Line2D([0], [0], color='black', lw=4)]
 
 
