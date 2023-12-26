@@ -38,8 +38,8 @@ result.replace("", np.nan, inplace=True)
 result.dropna(subset=["Attribute", "Object"], how='any', inplace=True)
 
 #replace first person
-result["Attribute"] = result["Attribute"].replace("we ", "ASF")
-result["Object"] = result["Object"].replace("you ", "Project")
+result["Attribute"] = result["Attribute"].replace("we ", "asf")
+result["Object"] = result["Object"].replace("you ", "project")
 
 result.fillna("",inplace=True)
 result['Deontic'] = result['Deontic'].apply(lambda x : x if x in deontic_map else "other")
