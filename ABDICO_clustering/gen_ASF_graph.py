@@ -39,6 +39,8 @@ result.dropna(subset=["Attribute", "Object"], how='any', inplace=True)
 
 #replace first person
 result["Attribute"] = result["Attribute"].apply(lambda x: x.replace("we", "asf"))
+result["Attribute"] = result["Attribute"].apply(lambda x: x.replace("our", "asf"))
+result["Object"] = result["Object"].apply(lambda x: x.replace("your", "project"))
 result["Object"] = result["Object"].apply(lambda x: x.replace("you", "project"))
 
 result.fillna("",inplace=True)
