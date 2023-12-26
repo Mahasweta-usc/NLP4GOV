@@ -23,7 +23,7 @@ def topic_name(x):
     words = []
     print(x)
     for elem in x:
-        elem = set(elem.split()) and set(stopwords)
+        elem = set(elem.split()) - set(stopwords)
         if elem: words.append(" ".join(elem))
     return ",\n".join(words)
 
