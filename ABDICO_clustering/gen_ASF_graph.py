@@ -21,6 +21,7 @@ def topic_name(x):
     x = x.split('_')[1:]
     x = set([" ".join([word.lemma for sent in nlp(elem).sentences for word in sent.words]) for elem in x])
     words = []
+    print(x)
     for elem in x:
         elem = set(elem.split()) and set(stopwords)
         if elem: words.append(" ".join(elem))
