@@ -7,6 +7,7 @@ import networkx as nx
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.pyplot import figure
+from matplotlib.lines import Line2D
 import sklearn
 stopwords = list(sklearn.feature_extraction.text.ENGLISH_STOP_WORDS)
 figure(figsize=(18, 15), dpi=300)
@@ -117,6 +118,15 @@ for (u,v,attrib_dict) in list(G.edges.data()):
 
 for node in G.nodes:
     ax.text(pos[node][0]+.008, pos[node][1]+.008, node, fontsize=16, bbox=dict(facecolor='lemonchiffon', edgecolor='black'))
+
+
+custom_lines = [Line2D([0], [0], color='lightblue', lw=4),
+                Line2D([0], [0], color='green', lw=4),
+                Line2D([0], [0], color='brown', lw=4),
+                Line2D([0], [0], color='black', lw=4)]
+
+fig, ax = plt.subplots()
+ax.legend(custom_lines, ['Norm', 'May/Can', 'Should', "Must"], col=4, loc="upper right")
 
 plt.axis('off')
 plt.savefig("ASF_Graph.jpg",dpi=300)
