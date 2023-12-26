@@ -5,8 +5,14 @@ import networkx as nx
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.pyplot import figure
-
+import sklearn
+stopwords = list(sklearn.feature_extraction.text.ENGLISH_STOP_WORDS)
 figure(figsize=(18, 15), dpi=300)
+
+def topic_name(x):
+    x = x.split('_')[1:]
+    x = [elem for elem in x if elem not in stopwords]
+    return ",\n".join(x)
 
 deontic_map = {"must": 'black',
                "should": "blue",
@@ -42,7 +48,7 @@ for component in ['Attribute', 'Object']:
     result = result[result[component + '_group'] != -1]
     result[component + '_group'] = result[component + '_group'].apply(
         lambda x: freq[freq['Topic'] == x]['Name'].to_list()[0])
-    result[component + '_group'] = result[component + '_group'].apply(lambda x: ", ".join(x.split('_')[1:]))
+    result[component + '_group'] = result[component + '_group'].apply(lambda x: topic_name(x))
 
 result['Deontic'] = result['Deontic'].apply(lambda x: deontic_map[x])
 
