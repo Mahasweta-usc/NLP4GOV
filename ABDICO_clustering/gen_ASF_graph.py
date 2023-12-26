@@ -126,7 +126,7 @@ custom_lines = [Line2D([0], [0], color='lightblue', lw=4),
                 Line2D([0], [0], color='black', lw=4)]
 
 fig, ax = plt.subplots()
-ax.legend(custom_lines, ['Norm', 'May/Can', 'Should', "Must"], col=4, loc="upper right")
+ax.legend(custom_lines, ['Norm', 'May/Can', 'Should', "Must"], ncol=4, loc="upper right")
 
 plt.axis('off')
 plt.savefig("ASF_Graph.jpg",dpi=300)
