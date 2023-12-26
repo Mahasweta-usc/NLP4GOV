@@ -33,7 +33,7 @@ topic_model.hdbscan_model.gen_min_span_tree = True
 topic_model.umap_model.random_state = 0  ##set seed to enable reproduction of clustering
 
 topic_model.fit(entries)
-freq = topic_model.get_topic_info()
+freq = topic_model.get_topic_info(); print(freq)
 
 for component in ['Attribute', 'Object']:
     entries = result[component].tolist()
