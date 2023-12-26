@@ -102,14 +102,16 @@ nx.draw_networkx_nodes(G, pos, node_color='r', node_size=100, alpha=1)
 ax = plt.gca()
 
 for (u,v,attrib_dict) in list(G.edges.data()):
-    style = "0.3" #str(0.3 + 0.3*np.random.rand())
+    length = str(0.5 + 0.1*attrib_dict['weight'])
+    width = str(0.3 + 0.1**attrib_dict['weight'])
+    style = f"-|>,head_length={length},head_width={width}"
     ax.annotate("",
                 xy=pos[u], xycoords='data',
                 xytext=pos[v], textcoords='data',
-                arrowprops=dict(arrowstyle="-|>,head_length=.8,head_width=.4", color=attrib_dict['color'],lw=1.5*attrib_dict['weight'],
+                arrowprops=dict(arrowstyle=style, color=attrib_dict['color'],lw=1.5*attrib_dict['weight'],
                 shrinkA=5, shrinkB=5,
                 patchA=None, patchB=None,
-                connectionstyle=f"arc3,rad={style}"
+                connectionstyle=f"arc3,rad=0.3"
                                 ),
                 )
 
