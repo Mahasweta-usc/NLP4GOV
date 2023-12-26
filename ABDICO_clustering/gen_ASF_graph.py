@@ -75,6 +75,7 @@ for component in ['Attribute', 'Object']:
 
 result['Deontic'] = result['Deontic'].apply(lambda x: deontic_map[x])
 
+result[result['Object_group']=='disclaimer,\nproject'].to_csv("testing.csv",index=False)
 G = nx.MultiDiGraph()
 
 for _, row in result.iterrows():
