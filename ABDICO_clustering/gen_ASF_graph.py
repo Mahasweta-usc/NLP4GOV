@@ -28,7 +28,7 @@ def topic_name(x):
     return ",\n".join(set(words))
 
 deontic_map = {"must": 'black',
-               "should": "brown",
+               "should": "purple",
                "can": 'green',
                "may": 'green',
                "might": "green",
@@ -122,10 +122,10 @@ for node in G.nodes:
 
 custom_lines = [Line2D([0], [0], color='lightblue', lw=4),
                 Line2D([0], [0], color='green', lw=4),
-                Line2D([0], [0], color='brown', lw=4),
+                Line2D([0], [0], color='purple', lw=4),
                 Line2D([0], [0], color='black', lw=4)]
 
-fig, ax = plt.subplots()
+
 ax.legend(custom_lines, ['Norm', 'May/Can', 'Should', "Must"], ncol=4, loc="upper right")
 
 plt.axis('off')
