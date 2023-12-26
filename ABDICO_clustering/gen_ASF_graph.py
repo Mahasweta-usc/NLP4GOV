@@ -19,8 +19,8 @@ nlp = stanza.Pipeline(lang='en', processors='tokenize,mwt,pos,lemma,depparse',us
 def topic_name(x):
     org = x
     x = x.split('_')[1:]
+    x = set([" ".join([word.lemma for sent in nlp(elem).sentences for word in sent.words]) for elem in x])
     x = [elem for elem in x if elem and (elem not in stopwords)]
-    x = set([[word.lemma for sent in nlp(elem).sentences for word in sent.words][0] for elem in x])
     return ",\n".join(x)
 
 deontic_map = {"must": 'black',
