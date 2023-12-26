@@ -102,10 +102,10 @@ ax = plt.gca()
 
 for (u,v,attrib_dict) in list(G.edges.data()):
     style = "0.3" #str(0.3 + 0.3*np.random.rand())
-    ax.annotate(str(attrib_dict['weight']),
+    ax.annotate("",
                 xy=pos[u], xycoords='data',
                 xytext=pos[v], textcoords='data',
-                arrowprops=dict(arrowstyle="-|>,head_length=.8,head_width=.4", color=attrib_dict['color'],
+                arrowprops=dict(arrowstyle="-|>,head_length=.8,head_width=.4", color=attrib_dict['color'],lw=1*attrib_dict['weight'],
                 shrinkA=5, shrinkB=5,
                 patchA=None, patchB=None,
                 connectionstyle=f"arc3,rad={style}"
