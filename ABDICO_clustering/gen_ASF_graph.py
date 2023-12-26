@@ -17,7 +17,7 @@ nlp = stanza.Pipeline(lang='en', processors='tokenize,mwt,pos,lemma,depparse',us
 def topic_name(x):
     x = x.split('_')[1:]
     x = [elem for elem in x if elem and (elem not in stopwords)]
-    x = set([[word.lemma for sent in nlp(elem).sentences for word in sent][0] for elem in x])
+    x = set([[word.lemma for sent in nlp(elem).sentences for word in sent.words][0] for elem in x])
     return ",\n".join(x)
 
 deontic_map = {"must": 'black',
@@ -40,7 +40,7 @@ entries = result['Attribute'].tolist()
 entries.extend(result['Object'].tolist())
 hdbscan_model = HDBSCAN(metric='euclidean', cluster_selection_method='eom',min_cluster_size=10,
                         prediction_data=True)
-topic_model = BERTopic(top_n_words=10, hdbscan_model=hdbscan_model)
+topic_model = BERTopic(top_n_words=3, hdbscan_model=hdbscan_model)
 topic_model.hdbscan_model.gen_min_span_tree = True
 topic_model.umap_model.random_state = 0  ##set seed to enable reproduction of clustering
 
