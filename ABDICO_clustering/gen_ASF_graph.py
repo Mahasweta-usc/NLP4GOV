@@ -55,7 +55,7 @@ for _, row in result.iterrows():
 
 pos = nx.circular_layout(G)
 nx.draw_networkx_nodes(G, pos, node_color='r', node_size=100, alpha=1)
-print(G)
+print(nx.degree(G))
 ax = plt.gca()
 
 for e in G.edges:
