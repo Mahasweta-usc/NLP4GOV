@@ -39,7 +39,7 @@ for component in ['Attribute', 'Object']:
     entries = result[component].tolist()
     result[component + '_group'] = topic_model.transform(entries)[0]
     # remove outliers
-    result[component + '_group'] = result[result[component + '_group'] != -1]
+    result = result[result[component + '_group'] != -1]
     result[component + '_group'] = result[component + '_group'].apply(
         lambda x: freq[freq['Topic'] == x]['Name'].to_list()[0])
     result[component + '_group'] = result[component + '_group'].apply(lambda x: ", ".join(x.split('_')[1:]))
