@@ -115,7 +115,7 @@ for (u,v,attrib_dict) in list(G.edges.data()):
                 )
 
 for node in G.nodes:
-    ax.text(pos[node][0]+.005, pos[node][1]+.005, node, fontsize=16, bbox=dict(facecolor='lemonchiffon', edgecolor='black'))
+    ax.text(pos[node][0]+.008, pos[node][1]+.008, node, fontsize=16, bbox=dict(facecolor='lemonchiffon', edgecolor='black'))
 
 plt.axis('off')
 plt.savefig("ASF_Graph.jpg",dpi=300)
