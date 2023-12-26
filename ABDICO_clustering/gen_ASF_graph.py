@@ -52,10 +52,10 @@ G = nx.MultiDiGraph()
 
 for _, row in result.iterrows():
     try:
-        data = G.get_edge_data(row.Attribute_group, row.Object_group, "color"=row.Deontic)
-        G.add_edge(row.Attribute_group, row.Object_group, "color"=row.Deontic, 'weight'=data['weight'] + 1)
+        data = G.get_edge_data(row.Attribute_group, row.Object_group, color=row.Deontic)
+        G.add_edge(row.Attribute_group, row.Object_group, color=row.Deontic, weight=data['weight'] + 1)
     except:
-        G.add_edge(row.Attribute_group, row.Object_group, "color"=row.Deontic, 'weight'=1)
+        G.add_edge(row.Attribute_group, row.Object_group, color=row.Deontic, weight=1)
 
 
 pos = nx.circular_layout(G)
