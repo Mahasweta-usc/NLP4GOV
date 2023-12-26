@@ -9,9 +9,15 @@ import sklearn
 stopwords = list(sklearn.feature_extraction.text.ENGLISH_STOP_WORDS)
 figure(figsize=(18, 15), dpi=300)
 
+
+import stanza
+stanza.download('en')
+nlp = stanza.Pipeline(lang='en', processors='tokenize,mwt,pos,lemma,depparse',use_gpu=True)
+
 def topic_name(x):
     x = x.split('_')[1:]
-    x = [elem for elem in x if elem not in stopwords]
+    x = [elem for elem in x if elem and (elem not in stopwords)]
+    x = set([[word.lemma for sent in nlp(elem).sentences for word in sent][0] for elem in x])
     return ",\n".join(x)
 
 deontic_map = {"must": 'black',
