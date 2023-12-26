@@ -86,9 +86,10 @@ G = nx.MultiDiGraph()
 
 for _, row in result.iterrows():
     try:
+        assert G[row.Attribute_group][row.Object_group]['color'] == row.Deontic
         G[row.Attribute_group][row.Object_group]['weight'] += 1
     except Exception as exp:
-        G.add_edge(row.Attribute_group, row.Object_group, color=row.Deontic)
+        G.add_edge(row.Attribute_group, row.Object_group, weight = 1, color=row.Deontic)
 
 pos = nx.spring_layout(G)
 nx.draw_networkx_nodes(G, pos, node_color='r', node_size=100, alpha=1)
