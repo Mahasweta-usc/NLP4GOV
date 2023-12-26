@@ -40,8 +40,8 @@ result.dropna(subset=["Attribute", "Object"], how='any', inplace=True)
 #replace first person
 for col in ["Attribute", "Object"]:
     result[col] = result[col].apply(lambda x: x.replace(" we ", " asf "))
-    result[col] = result[col].apply(lambda x: x.replace("our ", "asf "))
     result[col] = result[col].apply(lambda x: x.replace("your ", "project "))
+    result[col] = result[col].apply(lambda x: x.replace("our ", "asf "))
     result[col] = result[col].apply(lambda x: x.replace("you ", "project "))
     result[col] = result[col].apply(lambda x: x.replace(" us ", " asf  "))
 
