@@ -29,7 +29,7 @@ deontic_map = {"must": 'black',
                "may": 'limegreen',
                "might": "limegreen",
                "could": 'limegreen',
-               "other": "gray"}
+               "other": "gainsboro"}
 
 components = ['Attribute', 'Deontic', 'Object']
 result = pd.read_csv('main.csv', usecols=components)
