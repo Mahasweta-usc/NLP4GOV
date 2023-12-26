@@ -1,5 +1,7 @@
 from bertopic import BERTopic
 from hdbscan import HDBSCAN
+import warnings
+warnings.filterwarnings("ignore")
 import pandas as pd
 import networkx as nx
 import numpy as np
@@ -45,13 +47,13 @@ topic_model.hdbscan_model.gen_min_span_tree = True
 topic_model.umap_model.random_state = 0  ##set seed to enable reproduction of clustering
 
 topic_model.fit(entries)
-freq = topic_model.get_topic_info(); print(freq)
+freq = topic_model.get_topic_info()
 
 for component in ['Attribute', 'Object']:
     entries = result[component].tolist()
     result[component + '_group'] = topic_model.transform(entries)[0]
-    # remove outliers
-    result = result[result[component + '_group'] != -1]
+    # # remove outliers
+    # result = result[result[component + '_group'] != -1]
     result[component + '_group'] = result[component + '_group'].apply(
         lambda x: freq[freq['Topic'] == x]['Name'].to_list()[0])
     result[component + '_group'] = result[component + '_group'].apply(lambda x: topic_name(x))
@@ -71,7 +73,6 @@ for _, row in result.iterrows():
 
 pos = nx.circular_layout(G)
 nx.draw_networkx_nodes(G, pos, node_color='r', node_size=100, alpha=1)
-print(nx.degree(G))
 ax = plt.gca()
 
 for (u,v,attrib_dict) in list(G.edges.data()):
