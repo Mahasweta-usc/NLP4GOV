@@ -71,7 +71,7 @@ for _, row in result.iterrows():
     G.add_edge(row.Attribute_group, row.Object_group, color=row.Deontic)
 
 
-pos = nx.spectral_layout(G)
+pos = nx.multipartite_layout(G)
 nx.draw_networkx_nodes(G, pos, node_color='r', node_size=100, alpha=1)
 ax = plt.gca()
 
