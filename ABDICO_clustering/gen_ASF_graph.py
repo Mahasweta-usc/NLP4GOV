@@ -25,7 +25,7 @@ def topic_name(x):
         for item in stopwords:
             elem = elem.replace(item,"").strip()
         if elem: words.append(elem)
-    return ",\n".join(x)
+    return ",\n".join(words)
 
 deontic_map = {"must": 'black',
                "should": "blue",
