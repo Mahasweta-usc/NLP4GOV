@@ -88,7 +88,6 @@ for _, row in result.iterrows():
     data = G.get_edge_data(row.Attribute_group, row.Object_group, default ={})
     try:
         data = [v for k,v in data.items() if v["color"] == row.Deontic][0]
-        print(data)
         # we added this one before, just increase the weight by one
         G.remove_edge(row.Attribute_group, row.Object_group, key=row.Deontic)
         G.add_edge(row.Attribute_group, row.Object_group, color=row.Deontic, weight=data['weight'] + 1, key=row.Deontic)
