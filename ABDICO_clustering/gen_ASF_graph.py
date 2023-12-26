@@ -89,7 +89,7 @@ nx.draw_networkx_nodes(G, pos, node_color='r', node_size=100, alpha=1)
 ax = plt.gca()
 
 for (u,v,attrib_dict) in list(G.edges.data()):
-    style = str(0.3 + 0.3*np.random.rand())
+    style = "0.3" #str(0.3 + 0.3*np.random.rand())
     ax.annotate("",
                 xy=pos[u], xycoords='data',
                 xytext=pos[v], textcoords='data',
