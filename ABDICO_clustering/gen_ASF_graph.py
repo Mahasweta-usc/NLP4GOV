@@ -26,14 +26,14 @@ result['Deontic'] = result['Deontic'].apply(lambda x : x if x in deontic_map els
 
 entries = result['Attribute'].tolist()
 entries.extend(result['Object'].tolist())
-hdbscan_model = HDBSCAN(metric='euclidean', cluster_selection_method='eom',min_cluster_size=10,min_samples=2,
+hdbscan_model = HDBSCAN(metric='euclidean', cluster_selection_method='eom',min_cluster_size=10,min_samples=5,
                         prediction_data=True)
 topic_model = BERTopic(top_n_words=10, hdbscan_model=hdbscan_model)
 topic_model.hdbscan_model.gen_min_span_tree = True
 topic_model.umap_model.random_state = 0  ##set seed to enable reproduction of clustering
 
 topic_model.fit(entries)
-freq = topic_model.get_topic_info()
+freq = topic_model.get_topic_info(); print(freq)
 
 for component in ['Attribute', 'Object']:
     entries = result[component].tolist()
