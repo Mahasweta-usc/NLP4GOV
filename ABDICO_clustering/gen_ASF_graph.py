@@ -51,7 +51,12 @@ print(result.shape)
 G = nx.MultiDiGraph()
 
 for _, row in result.iterrows():
-    G.add_edge(row.Attribute_group, row.Object_group, row.Deontic)
+    try:
+        data = G.get_edge_data(row.Attribute_group, row.Object_group, "color"=row.Deontic)
+        G.add_edge(row.Attribute_group, row.Object_group, "color"=row.Deontic, 'weight'=data['weight'] + 1)
+    except:
+        G.add_edge(row.Attribute_group, row.Object_group, "color"=row.Deontic, 'weight'=1)
+
 
 pos = nx.circular_layout(G)
 nx.draw_networkx_nodes(G, pos, node_color='r', node_size=100, alpha=1)
@@ -62,7 +67,7 @@ for e in G.edges:
     ax.annotate("",
                 xy=pos[e[0]], xycoords='data',
                 xytext=pos[e[1]], textcoords='data',
-                arrowprops=dict(arrowstyle="-|>,head_length=.8,head_width=.4", color=e[2],
+                arrowprops=dict(arrowstyle="-|>,head_length=.8,head_width=.4", color=e["color"],
                                 shrinkA=5, shrinkB=5,
                                 patchA=None, patchB=None,
                                 connectionstyle="arc3,rad=0.3"
