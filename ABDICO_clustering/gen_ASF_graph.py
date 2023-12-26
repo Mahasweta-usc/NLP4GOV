@@ -77,12 +77,18 @@ result['Deontic'] = result['Deontic'].apply(lambda x: deontic_map[x])
 
 G = nx.MultiDiGraph()
 
+# for _, row in result.iterrows():
+#     # try:
+#     #     G[row.Attribute_group][row.Object_group]['weight'] += 1
+#     # except Exception as exp:
+#     #     print(exp)
+#     G.add_edge(row.Attribute_group, row.Object_group, color=row.Deontic)
+
 for _, row in result.iterrows():
-    # try:
-    #     G[row.Attribute_group][row.Object_group]['weight'] += 1
-    # except Exception as exp:
-    #     print(exp)
-    G.add_edge(row.Attribute_group, row.Object_group, color=row.Deontic)
+    try:
+        G[row.Attribute_group][row.Object_group]['weight'] += 1
+    except Exception as exp:
+        G.add_edge(row.Attribute_group, row.Object_group, color=row.Deontic)
 
 pos = nx.spring_layout(G)
 nx.draw_networkx_nodes(G, pos, node_color='r', node_size=100, alpha=1)
@@ -90,7 +96,7 @@ ax = plt.gca()
 
 for (u,v,attrib_dict) in list(G.edges.data()):
     style = "0.3" #str(0.3 + 0.3*np.random.rand())
-    ax.annotate("",
+    ax.annotate(str(attrib_dict['weight']),
                 xy=pos[u], xycoords='data',
                 xytext=pos[v], textcoords='data',
                 arrowprops=dict(arrowstyle="-|>,head_length=.8,head_width=.4", color=attrib_dict['color'],
