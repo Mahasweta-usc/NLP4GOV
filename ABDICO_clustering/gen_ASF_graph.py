@@ -103,7 +103,7 @@ nx.draw_networkx_nodes(G, pos, node_color='r', node_size=100, alpha=1)
 ax = plt.gca()
 
 for (u,v,attrib_dict) in list(G.edges.data()):
-    radius = str(0.3 + 0.2*np.random.rand())
+    radius = str(0.1 + 0.2*np.random.rand())
     length = str(0.5 + 0.05*attrib_dict['weight'])
     width = str(0.3 + 0.1**attrib_dict['weight'])
     style = f"-|>,head_length={length},head_width={width}"
