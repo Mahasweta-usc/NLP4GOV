@@ -51,11 +51,11 @@ print(result.shape)
 G = nx.MultiDiGraph()
 
 for _, row in result.iterrows():
-    try:
-        G[row.Attribute_group][row.Object_group]['weight'] += 1
-    except Exception as exp:
-        print(exp)
-        G.add_edge(row.Attribute_group, row.Object_group, color=row.Deontic, weight=1)
+    # try:
+    #     G[row.Attribute_group][row.Object_group]['weight'] += 1
+    # except Exception as exp:
+    #     print(exp)
+    G.add_edge(row.Attribute_group, row.Object_group)
 
 
 pos = nx.circular_layout(G)
