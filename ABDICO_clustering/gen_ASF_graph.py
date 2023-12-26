@@ -71,7 +71,7 @@ for _, row in result.iterrows():
     G.add_edge(row.Attribute_group, row.Object_group, color=row.Deontic)
 
 
-pos = nx.multipartite_layout(G, subset='project')
+pos = nx.multipartite_layout(G, subset_key='project')
 nx.draw_networkx_nodes(G, pos, node_color='r', node_size=100, alpha=1)
 ax = plt.gca()
 
@@ -88,7 +88,7 @@ for (u,v,attrib_dict) in list(G.edges.data()):
                 )
 
 for node in G.nodes:
-    ax.text(pos[node][0], pos[node][1], node, fontsize=16)
+    ax.text(pos[node][0], pos[node][1], node, fontsize=16, bbox=dict(facecolor='lemonchiffon', edgecolor='black'))
 
 plt.axis('off')
 plt.savefig("ASF_Graph.jpg",dpi=300)
