@@ -64,17 +64,16 @@ print(nx.degree(G))
 ax = plt.gca()
 
 for e in G.edges:
-    for _ in range(e[2]):
-        style = 0.3 + 0.3*np.random.rand()
-        ax.annotate("",
-                    xy=pos[e[0]], xycoords='data',
-                    xytext=pos[e[1]], textcoords='data',
-                    arrowprops=dict(arrowstyle="-|>,head_length=.8,head_width=.4", color=G[e[0]][e[1]]['color'],
-                                    shrinkA=5, shrinkB=5,
-                                    patchA=None, patchB=None,
-                                    connectionstyle=f"arc3,rad={style}"
-                                    ),
-                    )
+    style = str(0.3 + 0.3*np.random.rand())
+    ax.annotate("",
+                xy=pos[e[0]], xycoords='data',
+                xytext=pos[e[1]], textcoords='data',
+                arrowprops=dict(arrowstyle="-|>,head_length=.8,head_width=.4", #color=G[e[0]][e[1]]['color'],
+                shrinkA=5, shrinkB=5,
+                patchA=None, patchB=None,
+                connectionstyle=f"arc3,rad={style}"
+                                ),
+                )
 
 for node in G.nodes:
     ax.text(pos[node][0], pos[node][1], node, fontsize=16)
