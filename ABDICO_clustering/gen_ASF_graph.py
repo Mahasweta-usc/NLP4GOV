@@ -42,7 +42,7 @@ result['Deontic'] = result['Deontic'].apply(lambda x : x if x in deontic_map els
 
 entries = result['Attribute'].tolist()
 entries.extend(result['Object'].tolist())
-hdbscan_model = HDBSCAN(metric='euclidean', cluster_selection_method='eom',min_cluster_size=10,min_samples=5,
+hdbscan_model = HDBSCAN(metric='euclidean', cluster_selection_method='eom',min_cluster_size=10,
                         prediction_data=True)
 topic_model = BERTopic(top_n_words=3, hdbscan_model=hdbscan_model)
 topic_model.hdbscan_model.gen_min_span_tree = True
@@ -88,7 +88,7 @@ for (u,v,attrib_dict) in list(G.edges.data()):
                 )
 
 for node in G.nodes:
-    ax.text(pos[node][0]+.001, pos[node][1]+.001, node, fontsize=16, bbox=dict(facecolor='lemonchiffon', edgecolor='black'))
+    ax.text(pos[node][0]+.003, pos[node][1]+.003, node, fontsize=16, bbox=dict(facecolor='lemonchiffon', edgecolor='black'))
 
 plt.axis('off')
 plt.savefig("ASF_Graph.jpg",dpi=300)
