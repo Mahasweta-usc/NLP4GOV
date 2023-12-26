@@ -90,8 +90,8 @@ for _, row in result.iterrows():
         data = [v for k,v in data.items() if v["color"] == row.Deontic][0]
         print(data)
         # we added this one before, just increase the weight by one
+        G.remove_edge(row.Attribute_group, row.Object_group, key=row.Deontic)
         G.add_edge(row.Attribute_group, row.Object_group, color=row.Deontic, weight=data['weight'] + 1)
-        G.remove_edge(row.Attribute_group, row.Object_group, color=row.Deontic, weight=data['weight'])
     except Exception as exp:
         print(exp)
         G.add_edge(row.Attribute_group, row.Object_group, weight = 1, color=row.Deontic)
