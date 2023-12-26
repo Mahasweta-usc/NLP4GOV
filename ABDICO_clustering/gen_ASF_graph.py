@@ -103,6 +103,7 @@ nx.draw_networkx_nodes(G, pos, node_color='r', node_size=100, alpha=1)
 ax = plt.gca()
 
 for (u,v,attrib_dict) in list(G.edges.data()):
+    radius = str(0.3 + 0.2*np.random.rand())
     length = str(0.5 + 0.05*attrib_dict['weight'])
     width = str(0.3 + 0.1**attrib_dict['weight'])
     style = f"-|>,head_length={length},head_width={width}"
@@ -112,12 +113,12 @@ for (u,v,attrib_dict) in list(G.edges.data()):
                 arrowprops=dict(arrowstyle=style, color=attrib_dict['color'],lw=1.5*attrib_dict['weight'],
                 shrinkA=5, shrinkB=5,
                 patchA=None, patchB=None,
-                connectionstyle=f"arc3,rad=0.3"
+                connectionstyle=f"arc3,rad={radius}"
                                 ),
                 )
 
 for node in G.nodes:
-    ax.text(pos[node][0]+.008, pos[node][1]+.008, node, fontsize=16, bbox=dict(facecolor='lemonchiffon', edgecolor='black'))
+    ax.text(pos[node][0]+.01, pos[node][1]+.01, node, fontsize=16, bbox=dict(facecolor='lemonchiffon', edgecolor='black'))
 
 
 custom_lines = [Line2D([0], [0], color='lightblue', lw=4),
@@ -126,7 +127,7 @@ custom_lines = [Line2D([0], [0], color='lightblue', lw=4),
                 Line2D([0], [0], color='black', lw=4)]
 
 
-ax.legend(custom_lines, ['Norm', 'May/Can', 'Should', "Must"], ncol=4, loc="upper right")
+ax.legend(custom_lines, ['Norm', 'May/Can', 'Should', "Must"], ncol=4, loc="upper right", prop={'size': 16})
 
 plt.axis('off')
 plt.savefig("ASF_Graph.jpg",dpi=300)
