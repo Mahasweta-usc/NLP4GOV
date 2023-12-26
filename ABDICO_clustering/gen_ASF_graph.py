@@ -55,7 +55,7 @@ result['Deontic'] = result['Deontic'].apply(lambda x : x if x in deontic_map els
 
 entries = result['Attribute'].tolist()
 entries.extend(result['Object'].tolist())
-hdbscan_model = HDBSCAN(metric='euclidean', cluster_selection_method='eom',min_cluster_size=10,
+hdbscan_model = HDBSCAN(metric='euclidean', cluster_selection_method='eom',min_cluster_size=2,
                         prediction_data=True)
 topic_model = BERTopic(top_n_words=3, hdbscan_model=hdbscan_model)
 topic_model.hdbscan_model.gen_min_span_tree = True
@@ -75,7 +75,6 @@ for component in ['Attribute', 'Object']:
 
 result['Deontic'] = result['Deontic'].apply(lambda x: deontic_map[x])
 
-result[result['Object_group']=='disclaimer,\nproject'].to_csv("testing.csv",index=False)
 G = nx.MultiDiGraph()
 
 for _, row in result.iterrows():
