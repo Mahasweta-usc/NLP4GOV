@@ -17,9 +17,11 @@ stanza.download('en')
 nlp = stanza.Pipeline(lang='en', processors='tokenize,mwt,pos,lemma,depparse',use_gpu=True)
 
 def topic_name(x):
+    org = x
     x = x.split('_')[1:]
     x = [elem for elem in x if elem and (elem not in stopwords)]
     x = set([[word.lemma for sent in nlp(elem).sentences for word in sent.words][0] for elem in x])
+    print(org,x)
     return ",\n".join(x)
 
 deontic_map = {"must": 'black',
@@ -60,7 +62,6 @@ for component in ['Attribute', 'Object']:
 
 result['Deontic'] = result['Deontic'].apply(lambda x: deontic_map[x])
 
-print(result.shape)
 G = nx.MultiDiGraph()
 
 for _, row in result.iterrows():
@@ -87,7 +88,7 @@ for (u,v,attrib_dict) in list(G.edges.data()):
                 )
 
 for node in G.nodes:
-    ax.text(pos[node][0], pos[node][1], node, fontsize=16, bbox=dict(facecolor='lemonchiffon', edgecolor='black'))
+    ax.text(pos[node][0]+1, pos[node][1]+1, node, fontsize=16, bbox=dict(facecolor='lemonchiffon', edgecolor='black'))
 
 plt.axis('off')
 plt.savefig("ASF_Graph.jpg",dpi=300)
