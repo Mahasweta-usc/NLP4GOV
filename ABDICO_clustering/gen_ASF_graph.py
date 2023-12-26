@@ -27,12 +27,12 @@ def topic_name(x):
     return ",\n".join(set(words))
 
 deontic_map = {"must": 'black',
-               "should": "blue",
-               "can": 'limegreen',
-               "may": 'limegreen',
-               "might": "limegreen",
-               "could": 'limegreen',
-               "other": "lightgray"}
+               "should": "brown",
+               "can": 'green',
+               "may": 'green',
+               "might": "green",
+               "could": 'green',
+               "other": "lightblue"}
 
 components = ['Attribute', 'Deontic', 'Object']
 result = pd.read_csv('main.csv', usecols=components)
@@ -102,7 +102,7 @@ nx.draw_networkx_nodes(G, pos, node_color='r', node_size=100, alpha=1)
 ax = plt.gca()
 
 for (u,v,attrib_dict) in list(G.edges.data()):
-    length = str(0.5 + 0.1*attrib_dict['weight'])
+    length = str(0.5 + 0.05*attrib_dict['weight'])
     width = str(0.3 + 0.1**attrib_dict['weight'])
     style = f"-|>,head_length={length},head_width={width}"
     ax.annotate("",
