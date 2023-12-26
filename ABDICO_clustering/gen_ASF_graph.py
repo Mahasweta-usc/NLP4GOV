@@ -40,7 +40,7 @@ result.dropna(subset=["Attribute", "Object"], how='any', inplace=True)
 for col in ["Attribute", "Object"]:
     result[col] = result[col].apply(lambda x: x.replace(" we ", " asf "))
     result[col] = result[col].apply(lambda x: x.replace("your ", "project "))
-    result[col] = result[col].apply(lambda x: x.replace("our ", "asf "))
+    result[col] = result[col].apply(lambda x: x.replace(" our", " asf"))
     result[col] = result[col].apply(lambda x: x.replace("you ", "project "))
     result[col] = result[col].apply(lambda x: x.replace(" us ", " asf  "))
 
@@ -84,7 +84,7 @@ for _, row in result.iterrows():
     #     print(exp)
     G.add_edge(row.Attribute_group, row.Object_group, color=row.Deontic)
 
-pos = nx.spiral_layout(G)
+pos = nx.sping_layout(G)
 nx.draw_networkx_nodes(G, pos, node_color='r', node_size=100, alpha=1)
 ax = plt.gca()
 
