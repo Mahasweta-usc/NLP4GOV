@@ -2,3 +2,4 @@ networkx
 transformers
 sentence-transformers
 bertopic
+stanza
