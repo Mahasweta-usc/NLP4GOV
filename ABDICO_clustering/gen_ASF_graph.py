@@ -70,8 +70,10 @@ for _, row in result.iterrows():
     #     print(exp)
     G.add_edge(row.Attribute_group, row.Object_group, color=row.Deontic)
 
+top = nx.bipartite.sets(G)[0]
 
-pos = nx.multipartite_layout(G, subset_key='project')
+pos = nx.bipartite_layout(G, top)
+# pos = nx.multipartite_layout(G, subset_key='project')
 nx.draw_networkx_nodes(G, pos, node_color='r', node_size=100, alpha=1)
 ax = plt.gca()
 
