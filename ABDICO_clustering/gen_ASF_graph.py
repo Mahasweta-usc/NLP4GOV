@@ -91,7 +91,7 @@ for _, row in result.iterrows():
         print(data)
         # we added this one before, just increase the weight by one
         G.remove_edge(row.Attribute_group, row.Object_group, key=row.Deontic)
-        G.add_edge(row.Attribute_group, row.Object_group, color=row.Deontic, weight=data['weight'] + 1)
+        G.add_edge(row.Attribute_group, row.Object_group, color=row.Deontic, weight=data['weight'] + 1, key=row.Deontic)
     except Exception as exp:
         print(exp)
         G.add_edge(row.Attribute_group, row.Object_group, weight = 1, color=row.Deontic, key=row.Deontic)
