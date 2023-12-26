@@ -63,12 +63,12 @@ nx.draw_networkx_nodes(G, pos, node_color='r', node_size=100, alpha=1)
 print(nx.degree(G))
 ax = plt.gca()
 
-for e in G.edges:
+for (u,v,attrib_dict) in list(G.edges.data()):
     style = str(0.3 + 0.3*np.random.rand())
     ax.annotate("",
-                xy=pos[e[0]], xycoords='data',
-                xytext=pos[e[1]], textcoords='data',
-                arrowprops=dict(arrowstyle="-|>,head_length=.8,head_width=.4", #color=G[e[0]][e[1]]['color'],
+                xy=pos[u], xycoords='data',
+                xytext=pos[v], textcoords='data',
+                arrowprops=dict(arrowstyle="-|>,head_length=.8,head_width=.4", color=attrib_dict['color'],
                 shrinkA=5, shrinkB=5,
                 patchA=None, patchB=None,
                 connectionstyle=f"arc3,rad={style}"
