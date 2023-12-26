@@ -21,7 +21,6 @@ def topic_name(x):
     x = x.split('_')[1:]
     x = [elem for elem in x if elem and (elem not in stopwords)]
     x = set([[word.lemma for sent in nlp(elem).sentences for word in sent.words][0] for elem in x])
-    print(org,x)
     return ",\n".join(x)
 
 deontic_map = {"must": 'black',
@@ -102,7 +101,7 @@ for (u,v,attrib_dict) in list(G.edges.data()):
                 )
 
 for node in G.nodes:
-    ax.text(pos[node][0]+.003, pos[node][1]+.003, node, fontsize=16, bbox=dict(facecolor='lemonchiffon', edgecolor='black'))
+    ax.text(pos[node][0]+.005, pos[node][1]+.005, node, fontsize=16, bbox=dict(facecolor='lemonchiffon', edgecolor='black'))
 
 plt.axis('off')
 plt.savefig("ASF_Graph.jpg",dpi=300)
