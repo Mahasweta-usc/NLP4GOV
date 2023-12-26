@@ -52,9 +52,9 @@ G = nx.MultiDiGraph()
 
 for _, row in result.iterrows():
     try:
-        data = G.get_edge_data(row.Attribute_group, row.Object_group, color=row.Deontic)
         G[row.Attribute_group][row.Object_group]['weight'] += 1
-    except:
+    except Exception as exp:
+        print(exp)
         G.add_edge(row.Attribute_group, row.Object_group, color=row.Deontic, weight=1)
 
 
