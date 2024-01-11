@@ -84,6 +84,7 @@ predictor._model = predictor._model.cuda()
 class SRL:
   def __init__(self, agent=None):
         self.agent = agent
+        self.fpc = False
 
   #pass list of sentences as [{'sentence':...},{'sentence':...}]
   def srl_arg(self, sentences):
@@ -120,7 +121,6 @@ class SRL:
           return "<longest>"
 
   def file_read(self,file_name):
-    print(file_name)
     if isinstance(file_name,str): data = pd.read_csv(file_name)
     else: data = file_name
 
@@ -131,7 +131,7 @@ class SRL:
     data.replace("nan", np.nan, inplace=True)
     #statement needs to contain aim and recipient of action at the least
     if self.agent == "eval":
-        if 'fpc' not in file_name:
+        if self.fpc:
             data.dropna(subset=['raw institutional statement', "aim"], how='any', inplace=True)
             print("Dataset after removing incomplete annotations: ", data.shape[0])
         else:
@@ -272,7 +272,6 @@ class SRL:
 
   def inference(self,file_name,out_path=None):
     if not out_path : out_path = file_name
-    print(file_name)
     data = self.file_read(file_name)
     data.fillna('', inplace=True)
 
@@ -292,7 +291,7 @@ class SRL:
             data[col_name] = data[col_name].apply(lambda x: "<skipped>" if x.startswith('[') else x)
             data[col_name] = data[col_name].apply(lambda x: re.sub("[\(\[].*?[\)\]]", "", x))
             ##Look for whether annotation is span level
-            if 'fpc' not in file_name:
+            if self.fpc:
                 data[col_name] = data.apply(lambda x: "<skipped>" if x[col_name] and (
                         x[col_name] not in x['raw institutional statement']) else x[col_name], axis=1)
 
@@ -326,6 +325,9 @@ class SRL:
         sub_path = os.path.join('/content/IG-SRL/SRL/data', subdata)
         sets = []
         for file_name in os.listdir(sub_path):
+            if 'fpc' in file_name: self.fpc = True
+            else: self.fpc = False
+
             eval_name = os.path.join('/content/IG-SRL/SRL/data', subdata,file_name)
             temp = pd.read_csv(eval_name)
             temp.columns = map(str.lower, temp.columns)
