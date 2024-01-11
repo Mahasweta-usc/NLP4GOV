@@ -323,12 +323,11 @@ class SRL:
 
     for subdata in datasets:
         sub_path = os.path.join('/content/IG-SRL/SRL/data', subdata)
+        if 'Food' in subdata: self.fpc = True
+        else: self.fpc = False
+
         sets = []
         for file_name in os.listdir(sub_path):
-            if 'fpc' in file_name: self.fpc = True
-            else: self.fpc = False
-            print(file_name.self.fpc)
-
             eval_name = os.path.join('/content/IG-SRL/SRL/data', subdata,file_name)
             temp = pd.read_csv(eval_name)
             temp.columns = map(str.lower, temp.columns)
