@@ -149,7 +149,7 @@ class SRL:
     # data['ROOT'] = data['sentences'].apply(lambda x : [word.text for sent in nlp(x).sentences for word in sent.words  if word.deprel == 'root'][0])
     data['ROOT'] = data['sentences'].apply(lambda x : self.find_root(x))
 
-    data['srl_ip'] = data['raw institutional statement'].apply(lambda x : [{'sentence' : x}])
+    data['srl_ip'] = data['raw institutional statement'].apply(lambda x : [{'sentence': x}])
     data['srl_parsed'] = data.apply(lambda x: self.srl_arg(x['srl_ip'])[x['raw institutional statement']],axis=1)
     data = data[data['srl_parsed'].map(lambda d: len(d)) > 0]
     data['ROOT'] = data.apply(lambda x: "<longest>" if x.ROOT not in [it['V'][0] for it in x.srl_parsed] else x.ROOT, axis=1)
@@ -285,7 +285,9 @@ class SRL:
             pattern = r'\[[^\]]*\]'
             data[col_name] = data[col_name].apply(lambda x: "<skipped>" if x.startswith('[') else x)
             data[col_name] = data[col_name].apply(lambda x: re.sub("[\(\[].*?[\)\]]", "", x))
-            data[col_name] = data.apply(lambda x: "<skipped>" if x[col_name] and (
+            ##Look for whether annotation is span level
+            if 'fpc' not in file_name:
+                data[col_name] = data.apply(lambda x: "<skipped>" if x[col_name] and (
                         x[col_name] not in x['raw institutional statement']) else x[col_name], axis=1)
 
         # data['attribute'] = data.apply( lambda x : "<skipped>" if x.attribute and (x.attribute not in x['raw institutional statement']) else x.attribute, axis=1)
