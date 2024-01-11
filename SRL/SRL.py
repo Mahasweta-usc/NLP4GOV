@@ -130,8 +130,11 @@ class SRL:
     data.replace("nan", np.nan, inplace=True)
     #statement needs to contain aim and recipient of action at the least
     if self.agent == "eval":
-        data.dropna(subset=['raw institutional statement', "aim", "object"], how='any', inplace=True)
-        print("Dataset after removing incomplete annotations: ", data.shape[0])
+        if 'fpc' not in file_name:
+            data.dropna(subset=['raw institutional statement', "aim"], how='any', inplace=True)
+            print("Dataset after removing incomplete annotations: ", data.shape[0])
+        else:
+            data.dropna(subset=['attribute', "object", "aim", "object"], how='all', inplace=True)
     else:
         data.dropna(subset=['raw institutional statement'], how='any', inplace=True)
 
@@ -270,6 +273,7 @@ class SRL:
     if not out_path : out_path = file_name
     data = self.file_read((file_name))
     data.fillna('', inplace=True)
+    print(file_name)
 
 
     # data.columns = map(str.lower, data.columns)
@@ -278,6 +282,7 @@ class SRL:
     # data.dropna(subset=['raw institutional statement'],inplace=True)
     # data = data[(data['raw institutional statement'] != "")]
 
+    #exclude from analysis if span not included in statement or span is abstractive
     if self.agent =='eval':
         # remove inferred coding
         for col_name in ['attribute', 'object', 'aim', 'deontic']:
