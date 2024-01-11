@@ -219,11 +219,6 @@ class SRL:
   def normalize_text(self,s):
       """Removing articles and punctuation, and standardizing whitespace are all typical text processing steps."""
 
-      def remove_stopwords(text):
-          # regex = re.compile(r"\b(a|an|the)\b", re.UNICODE)
-          # return re.sub(regex, " ", text)
-          return [word for word in text if word not in all_words]
-
       def tokens(text):
           doc= nlp(text)
           return ([word.lemma for sent in doc.sentences for word in sent.words if not word.text in all_words])
@@ -240,11 +235,17 @@ class SRL:
 
   def compute_exact_match(self,prediction, truth):
       return int(self.normalize_text(prediction) == self.normalize_text(truth))
+  def remove_stopwords(text):
+      return [word for word in text if word not in all_words]
 
   #F1 score computation
-  def compute_f1(self,truth, prediction):
+  def compute_f1(self,truth, prediction, col_name):
     pred_tokens = self.normalize_text(prediction)
     truth_tokens = self.normalize_text(truth)
+
+    if col_name in ['attribute','object'] :
+        pred_tokens = self.remove_stopwords(pred_tokens)
+        truth_tokens = self.remove_stopwords(truth_tokens)
     # print(pred_tokens,truth_tokens)
 
     # if either the prediction or the truth is no-answer then f1 = 1 if they agree, 0 otherwise
@@ -362,7 +363,7 @@ class SRL:
 
             f1_score = []
             for x,y in zip(values1,values2):
-                f1_score.append((self.compute_f1(x,y)))
+                f1_score.append((self.compute_f1(x,y,col_name)))
                 eval_scores[col_name].append(self.compute_f1(x,y))
 
             print(f" F1 score for {col_name}: {np.mean(f1_score)}")
