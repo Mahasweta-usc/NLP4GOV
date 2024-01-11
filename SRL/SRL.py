@@ -120,6 +120,7 @@ class SRL:
           return "<longest>"
 
   def file_read(self,file_name):
+    print(file_name)
     if isinstance(file_name,str): data = pd.read_csv(file_name)
     else: data = file_name
 
@@ -271,9 +272,9 @@ class SRL:
 
   def inference(self,file_name,out_path=None):
     if not out_path : out_path = file_name
-    data = self.file_read((file_name))
-    data.fillna('', inplace=True)
     print(file_name)
+    data = self.file_read(file_name)
+    data.fillna('', inplace=True)
 
 
     # data.columns = map(str.lower, data.columns)
