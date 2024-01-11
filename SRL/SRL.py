@@ -131,7 +131,7 @@ class SRL:
     data.replace("nan", np.nan, inplace=True)
     #statement needs to contain aim and recipient of action at the least
     if self.agent == "eval":
-        if self.fpc:
+        if not self.fpc:
             data.dropna(subset=['raw institutional statement', "aim"], how='any', inplace=True)
             print("Dataset after removing incomplete annotations: ", data.shape[0])
         else:
@@ -291,7 +291,7 @@ class SRL:
             data[col_name] = data[col_name].apply(lambda x: "<skipped>" if x.startswith('[') else x)
             data[col_name] = data[col_name].apply(lambda x: re.sub("[\(\[].*?[\)\]]", "", x))
             ##Look for whether annotation is span level
-            if self.fpc:
+            if not self.fpc:
                 data[col_name] = data.apply(lambda x: "<skipped>" if x[col_name] and (
                         x[col_name] not in x['raw institutional statement']) else x[col_name], axis=1)
 
@@ -327,6 +327,7 @@ class SRL:
         for file_name in os.listdir(sub_path):
             if 'fpc' in file_name: self.fpc = True
             else: self.fpc = False
+            print(file_name.self.fpc)
 
             eval_name = os.path.join('/content/IG-SRL/SRL/data', subdata,file_name)
             temp = pd.read_csv(eval_name)
