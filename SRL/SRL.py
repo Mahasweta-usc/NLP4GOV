@@ -240,10 +240,6 @@ class SRL:
   def compute_f1(self,truth, prediction, col_name):
     pred_tokens = self.normalize_text(prediction)
     truth_tokens = self.normalize_text(truth)
-
-    if col_name in ['attribute','object'] :
-        pred_tokens = [word for word in pred_tokens if word not in all_words]
-        truth_tokens = [word for word in truth_tokens if word not in all_words]
     # print(pred_tokens,truth_tokens)
 
     # if either the prediction or the truth is no-answer then f1 = 1 if they agree, 0 otherwise
