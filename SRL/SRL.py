@@ -135,7 +135,7 @@ class SRL:
             data.dropna(subset=['raw institutional statement', "aim"], how='any', inplace=True)
             print("Dataset after removing incomplete annotations: ", data.shape[0])
         else:
-            data.dropna(subset=['attribute', "object", "aim", "object"], how='all', inplace=True)
+            data.dropna(subset=['attribute', "deontic", "aim", "object"], how='all', inplace=True)
             print("Dataset after removing uncoded statements: ", data.shape[0])
     else:
         data.dropna(subset=['raw institutional statement'], how='any', inplace=True)
@@ -235,8 +235,6 @@ class SRL:
 
   def compute_exact_match(self,prediction, truth):
       return int(self.normalize_text(prediction) == self.normalize_text(truth))
-  def remove_stopwords(text):
-      return [word for word in text if word not in all_words]
 
   #F1 score computation
   def compute_f1(self,truth, prediction, col_name):
@@ -244,8 +242,8 @@ class SRL:
     truth_tokens = self.normalize_text(truth)
 
     if col_name in ['attribute','object'] :
-        pred_tokens = self.remove_stopwords(pred_tokens)
-        truth_tokens = self.remove_stopwords(truth_tokens)
+        pred_tokens = [word for word in pred_tokens if word not in all_words]
+        truth_tokens = [word for word in truth_tokens if word not in all_words]
     # print(pred_tokens,truth_tokens)
 
     # if either the prediction or the truth is no-answer then f1 = 1 if they agree, 0 otherwise
