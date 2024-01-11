@@ -136,6 +136,7 @@ class SRL:
             print("Dataset after removing incomplete annotations: ", data.shape[0])
         else:
             data.dropna(subset=['attribute', "object", "aim", "object"], how='all', inplace=True)
+            print("Dataset after removing uncoded statements: ", data.shape[0])
     else:
         data.dropna(subset=['raw institutional statement'], how='any', inplace=True)
 
@@ -288,24 +289,27 @@ class SRL:
         for col_name in ['attribute', 'object', 'aim', 'deontic']:
             ##remove inferred coding re.sub("[\(\[].*?[\)\]]", "<skipped>",x)
             pattern = r'\[[^\]]*\]'
-            data[col_name] = data[col_name].apply(lambda x: "<skipped>" if x.startswith('[') else x)
-            data[col_name] = data[col_name].apply(lambda x: re.sub("[\(\[].*?[\)\]]", "", x))
-            ##Look for whether annotation is span level
+
             if not self.fpc:
-                data[col_name] = data.apply(lambda x: "<skipped>" if x[col_name] and (
-                        x[col_name] not in x['raw institutional statement']) else x[col_name], axis=1)
+             data[col_name] = data[col_name].apply(lambda x: "<skipped>" if x.startswith('[') else x)
+             data[col_name] = data[col_name].apply(lambda x: re.sub("[\(\[].*?[\)\]]", "", x))
+             ##Look for whether annotation is span level
+             data[col_name] = data.apply(lambda x: "<skipped>" if x[col_name] and (
+                    x[col_name] not in x['raw institutional statement']) else x[col_name], axis=1)
 
         # data['attribute'] = data.apply( lambda x : "<skipped>" if x.attribute and (x.attribute not in x['raw institutional statement']) else x.attribute, axis=1)
         # data['object'] = data.apply( lambda x : "<skipped>" if x.object and (x.object not in x['raw institutional statement']) else x.object, axis=1)
 
         #atleast Actor or object is span
-        data = data[(data['aim'] != '<skipped>')]
-        print("Dataset after removing abstractive aims: ", data.shape[0])
-        data = data[(data['attribute'] != '<skipped>') | (data['object'] != '<skipped>')]
+        if not self.fpc:
+            data = data[(data['aim'] != '<skipped>')]
+            print("Dataset after removing abstractive aims: ", data.shape[0])
+            data = data[(data['attribute'] != '<skipped>') | (data['object'] != '<skipped>')]
 
-        #lemmatize aims
+            #lemmatize aims
+            print("Dataset after removing abstractive attribute/objects: ", data.shape[0])
+
         data['aim'] = data['aim'].apply(lambda x: self.process_aim(x))
-        print("Dataset after removing abstractive attribute/objects: ", data.shape[0])
 
     #SRL inference
     for arg in ['attribute_inf','object_inf','aim_inf','deontic_inf']:
