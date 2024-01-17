@@ -1,6 +1,7 @@
 from bertopic import BERTopic
 from hdbscan import HDBSCAN
 import warnings
+
 warnings.filterwarnings("ignore")
 import pandas as pd
 import networkx as nx
@@ -9,13 +10,16 @@ import matplotlib.pyplot as plt
 from matplotlib.pyplot import figure
 from matplotlib.lines import Line2D
 import sklearn
-stopwords = list(sklearn.feature_extraction.text.ENGLISH_STOP_WORDS)
-figure(figsize=(18, 15), dpi=300)
+from operator import add
 
+stopwords = list(sklearn.feature_extraction.text.ENGLISH_STOP_WORDS)
+np.random.seed(0)
 
 import stanza
+
 stanza.download('en')
-nlp = stanza.Pipeline(lang='en', processors='tokenize,mwt,pos,lemma,depparse',use_gpu=True)
+nlp = stanza.Pipeline(lang='en', processors='tokenize,mwt,pos,lemma,depparse', use_gpu=True)
+
 
 def topic_name(x):
     org = x
@@ -27,20 +31,23 @@ def topic_name(x):
         if elem: words.append(" ".join(elem))
     return ",\n".join(set(words))
 
+
 deontic_map = {"must": 'black',
                "should": "mediumpurple",
                "can": 'green',
                "may": 'green',
                "might": "green",
                "could": 'green',
-               "other": "lightblue"}
+               "other": "blue",
+               'may not': 'black',
+               'can not': 'black'}
 
 components = ['Attribute', 'Deontic', 'Object']
 result = pd.read_csv('main.csv', usecols=components)
 result.replace("", np.nan, inplace=True)
 result.dropna(subset=["Attribute", "Object"], how='any', inplace=True)
 
-#replace first person
+# replace first person
 for col in ["Attribute", "Object"]:
     result[col] = result[col].apply(lambda x: x.replace(" we ", " asf "))
     result[col] = result[col].apply(lambda x: x.replace("your ", "project "))
@@ -48,20 +55,20 @@ for col in ["Attribute", "Object"]:
     result[col] = result[col].apply(lambda x: x.replace("you ", "project "))
     result[col] = result[col].apply(lambda x: x.replace(" us ", " asf  "))
 
-    result[col] = result[col].replace("we","asf")
+    result[col] = result[col].replace("we", "asf")
     result[col] = result[col].replace("our", "asf")
     result[col] = result[col].replace("your", "project")
     result[col] = result[col].replace("you", "project")
     result[col] = result[col].replace("us", "asf")
 
-result.fillna("",inplace=True)
-result['Deontic'] = result['Deontic'].apply(lambda x : x if x in deontic_map else "other")
+result.fillna("", inplace=True)
+result['Deontic'] = result['Deontic'].apply(lambda x: x if x in deontic_map else "other")
 
 entries = result['Attribute'].tolist()
 entries.extend(result['Object'].tolist())
-hdbscan_model = HDBSCAN(metric='euclidean', cluster_selection_method='eom',min_cluster_size=15, min_samples=5,
+hdbscan_model = HDBSCAN(metric='euclidean', cluster_selection_method='eom', min_cluster_size=15, min_samples=5,
                         prediction_data=True)
-topic_model = BERTopic(top_n_words=3, hdbscan_model=hdbscan_model, nr_topics='auto', n_gram_range=(1,2))
+topic_model = BERTopic(top_n_words=3, hdbscan_model=hdbscan_model, nr_topics='auto', n_gram_range=(1, 2))
 topic_model.hdbscan_model.gen_min_span_tree = True
 topic_model.umap_model.random_state = 0  ##set seed to enable reproduction of clustering
 
@@ -88,46 +95,73 @@ G = nx.MultiDiGraph()
 #     #     print(exp)
 #     G.add_edge(row.Attribute_group, row.Object_group, color=row.Deontic)
 
-for _, row in result.iterrows():
-    data = G.get_edge_data(row.Attribute_group, row.Object_group, default ={})
-    try:
-        data = [v for k,v in data.items() if v["color"] == row.Deontic][0]
-        # we added this one before, just increase the weight by one
-        G.remove_edge(row.Attribute_group, row.Object_group, key=row.Deontic)
-        G.add_edge(row.Attribute_group, row.Object_group, color=row.Deontic, weight=data['weight'] + 1, key=row.Deontic)
-    except Exception as exp:
-        G.add_edge(row.Attribute_group, row.Object_group, weight = 1, color=row.Deontic, key=row.Deontic)
+SNR_map = {'blue': 'Strategies', 'green': 'Norms and Requirements : May/Can',
+           'mediumpurple': 'Norms and Requirements : Should', 'black': "Norms and Requirements : Must"}
 
-pos = nx.spring_layout(G)
-nx.draw_networkx_nodes(G, pos, node_color='r', node_size=100, alpha=1)
-ax = plt.gca()
+for idx, row in result.iterrows():
+    G.add_edge(row.Attribute_group, row.Object_group, weight=1, color=row.Deontic, key=idx)
+    # data = G.get_edge_data(row.Attribute_group, row.Object_group, default ={})
+    # try:
+    #     data = [v for k,v in data.items() if v["color"] == row.Deontic][0]
+    #     # we added this one before, just increase the weight by one
+    #     G.remove_edge(row.Attribute_group, row.Object_group, key=row.Deontic)
+    #     G.add_edge(row.Attribute_group, row.Object_group, color=row.Deontic, weight=data['weight'] + 1, key=row.Deontic)
+    # except Exception as exp:
+    # G.add_edge(row.Attribute_group, row.Object_group, weight = 1, color=row.Deontic, key=row.Deontic)
 
-for (u,v,attrib_dict) in list(G.edges.data()):
-    radius = str(0.1 + 0.2*np.random.rand())
-    length = str(0.5 + 0.05*attrib_dict['weight'])
-    width = str(0.3 + 0.1**attrib_dict['weight'])
-    style = f"-|>,head_length={length},head_width={width}"
-    ax.annotate("",
-                xy=pos[u], xycoords='data',
-                xytext=pos[v], textcoords='data',
-                arrowprops=dict(arrowstyle=style, color=attrib_dict['color'],lw=1.5*attrib_dict['weight'],
-                shrinkA=5, shrinkB=5,
-                patchA=None, patchB=None,
-                connectionstyle=f"arc3,rad={radius}"
-                                ),
-                )
+pos = nx.kamada_kawai_layout(G)
+# ax = plt.gca()
+fig, axes = plt.subplots(2, 2, figsize=(30, 50))
+axes = axes.flatten()
 
-for node in G.nodes:
-    ax.text(pos[node][0]+.01, pos[node][1]+.01, node, fontsize=16, bbox=dict(facecolor='lemonchiffon', edgecolor='black'))
+for idx, shade in enumerate((SNR_map.keys())):
+
+    edges = [(u, v, k) for u, v, k in G.edges if G[u][v][k]['color'] == shade]
+    weights = [G[u][v][k]['weight'] * 2 for u, v, k in edges]
+    nodes = [];
+    for u, v, x in edges:
+        nodes.extend([u, v])
+
+    chance = -0.5 if np.random.rand() < 0.5 else 0.5
+    axes[idx].set_title(SNR_map[shade], font_size=32, font_weight='heavy')
+    nx.draw_networkx(G, pos, node_color='lemonchiffon', nodelist=set(nodes), font_size=25, edgelist=edges,
+                     edge_color=shade, width=weights,
+                     node_size=40000, alpha=1, with_labels=True, font_weight='bold',
+                     connectionstyle=f"arc3,rad={chance}",
+                     arrowstyle=f"-|>,head_length=1.5,head_width=1.2", ax=axes[idx])  #
+    # ax.axis('off')
+
+fig.tight_layout()
+
+# edge_labels = nx.get_edge_attributes(G,'weight')
+# nx.draw_networkx_edge_labels(G,pos,edge_labels=edge_labels)
+
+# for (u,v,attrib_dict) in list(G.edges.data()):
+#     radius = str(0.1 + 0.5*np.random.rand())
+#     length = str(0.5 + 0.05*attrib_dict['weight'])
+#     width = str(0.3 + 0.1**attrib_dict['weight'])
+#     style = f"-|>,head_length={length},head_width={width}"
+#     ax.annotate("",
+#                 xy=list(map(add, pos[u], [0.05,-0.05])), xycoords='data',
+#                 xytext=list(map(add, pos[v], [-0.05,0.05])), textcoords='data',
+#                 arrowprops=dict(arrowstyle=style, color=attrib_dict['color'],lw=1.5*attrib_dict['weight'],
+#                 shrinkA=5, shrinkB=5,
+#                 patchA=None, patchB=None,
+#                 connectionstyle=f"arc3,rad={radius}"
+#                                 ),
+#                 )
+
+# for node in G.nodes:
+#     ax.text(pos[node][0]+.01, pos[node][1]+.01, node, fontsize=16, bbox=dict(facecolor='lemonchiffon', edgecolor='black'))
 
 
-custom_lines = [Line2D([0], [0], color='lightblue', lw=4),
-                Line2D([0], [0], color='green', lw=4),
-                Line2D([0], [0], color='mediumpurple', lw=4),
-                Line2D([0], [0], color='black', lw=4)]
+# custom_lines = [Line2D([0], [0], color='lightblue', lw=4),
+#                 Line2D([0], [0], color='green', lw=4),
+#                 Line2D([0], [0], color='mediumpurple', lw=4),
+#                 Line2D([0], [0], color='black', lw=4)]
 
 
-ax.legend(custom_lines, ['Norm', 'May/Can', 'Should', "Must"], ncol=4, loc="upper right", prop={'size': 16})
+# ax.legend(custom_lines, ['Strategies', 'May/Can', 'Should', "Must"], ncol=4, loc="upper right", prop={'size': 16})
 
-plt.axis('off')
-plt.savefig("ASF_Graph.jpg",dpi=300)
+# plt.axis('off')
+plt.savefig("ASF_Graph.jpg", dpi=300)

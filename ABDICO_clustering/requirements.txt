@@ -1,5 +1,5 @@
 networkx
 transformers
 sentence-transformers
-bertopic
+bertopic==0.16.0
 stanza
