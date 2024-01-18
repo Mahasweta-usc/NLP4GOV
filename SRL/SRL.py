@@ -178,8 +178,8 @@ class SRL:
 
   def detect_sub(self,text):
       doc = nlp(text)
-      # sub_toks = [word.text for sent in doc.sentences for word in sent.words if 'subj' in word.deprel]
-      sub_toks = [word.text for sent in doc.sentences for word in sent.words if word.deprel in ["nsubj",'csubj']]
+      sub_toks = [word.text for sent in doc.sentences for word in sent.words if 'subj' in word.deprel]
+      # sub_toks = [word.text for sent in doc.sentences for word in sent.words if word.deprel in ["nsubj",'csubj']]
       if sub_toks: return True
       else: return False
   #argument matching
@@ -206,8 +206,8 @@ class SRL:
             keys.remove('ARG0')
 
         # if keys: return ", ".join(x[keys[0]])
-        if keys:
-            return ", ".join([x[k] for k in keys])
+        # if keys:
+        #     return ", ".join([x[k] for k in keys])
         else: return ""
 
     if arg == 'aim_inf': return " ".join(x['V'])
