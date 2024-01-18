@@ -30,18 +30,14 @@ for file_name in file_names:
         elif "db2.csv" in file_name:
             db2 = pd.read_csv(file_path, usecols=[column_name])
 
-try:
- db1 = db1['Raw Institutional Statement'].apply(lambda x: sent_tokenize(x))
- db1 = db1.explode('Raw Institutional Statement')
- db1 = db1.dropna()
- db1 = db1.reset_index(drop=True)
 
- db2 = db2['Raw Institutional Statement'].apply(lambda x: sent_tokenize(x))
- db2 = db2.explode('Raw Institutional Statement')
- db2 = db2.dropna()
- db2 = db2.reset_index(drop=True)
+db1['Raw Institutional Statement'] = db1['Raw Institutional Statement'].apply(lambda x: sent_tokenize(x))
+db1 = db1.explode('Raw Institutional Statement').dropna()
+db1 = db1.reset_index(drop=True)
 
-except: print("You need to identify two communities to compare")
+db2['Raw Institutional Statement'] = db2['Raw Institutional Statement'].apply(lambda x: sent_tokenize(x))
+db2 = db2.explode('Raw Institutional Statement').dropna()
+db2 = db2.reset_index(drop=True)
 
 word_embedding_model = SentenceTransformer("all-mpnet-base-v2")
 
