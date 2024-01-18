@@ -205,9 +205,9 @@ class SRL:
         if 'ARG0' in x:
             keys.remove('ARG0')
 
-        if keys: return ", ".join(x[keys[0]])
-        # if keys:
-        #     return ", ".join([x[k] for k in keys])
+        # if keys: return ", ".join(x[keys[0]])
+        if keys:
+            return ", ".join([x[k] for k in keys])
         else: return ""
 
     if arg == 'aim_inf': return " ".join(x['V'])
