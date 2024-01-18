@@ -136,7 +136,7 @@ class SRL:
             print("Dataset after removing incomplete annotations: ", data.shape[0])
         else:
             data.dropna(subset=['attribute', "deontic", "aim", "object", "condition", "orelse"], how='all', inplace=True)
-            print("Dataset after removing uncoded/non-ABDI statements: ", data.shape[0])
+            print("Dataset after removing uncoded statements: ", data.shape[0])
     else:
         data.dropna(subset=['raw institutional statement'], how='any', inplace=True)
 
@@ -204,6 +204,8 @@ class SRL:
             keys.remove('ARG0')
 
         if keys: return ", ".join(x[keys[0]])
+        # if keys:
+        #     return ", ".join([x[k] for k in keys])
         else: return ""
 
     if arg == 'aim_inf': return " ".join(x['V'])
