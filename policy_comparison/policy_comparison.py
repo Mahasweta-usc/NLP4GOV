@@ -19,7 +19,8 @@ file_names = ['db1.csv', 'db2.csv']
 
 def sent_tokenize(x):
     doc = nlp(x)
-    return [sent.text for sent in doc.sentences if len(sent.text) > 5]
+    # return [sent.text for sent in doc.sentences if len(sent.text) > 5]
+    return [elem for elem in x.split("\n") if len(elem) > 5]
 
 
 for file_name in file_names:
