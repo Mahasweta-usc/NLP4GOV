@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="eb61224d-3886-4d51-a027-02d2a3e7fba2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ABDICO_clustering/gen_ASF_graph.py" beforeDir="false" afterPath="$PROJECT_DIR$/ABDICO_clustering/gen_ASF_graph.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ABDICO_clustering/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ABDICO_clustering/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/policy_comparison/policy_comparison.py" beforeDir="false" afterPath="$PROJECT_DIR$/policy_comparison/policy_comparison.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/policy_comparison/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/policy_comparison/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,5 +52,16 @@
       <updated>1704987627936</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/policy_comparison/policy_comparison.py</url>
+          <line>34</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -6,13 +6,21 @@ from wordcloud import WordCloud
 from mpl_toolkits.mplot3d import Axes3D
 from IPython.display import display, HTML
 from sentence_transformers import SentenceTransformer, util
+import stanza
 
-
-#read files
+stanza.download('en')
+nlp = stanza.Pipeline(lang='en', processors='tokenize,mwt,pos,lemma,depparse', use_gpu=True)
+# read files
 
 column_name = "Raw Institutional Statement"
 data = '/content/'
-file_names = ['db1.csv','db2.csv']
+file_names = ['db1.csv', 'db2.csv']
+
+
+def sent_tokenize(x):
+    doc = nlp(x)
+    return [sent.text for sent in doc.sentences if len(sent.text) > 5]
+
 
 for file_name in file_names:
     file_path = os.path.join(data, file_name)
@@ -22,13 +30,21 @@ for file_name in file_names:
         elif "db2.csv" in file_name:
             db2 = pd.read_csv(file_path, usecols=[column_name])
 
-db1 = db1.dropna()
-db1 = db1.reset_index(drop=True)
+try:
+ db1 = db1['Raw Institutional Statement'].apply(lambda x: sent_tokenize(x))
+ db1 = db1.explode('Raw Institutional Statement')
+ db1 = db1.dropna()
+ db1 = db1.reset_index(drop=True)
 
-db2 = db2.dropna()
-db2 = db2.reset_index(drop=True)
+ db2 = db2['Raw Institutional Statement'].apply(lambda x: sent_tokenize(x))
+ db2 = db2.explode('Raw Institutional Statement')
+ db2 = db2.dropna()
+ db2 = db2.reset_index(drop=True)
+
+except: print("You need to identify two communities to compare")
 
 word_embedding_model = SentenceTransformer("all-mpnet-base-v2")
+
 
 class policy_comparison:
     def __init__(self, agent=None):
@@ -36,13 +52,13 @@ class policy_comparison:
 
     def sentence_embeddings_encode(self, word_embedding_model, data):
         return word_embedding_model.encode(data)
-    
+
     def show_db(self):
         print("Policy Database 1:", db1.head(5))
         print("\n\n")
         print("Policy Database 2:", db2.head(5))
         return db1, db2
-    
+
     def show_results(self, search_results):
         # Retrieve and store the results in the DataFrame
         results_df = pd.DataFrame(columns=["Policy Database 1", "Policy Database 2", "Similarity Score"])
@@ -58,12 +74,12 @@ class policy_comparison:
 
                 # Sort the sentences alphabetically to eliminate duplicates
                 pair_key = tuple(sorted([sentence1, sentence2]))
-                
+
                 # Check if this pair has been seen before
                 if pair_key not in seen_pairs:
                     results_df.loc[len(results_df)] = [sentence1, sentence2, score]
                     seen_pairs.add(pair_key)
-                    
+
         results_df = results_df.sort_values(by='Similarity Score', ascending=False)
         display(HTML(results_df.head(10).to_html()))
         return results_df
@@ -76,7 +92,7 @@ class policy_comparison:
         plt.ylabel('Probability Density')
         plt.title('Similarity Score PDF')
         plt.show()
-    
+
     def plot_WordCloud(self):
 
         fig, axs = plt.subplots(2)
@@ -95,7 +111,7 @@ class policy_comparison:
 
         fig.suptitle("Word Cloud of Policy Sets")
         plt.show()
-    
+
     def plot_Similarity_Scores_3D(self, results_df):
         sentence1_ids = results_df.index
         sentence2_ids = results_df.index
