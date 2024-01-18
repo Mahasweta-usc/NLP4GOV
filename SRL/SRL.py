@@ -179,7 +179,7 @@ class SRL:
   def detect_sub(self,text):
       doc = nlp(text)
       # sub_toks = [word.text for sent in doc.sentences for word in sent.words if 'subj' in word.deprel]
-      sub_toks = [word.text for sent in doc.sentences for word in sent.words if word.deprel in ["nsubj",'csubj']]
+      sub_toks = [word.text for sent in doc.sentences for word in sent.words if word.deprel in ["nsubj"]]
       if sub_toks: return True
       else: return False
   #argument matching
@@ -225,7 +225,7 @@ class SRL:
 
       def tokens(text):
           doc= nlp(text)
-          return ([word.lemma for sent in doc.sentences for word in sent.words if word.text ]) #in all_words
+          return ([word.lemma for sent in doc.sentences for word in sent.words if not word.text in all_words])
           # return word_tokenize(text)
 
       def remove_punc(text):
