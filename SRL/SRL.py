@@ -159,7 +159,7 @@ class SRL:
     data.sort_values(by=['arg_len'], inplace=True, ascending=False)
 
     #only keep frame parsed for root verbs and has agents/objects  & (any(elem in x['srl_parsed'] for elem in main_arguments))
-    data['keep'] = data.apply(lambda x : x['ROOT'] == x['srl_verb'] or x['ROOT'] == "<longest>", axis=1)
+    data['keep'] = data.apply(lambda x : x['ROOT'] == x['srl_verb'] or x['ROOT'] == "<longest>" or x['srl_verb'] == "", axis=1)
 
     ret_val = data[data['keep']]
     ret_val.drop_duplicates(subset=['raw institutional statement'], keep = 'first', inplace=True)
