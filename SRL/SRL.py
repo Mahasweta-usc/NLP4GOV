@@ -191,7 +191,7 @@ class SRL:
             return ", ".join(x['ARG0'])
 
         ##object present
-        if len(keys) > 1 and (self.detect_sub(text) and 'ARG1' in x):
+        if len(keys) >= 1 and (self.detect_sub(text) and 'ARG1' in x):
             return ", ".join(x['ARG1'])
 
         return ""
@@ -199,15 +199,15 @@ class SRL:
 
 
     if arg == 'object_inf':
-        if 'ARG0' not in x and (self.detect_sub(text) and 'ARG1' in x) and len(keys) > 1:
+        if 'ARG0' not in x and (self.detect_sub(text) and 'ARG1' in x) and len(keys) >= 1:
             keys.remove('ARG1')
 
         if 'ARG0' in x:
             keys.remove('ARG0')
 
-        # if keys: return ", ".join(x[keys[0]])
-        if keys:
-            return ", ".join([" ".join(x[k]) for k in keys])
+        if keys: return ", ".join(x[keys[0]])
+        # if keys:
+        #     return ", ".join([" ".join(x[k]) for k in keys])
         else: return ""
 
     if arg == 'aim_inf': return " ".join(x['V'])
