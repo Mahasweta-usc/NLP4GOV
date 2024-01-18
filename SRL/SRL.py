@@ -110,6 +110,8 @@ class SRL:
 
   #read a file and apply preprocessing
   def process_aim(self, x):
+      if x == '<skipped>': return
+
       types = [word.lemma for sent in nlp(x).sentences for word in sent.words if 'verb' in word.upos.lower()]
       if types: return ", ".join(set(types))
       else: return x
@@ -135,18 +137,6 @@ class SRL:
         data.dropna(subset=['raw institutional statement'], how='any', inplace=True)
         data.dropna(subset=['attribute', "deontic", "aim", "object", "condition", "or else"], how='all', inplace=True)
         print("Dataset after removing uncoded statements: ", data.shape[0])
-            # data.dropna(subset=['raw institutional statement', "aim"], how='any', inplace=True)
-            # print("Dataset after removing incomplete annotations: ", data.shape[0])
-    #     else:
-    #         data.dropna(subset=['attribute', "deontic", "aim", "object", "condition", "or else"], how='all', inplace=True)
-    #         print("Dataset after removing uncoded statements: ", data.shape[0])
-    # else:
-
-    # data.dropna(subset=column_names, inplace=True, how='all')
-    # #currently not considering multi level coding
-    # data.fillna('', inplace=True)
-    # data = data[data['aim'] != ""]
-    #keep only verbs in aim
 
     data['sentences'] = data['raw institutional statement'].apply(lambda x : [sentence.text.lower() for sentence in nlp(x).sentences][0])
     # data = data.explode('sentences')
