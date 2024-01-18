@@ -132,7 +132,8 @@ class SRL:
     #statement needs to contain aim and recipient of action at the least
     if self.agent == "eval":
         # if not self.fpc:
-        data.dropna(subset=['raw institutional statement','attribute', "deontic", "aim", "object", "condition", "or else"], how='all', inplace=True)
+        data.dropna(subset=['raw institutional statement'], how='any', inplace=True)
+        data.dropna(subset=['attribute', "deontic", "aim", "object", "condition", "or else"], how='all', inplace=True)
         print("Dataset after removing uncoded statements: ", data.shape[0])
             # data.dropna(subset=['raw institutional statement', "aim"], how='any', inplace=True)
             # print("Dataset after removing incomplete annotations: ", data.shape[0])
@@ -140,7 +141,6 @@ class SRL:
     #         data.dropna(subset=['attribute', "deontic", "aim", "object", "condition", "or else"], how='all', inplace=True)
     #         print("Dataset after removing uncoded statements: ", data.shape[0])
     # else:
-    #     data.dropna(subset=['raw institutional statement'], how='any', inplace=True)
 
     # data.dropna(subset=column_names, inplace=True, how='all')
     # #currently not considering multi level coding
