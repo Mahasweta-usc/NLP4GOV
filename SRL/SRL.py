@@ -110,7 +110,7 @@ class SRL:
 
   #read a file and apply preprocessing
   def process_aim(self, x):
-      if x == '<skipped>': return
+      if x == '<skipped>': return x
 
       types = [word.lemma for sent in nlp(x).sentences for word in sent.words if 'verb' in word.upos.lower()]
       if types: return ", ".join(set(types))
