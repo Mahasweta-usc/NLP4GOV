@@ -134,9 +134,9 @@ class SRL:
         if not self.fpc:
             data.dropna(subset=['raw institutional statement', "aim"], how='any', inplace=True)
             print("Dataset after removing incomplete annotations: ", data.shape[0])
-        else:
-            data.dropna(subset=['attribute', "deontic", "aim", "object"], how='all', inplace=True)
-            print("Dataset after removing uncoded/non-ABDI statements: ", data.shape[0])
+        else: pass
+            # data.dropna(subset=['attribute', "deontic", "aim", "object"], how='all', inplace=True)
+            # print("Dataset after removing uncoded/non-ABDI statements: ", data.shape[0])
     else:
         data.dropna(subset=['raw institutional statement'], how='any', inplace=True)
 
