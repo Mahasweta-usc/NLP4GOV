@@ -136,7 +136,7 @@ class SRL:
             print("Dataset after removing incomplete annotations: ", data.shape[0])
         else:
             data.dropna(subset=['attribute', "deontic", "aim", "object"], how='all', inplace=True)
-            print("Dataset after removing uncoded statements: ", data.shape[0])
+            print("Dataset after removing uncoded/non-ABDI statements: ", data.shape[0])
     else:
         data.dropna(subset=['raw institutional statement'], how='any', inplace=True)
 
@@ -297,18 +297,19 @@ class SRL:
 
         #atleast Actor or object is span
         if not self.fpc:
-            data = data[(data['aim'] != '<skipped>')]
-            print("Dataset after removing abstractive aims: ", data.shape[0])
-            data = data[(data['attribute'] != '<skipped>') | (data['object'] != '<skipped>')]
+            # data = data[(data['aim'] != '<skipped>')]
+            # print("Dataset after removing abstractive aims: ", data.shape[0])
+            data = data[(data['attribute'] != '<skipped>') | (data['object'] != '<skipped>')
+                        | (data['aim'] != '<skipped>')]
 
             #lemmatize aims
-            print("Dataset after removing abstractive attribute/objects: ", data.shape[0])
+            print("Dataset after removing abstractive coding: ", data.shape[0])
 
         data['aim'] = data['aim'].apply(lambda x: self.process_aim(x))
 
     #SRL inference
     for arg in ['attribute_inf','object_inf','aim_inf','deontic_inf']:
-        data[arg] = data.apply(lambda x : self.argmatch(x.srl_parsed,x.sentences,arg),axis=1)
+        data[arg] = data.apply(lambda x : self.argmatch(x.srl_parsed, x.sentences, arg),axis=1)
 
 
     data.to_csv(out_path,index=False)
