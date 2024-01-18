@@ -303,8 +303,10 @@ class SRL:
         if not self.fpc:
             # data = data[(data['aim'] != '<skipped>')]
             # print("Dataset after removing abstractive aims: ", data.shape[0])
-            data = data[(data['attribute'] != '<skipped>') | (data['object'] != '<skipped>')
-                        | (data['aim'] != '<skipped>')]
+            print("Abstractive coding:", data[(data['attribute'] != '<skipped>') | (data['object'] != '<skipped>')
+                        & (data['aim'] != '<skipped>') | (data['deontic'] != '<skipped>')].shape[0])
+
+            data = data[(data['attribute'] != '<skipped>') & (data['object'] != '<skipped>') & (data['aim'] != '<skipped>') & (data['deontic'] != '<skipped>')]
 
             #lemmatize aims
             print("Dataset after removing abstractive coding: ", data.shape[0])
