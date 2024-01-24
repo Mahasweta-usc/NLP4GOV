@@ -155,7 +155,7 @@ for idx, shade in enumerate((SNR_map.keys())):
     pic = nx.draw_networkx(G, pos, node_color='lemonchiffon', nodelist=set(nodes), font_size=25, edgelist=edges,
                      edge_color=shade, width=weights,
                      node_size=40000, alpha=1, with_labels=True, font_weight='bold',
-                     connectionstyle=f"arc3,rad={chance:.2f}".format(chance = -0.5 if np.random.rand() < 0.5 else 0.5),
+                     connectionstyle=f"arc3,rad=-0.5" if np.random.rand() < 0.5 else f"arc3,rad=0.5",
                      arrowstyle=f"-|>,head_length=1.5,head_width=1.2", ax=axes[idx])  #
     # pic.set_edgecolor('r')
     # ax.axis('off')
