@@ -31,7 +31,7 @@ def topic_name(x):
     words = []
     for elem in x:
         elem = set(elem.split()) - set(stopwords)
-        if elem: words.append(" ".join(elem))
+        if elem: words.append("\n".join(elem))
     return ",\n".join(set(words))
 
 
@@ -40,6 +40,7 @@ deontic_map = {"must": 'black',
                "will not" : "red",
                "shall not" : "red",
                "should not" : "red",
+               "not" : "red",
                "can": 'green',
                "may": 'green',
                "might": "green",
