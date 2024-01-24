@@ -15,6 +15,10 @@ from operator import add
 stopwords = list(sklearn.feature_extraction.text.ENGLISH_STOP_WORDS)
 np.random.seed(0)
 
+import torch
+torch.use_deterministic_algorithms(True)
+torch.manual_seed(0)
+
 import stanza
 
 stanza.download('en')
@@ -100,7 +104,7 @@ G = nx.MultiDiGraph()
 #     G.add_edge(row.Attribute_group, row.Object_group, color=row.Deontic)
 
 SNR_map = {'green': 'Strategies',
-           'mediumpurple': 'Norms and Requirements : Should', 'black': "Norms and Requirements : Must",
+           'mediumpurple': 'Recommended Norms/Requirements : Should', 'black': "Binding Norms/Requirements : Must",
            'red': 'Forbidden'}
 
 for idx, row in result.iterrows():
@@ -120,7 +124,7 @@ fig, axes = plt.subplots(2, 2, figsize=(30, 50))
 axes = axes.flatten()
 
 for idx, shade in enumerate((SNR_map.keys())):
-
+    print(shade)
     edges = [(u, v, k) for u, v, k in G.edges if G[u][v][k]['color'] == shade]
     weights = [G[u][v][k]['weight'] * 2 for u, v, k in edges]
     nodes = [];
