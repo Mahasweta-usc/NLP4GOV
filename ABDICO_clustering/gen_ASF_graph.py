@@ -131,7 +131,7 @@ for idx, shade in enumerate((SNR_map.keys())):
         nodes.extend([u, v])
 
     chance = -0.5 if np.random.rand() < 0.5 else 0.5
-    axes[idx].set_title(SNR_map[shade], font_size=32, font_weight='heavy')
+    axes[idx].set_title(SNR_map[shade], fontsize=32, fontweight='heavy')
     nx.draw_networkx(G, pos, node_color='lemonchiffon', nodelist=set(nodes), font_size=25, edgelist=edges,
                      edge_color=shade, width=weights,
                      node_size=40000, alpha=1, with_labels=True, font_weight='bold',
