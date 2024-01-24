@@ -134,7 +134,7 @@ for idx, shade in enumerate((SNR_map.keys())):
     chance = -0.5 if np.random.rand() < 0.5 else 0.5
     axes[idx].set_title(SNR_map[shade], fontsize=32, fontweight='heavy')
     #draw node edges
-    nodes = draw_networkx_nodes(G, pos, node_color='lemonchiffon', nodelist=set(nodes), font_size=25)
+    nodes = nx.draw_networkx_nodes(G, pos, node_color='lemonchiffon', nodelist=set(nodes), font_size=25)
     nodes.set_edgecolor('r')
 
     nx.draw_networkx(G, pos, node_color='lemonchiffon', nodelist=set(nodes), font_size=25, edgelist=edges,
