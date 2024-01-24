@@ -133,16 +133,16 @@ for idx, shade in enumerate((SNR_map.keys())):
     out_track = {}
     outedge = [edge[0] for edge in edges]
     for node in set(nodes):
-        count = {node: outedge.count(u)}
+        count = {node: outedge.count(node)}
         out_track.update(count)
-    out_track = {k: v for k, v in sorted(out_track.items(), key=lambda item: item[1])}
+    out_track = {k: v for k, v in sorted(out_track.items(), key=lambda item: item[1], , reverse=True)}
 
     in_track = {}
     inedge = [edge[1] for edge in edges]
     for node in set(nodes):
-        count = {node: inedge.count(u)}
+        count = {node: inedge.count(node)}
         in_track.update(count)
-    in_track = {k: v for k, v in sorted(in_track.items(), key=lambda item: item[1])}
+    in_track = {k: v for k, v in sorted(in_track.items(), key=lambda item: item[1], , reverse=True)}
 
     print(shade,in_track,out_track)
     chance = -0.5 if np.random.rand() < 0.5 else 0.5
