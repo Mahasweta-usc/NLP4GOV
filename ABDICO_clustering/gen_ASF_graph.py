@@ -150,7 +150,7 @@ for idx, shade in enumerate((SNR_map.keys())):
     axes[idx].set_title(SNR_map[shade], fontsize=32, fontweight='heavy')
     #draw node edges
     nodes = nx.draw_networkx_nodes(G, pos, node_color='lemonchiffon', nodelist=set(nodes), node_size=40000, )
-    nx.draw_networkx_labels(font_size=25, alpha=1)
+    nx.draw_networkx_labels(G, pos, font_size=25, alpha=1)
     nodes.set_edgecolor('r')
 
     # pic = nx.draw_networkx(G, pos, node_color='lemonchiffon', nodelist=set(nodes), font_size=25, edgelist=edges,
