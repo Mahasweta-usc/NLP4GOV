@@ -34,13 +34,17 @@ def topic_name(x):
 
 deontic_map = {"must": 'black',
                "should": "mediumpurple",
+               "will not" : "red",
+               "shall not" : "red",
+               "should not" : "red",
                "can": 'green',
                "may": 'green',
                "might": "green",
                "could": 'green',
-               "other": "blue",
-               'may not': 'black',
-               'can not': 'black'}
+               "other": "green",
+               'may not': 'red',
+               'can not': 'red',
+               'must not': 'red'}
 
 components = ['Attribute', 'Deontic', 'Object']
 result = pd.read_csv('main.csv', usecols=components)
@@ -95,8 +99,9 @@ G = nx.MultiDiGraph()
 #     #     print(exp)
 #     G.add_edge(row.Attribute_group, row.Object_group, color=row.Deontic)
 
-SNR_map = {'blue': 'Strategies', 'green': 'Norms and Requirements : May/Can',
-           'mediumpurple': 'Norms and Requirements : Should', 'black': "Norms and Requirements : Must"}
+SNR_map = {'green': 'Strategies',
+           'mediumpurple': 'Norms and Requirements : Should', 'black': "Norms and Requirements : Must",
+           'red': 'Forbidden'}
 
 for idx, row in result.iterrows():
     G.add_edge(row.Attribute_group, row.Object_group, weight=1, color=row.Deontic, key=idx)
