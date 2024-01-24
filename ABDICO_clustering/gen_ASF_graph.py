@@ -128,9 +128,23 @@ for idx, shade in enumerate((SNR_map.keys())):
     weights = [G[u][v][k]['weight'] * 2 for u, v, k in edges]
     nodes = [];
     for u, v, x in edges:
-        print(u,v)
         nodes.extend([u, v])
 
+    out_track = {}
+    outedge = [edge[0] for edges]
+    for node in set(nodes):
+        count = {node : len([u if u in outedge])}
+        out_track.update(count)
+    out_track = {k: v for k, v in sorted(out_track.items(), key=lambda item: item[1])}
+
+    in_track = {}
+    inedge = [edge[1] for edges]
+    for node in set(nodes):
+        count = {node: len([u if u in inedge])}
+        in_track.update(count)
+    in_track = {k: v for k, v in sorted(in_track.items(), key=lambda item: item[1])}
+
+    print(shade,in_track,out_track)
     chance = -0.5 if np.random.rand() < 0.5 else 0.5
     axes[idx].set_title(SNR_map[shade], fontsize=32, fontweight='heavy')
     #draw node edges
@@ -142,7 +156,7 @@ for idx, shade in enumerate((SNR_map.keys())):
                      node_size=40000, alpha=1, with_labels=True, font_weight='bold',
                      connectionstyle=f"arc3,rad={chance}",
                      arrowstyle=f"-|>,head_length=1.5,head_width=1.2", ax=axes[idx])  #
-    pic.set_edgecolor('r')
+    # pic.set_edgecolor('r')
     # ax.axis('off')
 
 fig.tight_layout()
