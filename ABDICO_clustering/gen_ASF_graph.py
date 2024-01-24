@@ -16,7 +16,6 @@ stopwords = list(sklearn.feature_extraction.text.ENGLISH_STOP_WORDS)
 np.random.seed(0)
 
 import torch
-torch.use_deterministic_algorithms(True)
 torch.manual_seed(0)
 
 import stanza
