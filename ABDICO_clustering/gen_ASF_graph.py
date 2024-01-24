@@ -131,14 +131,14 @@ for idx, shade in enumerate((SNR_map.keys())):
         nodes.extend([u, v])
 
     out_track = {}
-    outedge = [edge[0] for edges]
+    outedge = [edge[0] for edge in edges]
     for node in set(nodes):
         count = {node : len([u if u in outedge])}
         out_track.update(count)
     out_track = {k: v for k, v in sorted(out_track.items(), key=lambda item: item[1])}
 
     in_track = {}
-    inedge = [edge[1] for edges]
+    inedge = [edge[1] for edge in edges]
     for node in set(nodes):
         count = {node: len([u if u in inedge])}
         in_track.update(count)
