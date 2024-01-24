@@ -124,15 +124,19 @@ fig, axes = plt.subplots(2, 2, figsize=(30, 50))
 axes = axes.flatten()
 
 for idx, shade in enumerate((SNR_map.keys())):
-    print(shade)
     edges = [(u, v, k) for u, v, k in G.edges if G[u][v][k]['color'] == shade]
     weights = [G[u][v][k]['weight'] * 2 for u, v, k in edges]
     nodes = [];
     for u, v, x in edges:
+        print(u,v)
         nodes.extend([u, v])
 
     chance = -0.5 if np.random.rand() < 0.5 else 0.5
     axes[idx].set_title(SNR_map[shade], fontsize=32, fontweight='heavy')
+    #draw node edges
+    nodes = draw_networkx_nodes(G, pos, node_color='lemonchiffon', nodelist=set(nodes), font_size=25)
+    nodes.set_edgecolor('r')
+
     nx.draw_networkx(G, pos, node_color='lemonchiffon', nodelist=set(nodes), font_size=25, edgelist=edges,
                      edge_color=shade, width=weights,
                      node_size=40000, alpha=1, with_labels=True, font_weight='bold',
