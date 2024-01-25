@@ -153,7 +153,7 @@ for idx, shade in enumerate((SNR_map.keys())):
     # print(shade, "in_degree: ", in_track)
     # print("out_degree", out_track)
 
-    axes[idx].set_title(SNR_map[shade], fontsize=32, fontweight='heavy')
+    axes[idx].set_title(SNR_map[shade], fontsize=22, fontweight='heavy')
     #draw node edges
     # nodes = nx.draw_networkx_nodes(G, pos, node_color='lemonchiffon', node_size=40000)
     # nx.draw_networkx_labels(G, pos, font_size=25, alpha=1 , font_weight='bold')
@@ -163,9 +163,9 @@ for idx, shade in enumerate((SNR_map.keys())):
     #                  connectionstyle=f"arc3,rad=-0.5",
     #                  arrowstyle=f"-|>,head_length=1.5,head_width=1.2", ax=axes[idx])  #
 
-    nx.draw_networkx(new_G, pos, node_color='lemonchiffon', nodelist=set(nodes), font_size=16, edgelist=edges,
+    nx.draw_networkx(new_G, pos, node_color='lemonchiffon', nodelist=set(nodes), font_size=14, edgelist=edges,
                            edge_color=shade, width=weights,
-                           node_size=15000, alpha=1, with_labels=True, font_weight='bold',
+                           node_size=10000, alpha=1, with_labels=True, font_weight='bold',
                            connectionstyle=f"arc3,rad=-0.5",
                            arrowstyle=f"-|>,head_length=1,head_width=0.8", ax=axes[idx])  #
 
