@@ -118,9 +118,9 @@ for idx, row in result.iterrows():
     except Exception as exp:
         G.add_edge(row.Attribute_group, row.Object_group, weight = 1, color=row.Deontic, key=row.Deontic)
 
-pos = nx.spring_layout(G, k=0.0)
+pos = nx.spring_layout(G, k=0.1)
 # ax = plt.gca()
-fig, axes = plt.subplots(2, 2, figsize=(30, 50))
+fig, axes = plt.subplots(2, 2, figsize=(20, 30))
 axes = axes.flatten()
 
 for idx, shade in enumerate((SNR_map.keys())):
@@ -163,9 +163,9 @@ for idx, shade in enumerate((SNR_map.keys())):
     #                  connectionstyle=f"arc3,rad=-0.5",
     #                  arrowstyle=f"-|>,head_length=1.5,head_width=1.2", ax=axes[idx])  #
 
-    nx.draw_networkx(new_G, pos, node_color='lemonchiffon', nodelist=set(nodes), font_size=25, edgelist=edges,
+    nx.draw_networkx(new_G, pos, node_color='lemonchiffon', nodelist=set(nodes), font_size=22, edgelist=edges,
                            edge_color=shade, width=weights,
-                           node_size=40000, alpha=1, with_labels=True, font_weight='bold',
+                           node_size=30000, alpha=1, with_labels=True, font_weight='bold',
                            connectionstyle=f"arc3,rad=-0.5",
                            arrowstyle=f"-|>,head_length=1.5,head_width=1.2", ax=axes[idx])  #
 
