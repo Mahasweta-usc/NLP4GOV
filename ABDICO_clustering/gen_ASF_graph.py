@@ -108,15 +108,15 @@ SNR_map = {'green': 'Strategies',
            'red': 'Forbidden'}
 
 for idx, row in result.iterrows():
-    G.add_edge(row.Attribute_group, row.Object_group, weight=1, color=row.Deontic, key=idx)
-    # data = G.get_edge_data(row.Attribute_group, row.Object_group, default ={})
-    # try:
-    #     data = [v for k,v in data.items() if v["color"] == row.Deontic][0]
-    #     # we added this one before, just increase the weight by one
-    #     G.remove_edge(row.Attribute_group, row.Object_group, key=row.Deontic)
-    #     G.add_edge(row.Attribute_group, row.Object_group, color=row.Deontic, weight=data['weight'] + 1, key=row.Deontic)
-    # except Exception as exp:
-    # G.add_edge(row.Attribute_group, row.Object_group, weight = 1, color=row.Deontic, key=row.Deontic)
+    # G.add_edge(row.Attribute_group, row.Object_group, weight=1, color=row.Deontic, key=idx)
+    data = G.get_edge_data(row.Attribute_group, row.Object_group, default ={})
+    try:
+        data = [v for k,v in data.items() if v["color"] == row.Deontic][0]
+        # we added this one before, just increase the weight by one
+        G.remove_edge(row.Attribute_group, row.Object_group, key=row.Deontic)
+        G.add_edge(row.Attribute_group, row.Object_group, color=row.Deontic, weight=data['weight'] + 1, key=row.Deontic)
+    except Exception as exp:
+    G.add_edge(row.Attribute_group, row.Object_group, weight = 1, color=row.Deontic, key=row.Deontic)
 
 pos = nx.kamada_kawai_layout(G)
 # ax = plt.gca()
@@ -125,24 +125,25 @@ axes = axes.flatten()
 
 for idx, shade in enumerate((SNR_map.keys())):
     edges = [(u, v, k) for u, v, k in G.edges if G[u][v][k]['color'] == shade]
-    weights = [G[u][v][k]['weight'] * 2 for u, v, k in edges]
+    weights = [np.log2(G[u][v][k]['weight']) + 1 for u, v, k in edges]
     nodes = [];
     for u, v, x in edges:
         nodes.extend([u, v])
 
-    out_track = {}
-    outedge = [edge[0] for edge in edges]
-    for node in set(nodes):
-        count = {node: outedge.count(node)}
-        out_track.update(count)
-    out_track = {k: v for k, v in sorted(out_track.items(), key=lambda item: item[1], reverse=True)}
-
-    in_track = {}
-    inedge = [edge[1] for edge in edges]
-    for node in set(nodes):
-        count = {node: inedge.count(node)}
-        in_track.update(count)
-    in_track = {k: v for k, v in sorted(in_track.items(), key=lambda item: item[1], reverse=True)}
+    print("nodes: ", set(nodes))
+    # out_track = {}
+    # outedge = [edge[0] for edge in edges]
+    # for node in set(nodes):
+    #     count = {node: outedge.count(node)}
+    #     out_track.update(count)
+    # out_track = {k: v for k, v in sorted(out_track.items(), key=lambda item: item[1], reverse=True)}
+    #
+    # in_track = {}
+    # inedge = [edge[1] for edge in edges]
+    # for node in set(nodes):
+    #     count = {node: inedge.count(node)}
+    #     in_track.update(count)
+    # in_track = {k: v for k, v in sorted(in_track.items(), key=lambda item: item[1], reverse=True)}
 
     print(shade, "in_degree: ", in_track)
     print("out_degree", out_track)
