@@ -202,4 +202,4 @@ fig.tight_layout()
 # ax.legend(custom_lines, ['Strategies', 'May/Can', 'Should', "Must"], ncol=4, loc="upper right", prop={'size': 16})
 
 # plt.axis('off')
-plt.savefig("ASF_Graph.jpg", dpi=300)
+plt.savefig("ASF_Graph.pdf", dpi=300)
