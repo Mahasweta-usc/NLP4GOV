@@ -167,7 +167,7 @@ for idx, shade in enumerate((SNR_map.keys())):
                            edge_color=shade, width=weights,
                            node_size=10000, alpha=1, with_labels=True, font_weight='bold',
                            connectionstyle=f"arc3,rad=-0.5",
-                           arrowstyle=f"-|>,head_length=1,head_width=0.8", ax=axes[idx])  #
+                           arrowstyle=f"-|>,head_length=1,head_width=0.7", ax=axes[idx])  #
 
 fig.tight_layout()
 
