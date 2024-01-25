@@ -132,10 +132,10 @@ for idx, shade in enumerate((SNR_map.keys())):
 
     print("nodes: ", set(nodes))
 
-    new_G =  nx.MultiDiGraph()
+    new_G = nx.MultiDiGraph()
     new_G.add_nodes_from(nodes)
 
-    pos = nx.kamada_kawai_layout(new_G)
+    # pos = nx.kamada_kawai_layout(new_G)
     # out_track = {}
     # outedge = [edge[0] for edge in edges]
     # for node in set(nodes):
