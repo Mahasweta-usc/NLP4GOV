@@ -163,9 +163,9 @@ for idx, shade in enumerate((SNR_map.keys())):
     #                  connectionstyle=f"arc3,rad=-0.5",
     #                  arrowstyle=f"-|>,head_length=1.5,head_width=1.2", ax=axes[idx])  #
 
-    nx.draw_networkx(new_G, pos, node_color='lemonchiffon', nodelist=set(nodes), font_size=22, edgelist=edges,
+    nx.draw_networkx(new_G, pos, node_color='lemonchiffon', nodelist=set(nodes), font_size=18, edgelist=edges,
                            edge_color=shade, width=weights,
-                           node_size=30000, alpha=1, with_labels=True, font_weight='bold',
+                           node_size=20000, alpha=1, with_labels=True, font_weight='bold',
                            connectionstyle=f"arc3,rad=-0.5",
                            arrowstyle=f"-|>,head_length=1.5,head_width=1.2", ax=axes[idx])  #
 
