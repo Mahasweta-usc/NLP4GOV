@@ -118,14 +118,14 @@ for idx, row in result.iterrows():
     except Exception as exp:
         G.add_edge(row.Attribute_group, row.Object_group, weight = 1, color=row.Deontic, key=row.Deontic)
 
-pos = nx.spring_layout(G, k=0.1)
+pos = nx.spring_layout(G, k=0.0)
 # ax = plt.gca()
 fig, axes = plt.subplots(2, 2, figsize=(20, 30))
 axes = axes.flatten()
 
 for idx, shade in enumerate((SNR_map.keys())):
     edges = [(u, v, k) for u, v, k in G.edges if G[u][v][k]['color'] == shade]
-    weights = [(np.log2(G[u][v][k]['weight']) + 1)*2 for u, v, k in edges]
+    weights = [(np.log2(G[u][v][k]['weight']) + 1)*1.5 for u, v, k in edges]
     nodes = [];
     for u, v, x in edges:
         nodes.extend([u, v])
@@ -167,7 +167,7 @@ for idx, shade in enumerate((SNR_map.keys())):
                            edge_color=shade, width=weights,
                            node_size=20000, alpha=1, with_labels=True, font_weight='bold',
                            connectionstyle=f"arc3,rad=-0.5",
-                           arrowstyle=f"-|>,head_length=1.5,head_width=1.2", ax=axes[idx])  #
+                           arrowstyle=f"-|>,head_length=1.2,head_width=1", ax=axes[idx])  #
 
 fig.tight_layout()
 
