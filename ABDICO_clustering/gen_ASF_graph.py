@@ -105,7 +105,7 @@ G = nx.MultiDiGraph()
 
 SNR_map = {'green': 'Strategies',
            'mediumpurple': 'Recommended Norms/Requirements : Should', 'black': "Binding Norms/Requirements : Must",
-           'red': 'Forbidden'}
+           'red': 'Restrictions'}
 
 for idx, row in result.iterrows():
     # G.add_edge(row.Attribute_group, row.Object_group, weight=1, color=row.Deontic, key=idx)
@@ -145,8 +145,9 @@ for idx, shade in enumerate((SNR_map.keys())):
     #     in_track.update(count)
     # in_track = {k: v for k, v in sorted(in_track.items(), key=lambda item: item[1], reverse=True)}
 
-    print(shade, "in_degree: ", in_track)
-    print("out_degree", out_track)
+    # print(shade, "in_degree: ", in_track)
+    # print("out_degree", out_track)
+    
     axes[idx].set_title(SNR_map[shade], fontsize=32, fontweight='heavy')
     # #draw node edges
     # nodes = nx.draw_networkx_nodes(G, pos, node_color='lemonchiffon', nodelist=set(nodes), node_size=40000, )
