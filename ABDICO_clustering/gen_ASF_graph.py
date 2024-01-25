@@ -118,7 +118,7 @@ for idx, row in result.iterrows():
     except Exception as exp:
         G.add_edge(row.Attribute_group, row.Object_group, weight = 1, color=row.Deontic, key=row.Deontic)
 
-pos = nx.spring_layout(G, k=0.5)
+pos = nx.spring_layout(G, k=0.1)
 # ax = plt.gca()
 fig, axes = plt.subplots(2, 2, figsize=(30, 50))
 axes = axes.flatten()
