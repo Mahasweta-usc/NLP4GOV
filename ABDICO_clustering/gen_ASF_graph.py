@@ -125,7 +125,7 @@ axes = axes.flatten()
 
 for idx, shade in enumerate((SNR_map.keys())):
     edges = [(u, v, k) for u, v, k in G.edges if G[u][v][k]['color'] == shade]
-    weights = [np.log2(G[u][v][k]['weight'])*1.5 for u, v, k in edges]
+    weights = [(np.log2(G[u][v][k]['weight']) + 1)*1.5 for u, v, k in edges]
     nodes = [];
     for u, v, x in edges:
         nodes.extend([u, v])
