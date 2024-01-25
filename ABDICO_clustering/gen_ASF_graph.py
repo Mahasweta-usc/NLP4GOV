@@ -131,6 +131,11 @@ for idx, shade in enumerate((SNR_map.keys())):
         nodes.extend([u, v])
 
     print("nodes: ", set(nodes))
+
+    new_G =  nx.MultiDiGraph()
+    new_G.add_nodes_from(nodes)
+
+    pos = nx.kamada_kawai_layout(new_G)
     # out_track = {}
     # outedge = [edge[0] for edge in edges]
     # for node in set(nodes):
@@ -150,19 +155,19 @@ for idx, shade in enumerate((SNR_map.keys())):
 
     axes[idx].set_title(SNR_map[shade], fontsize=32, fontweight='heavy')
     #draw node edges
-    nodes = nx.draw_networkx_nodes(G, pos, node_color='lemonchiffon', nodelist=set(nodes), node_size=40000)
-    nx.draw_networkx_labels(G, pos, font_size=25, alpha=1 , font_weight='bold')
-    nodes.set_edgecolor('r')
+    # nodes = nx.draw_networkx_nodes(G, pos, node_color='lemonchiffon', node_size=40000)
+    # nx.draw_networkx_labels(G, pos, font_size=25, alpha=1 , font_weight='bold')
+    # nodes.set_edgecolor('r')
+    #
+    # nx.draw_networkx_edges(G, pos, edgelist=edges, edge_color=shade, width=weights,
+    #                  connectionstyle=f"arc3,rad=-0.5",
+    #                  arrowstyle=f"-|>,head_length=1.5,head_width=1.2", ax=axes[idx])  #
 
-    nx.draw_networkx_edges(G, pos, edgelist=edges, edge_color=shade, width=weights,
-                     connectionstyle=f"arc3,rad=-0.5",
-                     arrowstyle=f"-|>,head_length=1.5,head_width=1.2", ax=axes[idx])  #
-
-    # nx.draw_networkx(G, pos, node_color='lemonchiffon', nodelist=set(nodes), font_size=25, edgelist=edges,
-    #                        edge_color=shade, width=weights,
-    #                        node_size=40000, alpha=1, with_labels=True, font_weight='bold',
-    #                        connectionstyle=f"arc3,rad=-0.5",
-    #                        arrowstyle=f"-|>,head_length=1.5,head_width=1.2", ax=axes[idx])  #
+    nx.draw_networkx(new_G, pos, node_color='lemonchiffon', nodelist=set(nodes), font_size=25, edgelist=edges,
+                           edge_color=shade, width=weights,
+                           node_size=40000, alpha=1, with_labels=True, font_weight='bold',
+                           connectionstyle=f"arc3,rad=-0.5",
+                           arrowstyle=f"-|>,head_length=1.5,head_width=1.2", ax=axes[idx])  #
 
 fig.tight_layout()
 
