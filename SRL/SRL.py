@@ -315,17 +315,17 @@ class SRL:
     column_names = ['attribute', 'object', 'deontic', 'aim']
     eval_scores = {name:[] for name in column_names}
 
-    datasets = os.listdir('/content/IG-SRL/SRL/data')
+    datasets = os.listdir('/content/NLP4GOV/SRL/data')
     # file_names = ['NationalOrganicProgramRegulations_Siddiki.xlsx - Econ Development Mechanisms.csv']
 
     for subdata in datasets:
-        sub_path = os.path.join('/content/IG-SRL/SRL/data', subdata)
+        sub_path = os.path.join('/content/NLP4GOV/SRL/data', subdata)
         if 'Food' in subdata: self.fpc = True
         else: self.fpc = False
 
         sets = []
         for file_name in os.listdir(sub_path):
-            eval_name = os.path.join('/content/IG-SRL/SRL/data', subdata,file_name)
+            eval_name = os.path.join('/content/NLP4GOV/SRL/data', subdata,file_name)
             temp = pd.read_csv(eval_name)
             temp.columns = map(str.lower, temp.columns)
             sets.append(temp) #[['raw institutional statement','attribute','deontic','aim','object']]

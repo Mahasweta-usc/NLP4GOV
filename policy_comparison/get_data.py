@@ -1,7 +1,7 @@
 import json
 import pandas as pd
 # Opening JSON file
-f = open('/content/IG-SRL/policy_comparison/data/reddit_rules_top_100.json')
+f = open('/content/NLP4GOV/policy_comparison/data/reddit_rules_top_100.json')
 
 # returns JSON object as
 # a dictionary
