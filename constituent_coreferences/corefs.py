@@ -45,15 +45,16 @@ class corefs:
 
     # iterate through clusters
     for cluster in clusters:
-      identity = text
+      identity = None
 
       for elem in cluster:
-        #chose smallest non pronoun as replacement
+        #chose most descriptive span as replacement
         spanids = document[elem[0]:elem[1]+1]
         if not all(item in PRN for item in spanids) :
           temp = " ".join(spanids)
-          if len(temp) < len(identity): identity = temp
+          if len(temp) > len(identity): identity = temp
 
+      if not identity: continue
 
       for id, elem in enumerate(cluster): elem.append(identity); spans.append(elem)
 
