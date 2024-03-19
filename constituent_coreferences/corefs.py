@@ -45,7 +45,7 @@ class corefs:
 
     # iterate through clusters
     for cluster in clusters:
-      identity = None
+      identity = ""
 
       for elem in cluster:
         #chose most descriptive span as replacement
