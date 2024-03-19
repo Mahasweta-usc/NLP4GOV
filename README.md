@@ -1,14 +1,34 @@
 
-The repository is a joint effort led by <INSERT Labs/Organizations involved>. We present an extensive, curated collection of functionalities and tasks in natural language processing, adapted to aid empirical policy analysis at scale. 
+The repository was developed and is being maintained by the C^2 lab at the University of California Davis and Institutional-Grammar research. It presents pipelines and applications to support empirical policy analysis at scale, and builds off an extensive survey of relevant tasks and functionalities in natural language processing. 
 
 # Contents
 
-1. Applications: Overview
-2. Recommended pipelines and Applications
-3. Navigating Colaboratory
-4. Citations
+1. Recommended pipelines and applications
+2. Navigating Colaboratory 
+3. Tasks Overview
 
-# Applications : Overview
+# Recommended pipelines and applications
+
+We present an extensive, curated collection of  functionalities and tasks in natural language processing, adapted to aid collective action research at scale. 
+
+Our Github currently hosts 5 (more soon!) versatile end to end applications. Each of these can be used alone or in combinations to process raw policy corpus and extract meaningful information and measurements for research and analysis. Examples include but not limited to:
+
+* **Identify community players, strength of regulation and interactions:** Preprocess documents > Extract ABDICO components > Network Analysis
+* **Policy diffusion/adaption over time:** Preprocess policy documents > Compare policies with interviews/conversations
+* **Compare Institutions:** Preprocess policy documents from different communities > Find most similar rules between two communities
+* **Power dynamics in communities:** Preprocess policy documents > Extract ABDICO components > cluster actors > Analyze inter group leverage
+
+# Navigating Colaboratory
+
+Colaboratory or Colab is a service provided by Google, which allows users to run and develop notebook applications while leveraging their infrastructure at very little cost.
+## Overview of Colab subscription plans:
+
+* Free : Nvidia T4 GPU
+* Pro ($9.99/month) : Nvidia T4/ V100/ A100 + High RAM CPU. Check website for unit rate charges for different GPUs and their features.
+
+For most notebooks here however, **users should not require premium subscriptions**. A free T4 GPU generally suffices, unless the specific use case involves high volumes (hundreds of MBs to several GBs) of text data and necessitates more compute/speed.
+
+# Tasks Overview
 
 ## General Guidelines
       
@@ -65,7 +85,8 @@ Uses a linguistic task called semantic role labeling and maps their outputs to t
 
 ### Categorizing Institutional Components (ABDICO_clustering.ipynb)
 
-Semantic clustering and categorizing of dominant actors, resources and activities. Helps identify scope of governance activities, levels of regulation, and distribution of power and responsibilities in a institutional networks.
+
+Semantic clustering and categorizing of dominant actors, resources and activities. Helps identify related and frequent activities, levels of regulation, and distribution of power and responsibilities across roles in an institution.
 
 **Input** : main.csv file where columns contain a policy's "Attribute", "Object", "Deontic" and "Aim" respectively. These could be human annotations or outputs from the ABDICO parsing notebook
 
@@ -129,29 +150,10 @@ While institutional comparision deals with policies against policies, this noteb
 
 ![pol_exp_out.png](images/pol_exp_out.PNG)
 
-- **Customization:** While the notebook comes with a default dataset for demonstration, users can easily replace it with their own pair of datasets to perform custom comparisons. The notebook provides insights into the methods used, such as semantic similarity, semantic search, BM25Okapi, and transformer-based word embeddings. You are encouraged to explore https://huggingface.co/sentence-transformers for different biencoder models to run your policy search engine!
+- **Customization:** While the notebook comes with a default dataset for demonstration, users can easily replace it with their own pair of datasets to perform custom comparisons. The notebook provides insights into the methods used, such as semantic similarity, semantic search, BM25Okapi, and transformer-based word embeddings. You are encouraged to explore [Hugging-Face Sentence Transformers](https://huggingface.co/sentence-transformers) for different biencoder models to run your policy search engine!
 
-   
-# Recommended pipelines and Applications
 
-Our Github currently hosts 5 (more soon!) versatile end to end applications. Each of these can be used alone or in combinations to process raw policy corpus and extract meaningful information and measurements for research and analysis. Examples include but not limited to:
-
-* **Identify community players, strength of regulation and interactions:** Preprocess documents > Extract ABDICO components > Network Analysis
-* **Policy diffusion/adaption over time:** Preprocess policy documents > Compare policies with interviews/conversations
-* **Compare Institutions:** Preprocess policy documents from different communities > Find most similar rules between two communities
-* **Power dynamics in communities:** Preprocess policy documents > Extract ABDICO components > cluster actors > Analyze inter group leverage
-
-# Navigating Colaboratory
-
-Colaboratory or Colab is a service provided by Google, which allows users to run and develop notebook applications while leveraging Google's infrastructure at very little cost.
-## Overview of Colab subscription plans:
-
-* Free : Nvidia T4 GPU
-* Pro ($9.99/month) : Nvidia T4/ V100/ A100 + High RAM CPU. Check website for unit rate charges for different GPUs and their features.
-
-For most notebooks here however, **users should not require premium subscriptions**. A free T4 GPU generally suffices, unless the specific use case involves high volumes (hundreds of MBs to several GBs) of text data and necessitates more compute/speed.
-
-## Getting Started with Colaboratory
+## Getting Started
 
 1. Download this repository (compressed zip) to your local system
       ![img.png](images/img1.png)
@@ -168,13 +170,17 @@ For most notebooks here however, **users should not require premium subscription
 7. Download the final file with the results (Generally "main.csv") from right hand directory panel.
 ![img.png](images/img7.png)
 
-For further understanding of the Colab environment (How cells work, how to run cells, etc) : https://youtu.be/inN8seMm7UI?si=NpsCUBWeQM9W7kW8
+For further understanding of the Colab environment (How cells work, how to run cells, etc) [refer to this link](https://youtu.be/inN8seMm7UI?si=NpsCUBWeQM9W7kW8)
 
 **IF YOU FACE TECHNICAL PROBLEMS IN IMPLEMENTATION/QUESTIONS ABOUT THE NOTEBOOKS, PLEASE POST AN ISSUE DESCRIBING YOUR PROBLEM ON GITHUB**
 
+
 # *Citations*
 
-This library is the fruit of contributions (data and code) from multiple collaborators. If you use this library, please cite:
+This library is the fruit of contributions (data and code) from multiple collaborators. We acknowledge the support of Co-NSF #1917908 ("RCN: Coordinating and Advancing Analytical Approaches for Policy Design"), NSF GCR #2020751 ("GCR: Jumpstarting Successful OSS Projects With Evidence Based Rules and Structures") as well as the [Institutional Grammar Research Initiative](https://institutionalgrammar.org/) and the [Computational Institutional Science Lab](cisl.info).
+
+If you use this library, please cite:
+
 
 
 Additionally, depending on the application you incorporate in your work, please also cite the amazing NLP research which made it possible:

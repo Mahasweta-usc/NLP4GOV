@@ -1,0 +1,5 @@
+networkx
+transformers
+sentence-transformers
+bertopic==0.16.0
+stanza

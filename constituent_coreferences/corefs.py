@@ -31,6 +31,7 @@ class corefs:
     return test_list
 
   def coref(self, text):
+    text = str(text)
     text = text.lower()
     text = text.replace('\n'," ")
     text = re.sub(' +', ' ', text)
