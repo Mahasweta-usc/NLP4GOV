@@ -2,4 +2,4 @@ networkx
 transformers
 sentence-transformers
 bertopic==0.16.0
-stanza
+stanza==1.7.0
