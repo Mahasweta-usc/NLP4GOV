@@ -183,9 +183,6 @@ for idx, shade in enumerate((SNR_map.keys())):
                            node_size=22000, alpha=1, with_labels=True, font_weight='normal',
                            connectionstyle=f"arc3,rad=-0.3",
                            arrowstyle=f"-|>,head_length=1,head_width=0.7", ax=axes[idx])  #
-  # Set edge color to red
-    nodes = nx.draw_networkx_nodes(new_G, pos)
-    nodes.set_edgecolor('b')
 
 fig.tight_layout()
 
