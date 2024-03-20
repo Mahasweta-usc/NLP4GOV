@@ -79,11 +79,14 @@ for col in ["Attribute", "Object"]:
     # result[col] = result[col].replace("us", "asf")
 
 result.fillna("", inplace=True)
+
+#topic modeling over all objects and attributes
+entries = result['Attribute'].dropna().tolist()
+entries.extend(result['Object'].dropna().tolist())
+
 result['Deontic'] = result['Deontic'].apply(lambda x: x if x in deontic_map else "other")
 
-entries = result['Attribute'].tolist()
-entries.extend(result['Object'].tolist())
-hdbscan_model = HDBSCAN(metric='euclidean', cluster_selection_method='eom', min_cluster_size=5, min_samples=1,
+hdbscan_model = HDBSCAN(metric='euclidean', cluster_selection_method='eom', min_cluster_size=10, min_samples=1,
                         prediction_data=True)
 topic_model = BERTopic(top_n_words=3, hdbscan_model=hdbscan_model, nr_topics='auto', n_gram_range=(1, 2))
 topic_model.hdbscan_model.gen_min_span_tree = True
@@ -128,7 +131,8 @@ for idx, row in result.iterrows():
     except Exception as exp:
         G.add_edge(row.Attribute_group, row.Object_group, weight = 1, color=row.Deontic, key=row.Deontic)
 
-pos = nx.spring_layout(G, k=0.3)
+# pos = nx.spring_layout(G, k=0.2)
+pos = nx.kamada_kawai_layout(G)
 # ax = plt.gca()
 fig, axes = plt.subplots(2, 2, figsize=(20, 30))
 axes = axes.flatten()
