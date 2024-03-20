@@ -307,7 +307,7 @@ class SRL:
             # data.dropna(subset=['aim'],inplace=True)
             # print("Dataset after removing non-actionable statements [no Aim coded]: ", data.shape[0])
 
-    data['aim'] = data['aim'].apply(lambda x: self.process_aim(x))
+        data['aim'] = data['aim'].apply(lambda x: self.process_aim(x))
 
     #SRL inference
     for arg in ['attribute_inf','object_inf','aim_inf','deontic_inf']:
@@ -354,7 +354,7 @@ class SRL:
 
         for col_name in column_names:
             df = df1.copy()
-            
+
             #exclude abstractive coding from evaluation 
             df = df[df[col_name] != '<skipped>']
             values1 = df[col_name].tolist()
