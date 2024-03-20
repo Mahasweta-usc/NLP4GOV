@@ -297,22 +297,26 @@ class SRL:
         if not self.fpc:
             # data = data[(data['aim'] != '<skipped>')]
             # print("Dataset after removing abstractive aims: ", data.shape[0])
-            print("Abstractive coding:", data[(data['attribute'] != '<skipped>') | (data['object'] != '<skipped>')
-                        & (data['aim'] != '<skipped>') | (data['deontic'] != '<skipped>')].shape[0])
+            print("Abstractive coding in one or more fields:", data[(data['attribute'] != '<skipped>') | (data['object'] != '<skipped>')
+                        | (data['aim'] != '<skipped>') | (data['deontic'] != '<skipped>')].shape[0])
 
             # data = data[(data['attribute'] != '<skipped>') | (data['object'] != '<skipped>') | (data['aim'] != '<skipped>') | (data['deontic'] != '<skipped>')]
 
             #lemmatize aims
-            print("Dataset after removing abstractive coding: ", data.shape[0])
+            data_dup = data.copy(deep=True)
+            data_dup.replace('<skipped>',np.nan,inplace=True)
+            data_dup.dropna(subset=['attribute', "deontic", "aim", "object"], how='all', inplace=True)
 
-        data['aim'] = data['aim'].apply(lambda x: self.process_aim(x))
+            print("Dataset after removing policies entirely containing abstractive coding: ", data_dup.shape[0])
+
+        data_dup['aim'] = data_dup['aim'].apply(lambda x: self.process_aim(x))
 
     #SRL inference
     for arg in ['attribute_inf','object_inf','aim_inf','deontic_inf']:
-        data[arg] = data.apply(lambda x : self.argmatch(x.srl_parsed, x.sentences, arg),axis=1)
+        data_dup[arg] = data_dup.apply(lambda x : self.argmatch(x.srl_parsed, x.sentences, arg),axis=1)
 
 
-    data.to_csv(out_path,index=False)
+    data_dup.to_csv(out_path,index=False)
 
   def srl_eval(self):
     column_names = ['attribute', 'object', 'deontic', 'aim']
