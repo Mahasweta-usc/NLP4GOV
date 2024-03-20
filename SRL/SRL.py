@@ -303,8 +303,8 @@ class SRL:
             # data = data[(data['attribute'] != '<skipped>') | (data['object'] != '<skipped>') | (data['aim'] != '<skipped>') | (data['deontic'] != '<skipped>')]
 
             #lemmatize aims
-            data.dropna(subset=['aim'],inplace=True)
-            print("Dataset after removing non-actionable statements [no Aim coded]: ", data.shape[0])
+            # data.dropna(subset=['aim'],inplace=True)
+            # print("Dataset after removing non-actionable statements [no Aim coded]: ", data.shape[0])
 
     data['aim'] = data['aim'].apply(lambda x: self.process_aim(x))
 
