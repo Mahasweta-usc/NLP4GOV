@@ -17,7 +17,7 @@ from allennlp.predictors.predictor import Predictor
 predictor = Predictor.from_path("https://storage.googleapis.com/allennlp-public-models/coref-spanbert-large-2021.03.10.tar.gz",cuda_device=torch.cuda.current_device())
 
 
-PRN = ["her", "herself", "him", "himself", "his", "hisself", "it", "itself", "me", "myself", "one", "oneself", "ours",
+PRN = ["her", "herself", "him", "himself", "his", "hisself", "it", "itself", "me", "myself", "one", "oneself", "ours", "its", "it's"
 "ourselves", "ownself", "self",  "theirs", "them", "themselves", "they",'their', "she", "he", "us", 'you', 'yours', "this", "that", "these", "those"]
 poss_prn = ["her","his","ours","theirs",'their','yours']
 
@@ -56,7 +56,9 @@ class corefs:
 
       if not identity: continue
 
-      for id, elem in enumerate(cluster): elem.append(identity); spans.append(elem)
+      for id, elem in enumerate(cluster): 
+        spanids = document[elem[0]:elem[1]+1]
+        if all(item in PRN for item in spanids) : elem.append(identity); spans.append(elem)
 
     #remove nested spans in clusters
 
