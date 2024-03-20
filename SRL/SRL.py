@@ -40,8 +40,8 @@ import re
 import stanza
 stanza.download('en')
 
-import spacy
-nlp_spacy = spacy.load("en_core_web_sm")
+# import spacy
+# nlp_spacy = spacy.load("en_core_web_sm")
 
 nlp = stanza.Pipeline(lang='en', processors='tokenize,mwt,pos,lemma,depparse',use_gpu=True)
 import string
