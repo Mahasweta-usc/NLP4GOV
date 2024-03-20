@@ -135,7 +135,7 @@ class SRL:
     if self.agent == "eval":
         # if not self.fpc:
         data.dropna(subset=['raw institutional statement'], how='any', inplace=True)
-        data.dropna(subset=['attribute', "deontic", "aim", "object", "condition", "or else"], how='all', inplace=True)
+        data.dropna(subset=['attribute', "deontic", "aim", "object"], how='all', inplace=True)
         print("Dataset after removing uncoded statements: ", data.shape[0])
 
     data['sentences'] = data['raw institutional statement'].apply(lambda x : [sentence.text.lower() for sentence in nlp(x).sentences][0])
@@ -211,12 +211,15 @@ class SRL:
             return ""
 
   # normalize the texts
-  def normalize_text(self,s):
+  def normalize_text(self, s, col):
       """Removing articles and punctuation, and standardizing whitespace are all typical text processing steps."""
 
-      def tokens(text):
+      def tokens(text, colname):
           doc= nlp(text)
-          return ([word.lemma for sent in doc.sentences for word in sent.words if not word.text in all_words])
+          if colname in ['attribute','object']:
+           return ([word.lemma for sent in doc.sentences for word in sent.words if not word.text in all_words])
+          else:
+           return ([word.lemma for sent in doc.sentences for word in sent.words])
           # return word_tokenize(text)
 
       def remove_punc(text):
@@ -226,15 +229,15 @@ class SRL:
       def lower(text):
           return text.lower().strip()
 
-      return tokens(remove_punc(lower(s)))
+      return tokens(remove_punc(lower(s)),col)
 
   def compute_exact_match(self,prediction, truth):
       return int(self.normalize_text(prediction) == self.normalize_text(truth))
 
   #F1 score computation
   def compute_f1(self,truth, prediction, col_name):
-    pred_tokens = self.normalize_text(prediction)
-    truth_tokens = self.normalize_text(truth)
+    pred_tokens = self.normalize_text(prediction, col_name)
+    truth_tokens = self.normalize_text(truth, col_name)
     # print(pred_tokens,truth_tokens)
 
     # if either the prediction or the truth is no-answer then f1 = 1 if they agree, 0 otherwise
