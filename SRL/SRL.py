@@ -303,20 +303,15 @@ class SRL:
             # data = data[(data['attribute'] != '<skipped>') | (data['object'] != '<skipped>') | (data['aim'] != '<skipped>') | (data['deontic'] != '<skipped>')]
 
             #lemmatize aims
-            data_dup = data.copy(deep=True)
-            data_dup.replace('<skipped>',np.nan,inplace=True)
-            data_dup.dropna(subset=['attribute', "deontic", "aim", "object"], how='all', inplace=True)
-
-            print("Dataset after removing policies entirely containing abstractive coding: ", data_dup.shape[0])
-
-        data_dup['aim'] = data_dup['aim'].apply(lambda x: self.process_aim(x))
+            data.dropna(subset=['aim'],inplace=True)
+            print("Dataset after removing non-actionable statements [no Aim coded]: ", data.shape[0])
 
     #SRL inference
     for arg in ['attribute_inf','object_inf','aim_inf','deontic_inf']:
-        data_dup[arg] = data_dup.apply(lambda x : self.argmatch(x.srl_parsed, x.sentences, arg),axis=1)
+        data[arg] = data.apply(lambda x : self.argmatch(x.srl_parsed, x.sentences, arg),axis=1)
 
 
-    data_dup.to_csv(out_path,index=False)
+    data.to_csv(out_path,index=False)
 
   def srl_eval(self):
     column_names = ['attribute', 'object', 'deontic', 'aim']
