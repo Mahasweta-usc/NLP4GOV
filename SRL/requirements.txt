@@ -5,4 +5,3 @@ stanza==1.7.0
 transformers==4.36.2
 spacy[transformers]
 huggingface-hub==0.19.4
-pyarrow==10.0.1 
