@@ -344,7 +344,7 @@ class SRL:
         df1 = df1.applymap(lambda x : x.lower().strip())
 
         #also lemmatize predicted aims
-        data['aim_inf'] = data['aim_inf'].apply(lambda x: self.process_aim(x))
+        df1['aim_inf'] = df1['aim_inf'].apply(lambda x: self.process_aim(x))
 
 
         for col_name in column_names:
