@@ -1,5 +1,5 @@
-allennlp
-allennlp-models
+allennlp==2.10.1
+allennlp-models==2.10.1
 tbb
 stanza==1.7.0
 transformers==4.36.2
