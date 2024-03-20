@@ -1,3 +1,4 @@
 allennlp
 allennlp-models
+spacy[transformers]
 stanza==1.7.0
