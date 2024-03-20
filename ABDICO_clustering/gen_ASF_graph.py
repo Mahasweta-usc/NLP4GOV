@@ -37,26 +37,29 @@ def topic_name(x):
 
 
 deontic_map = {"must": 'black',
+               'must not': 'red',
                "should": "mediumpurple",
-               "will not" : "red",
                "shall not" : "red",
                "should not" : "red",
+               "will not" : "red",
                "not" : "red",
                "can": 'green',
-               "may": 'green',
-               "might": "green",
                "could": 'green',
-               "other": "green",
-               'may not': 'red',
                'can not': 'red',
-               'must not': 'red'}
+               "may": 'green',
+               'may not': 'red',
+               "might": "green",
+               "might not": "red",
+               "other": "green"}
 
 components = ['Attribute', 'Deontic', 'Object']
 result = pd.read_csv('main.csv', usecols=components)
 result.replace("", np.nan, inplace=True)
 result.dropna(subset=["Attribute", "Object"], how='any', inplace=True)
 for col in components:
-  result[col] = result[col].apply(lambda x : x.lower() if isinstance(x,str) else x)
+  #podlings are incubating ASF projects, uniform terminology for interpretability/contexual embeddings 
+  result[col] = result[col].apply(lambda x : x.lower().replace('podling','project') if isinstance(x,str) else x)
+  result[col] = result[col].apply(lambda x : x.replace('apache','asf') if isinstance(x,str) else x)
 
 # replace first person
 for col in ["Attribute", "Object"]:
@@ -125,7 +128,7 @@ for idx, row in result.iterrows():
     except Exception as exp:
         G.add_edge(row.Attribute_group, row.Object_group, weight = 1, color=row.Deontic, key=row.Deontic)
 
-pos = nx.spring_layout(G, k=0.1)
+pos = nx.spring_layout(G, k=0.3)
 # ax = plt.gca()
 fig, axes = plt.subplots(2, 2, figsize=(20, 30))
 axes = axes.flatten()
@@ -160,7 +163,7 @@ for idx, shade in enumerate((SNR_map.keys())):
     # print(shade, "in_degree: ", in_track)
     # print("out_degree", out_track)
 
-    axes[idx].set_title(SNR_map[shade], fontsize=22, fontweight='heavy')
+    axes[idx].set_title(SNR_map[shade], fontsize=25, fontweight='normal')
     #draw node edges
     # nodes = nx.draw_networkx_nodes(G, pos, node_color='lemonchiffon', node_size=40000)
     # nx.draw_networkx_labels(G, pos, font_size=25, alpha=1 , font_weight='bold')
@@ -170,7 +173,7 @@ for idx, shade in enumerate((SNR_map.keys())):
     #                  connectionstyle=f"arc3,rad=-0.5",
     #                  arrowstyle=f"-|>,head_length=1.5,head_width=1.2", ax=axes[idx])  #
 
-    nx.draw_networkx(new_G, pos, node_color='lemonchiffon', nodelist=set(nodes), font_size=14, edgelist=edges,
+    nx.draw_networkx(new_G, pos, node_color='lemonchiffon', nodelist=set(nodes), font_size=15, edgelist=edges,
                            edge_color=shade, width=weights,
                            node_size=10000, alpha=1, with_labels=True, font_weight='bold',
                            connectionstyle=f"arc3,rad=-0.5",
@@ -209,4 +212,4 @@ fig.tight_layout()
 # ax.legend(custom_lines, ['Strategies', 'May/Can', 'Should', "Must"], ncol=4, loc="upper right", prop={'size': 16})
 
 # plt.axis('off')
-plt.savefig("ASF_Graph.pdf", dpi=300)
+plt.savefig("ASF_Graph.pdf", dpi=600)
