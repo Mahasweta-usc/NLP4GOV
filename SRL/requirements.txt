@@ -2,5 +2,7 @@ allennlp
 allennlp-models
 tbb
 stanza==1.7.0
+transformers==4.35.2
 spacy[transformers]
-urllib3
+huggingface-hub==0.19.4
+pyarrow==10.0.1 
