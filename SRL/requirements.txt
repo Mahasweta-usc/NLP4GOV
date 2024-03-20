@@ -1,4 +1,4 @@
 allennlp==2.10.1
 allennlp-models==2.10.1
-tbb
+spacy[transformers]
 stanza==1.7.0
