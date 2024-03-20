@@ -55,6 +55,7 @@ deontic_map = {"must": 'black',
 components = ['Attribute', 'Deontic', 'Object']
 result = pd.read_csv('main.csv', usecols=components)
 result.replace("", np.nan, inplace=True)
+##drop policies where both actor/object are not indicated/available
 result.dropna(subset=["Attribute", "Object"], how='any', inplace=True)
 for col in components:
   #podlings are incubating ASF projects, uniform terminology for interpretability/contexual embeddings 
@@ -134,7 +135,7 @@ for idx, row in result.iterrows():
 # pos = nx.spring_layout(G, k=0.2)
 pos = nx.kamada_kawai_layout(G)
 # ax = plt.gca()
-fig, axes = plt.subplots(2, 2, figsize=(20, 30))
+fig, axes = plt.subplots(2, 2, figsize=(30, 30))
 axes = axes.flatten()
 
 for idx, shade in enumerate((SNR_map.keys())):
@@ -167,7 +168,7 @@ for idx, shade in enumerate((SNR_map.keys())):
     # print(shade, "in_degree: ", in_track)
     # print("out_degree", out_track)
 
-    axes[idx].set_title(SNR_map[shade], fontsize=25, fontweight='normal')
+    axes[idx].set_title(SNR_map[shade], fontsize=35, fontweight='heavy')
     #draw node edges
     # nodes = nx.draw_networkx_nodes(G, pos, node_color='lemonchiffon', node_size=40000)
     # nx.draw_networkx_labels(G, pos, font_size=25, alpha=1 , font_weight='bold')
@@ -177,11 +178,14 @@ for idx, shade in enumerate((SNR_map.keys())):
     #                  connectionstyle=f"arc3,rad=-0.5",
     #                  arrowstyle=f"-|>,head_length=1.5,head_width=1.2", ax=axes[idx])  #
 
-    nx.draw_networkx(new_G, pos, node_color='lemonchiffon', nodelist=set(nodes), font_size=15, edgelist=edges,
+    nx.draw_networkx(new_G, pos, node_color='lemonchiffon', nodelist=set(nodes), font_size=28, edgelist=edges,
                            edge_color=shade, width=weights,
-                           node_size=10000, alpha=1, with_labels=True, font_weight='bold',
-                           connectionstyle=f"arc3,rad=-0.5",
+                           node_size=22000, alpha=1, with_labels=True, font_weight='normal',
+                           connectionstyle=f"arc3,rad=-0.3",
                            arrowstyle=f"-|>,head_length=1,head_width=0.7", ax=axes[idx])  #
+  # Set edge color to red
+    nodes = nx.draw_networkx_nodes(new_G, pos)
+    nodes.set_edgecolor('b')
 
 fig.tight_layout()
 
