@@ -1,6 +1,6 @@
 allennlp
 allennlp-models
 tbb
-stanza
+stanza==1.7.0
 spacy[transformers]
 urllib3
