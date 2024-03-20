@@ -306,6 +306,8 @@ class SRL:
             data.dropna(subset=['aim'],inplace=True)
             print("Dataset after removing non-actionable statements [no Aim coded]: ", data.shape[0])
 
+    data['aim'] = data['aim'].apply(lambda x: self.process_aim(x))
+
     #SRL inference
     for arg in ['attribute_inf','object_inf','aim_inf','deontic_inf']:
         data[arg] = data.apply(lambda x : self.argmatch(x.srl_parsed, x.sentences, arg),axis=1)
@@ -345,8 +347,8 @@ class SRL:
         df1.fillna('', inplace=True)
         df1 = df1.applymap(lambda x : x.lower().strip())
 
-        #also lemmatize predicted aims
-        df1['aim_inf'] = df1['aim_inf'].apply(lambda x: self.process_aim(x))
+        # #also lemmatize predicted aims
+        # df1['aim_inf'] = df1['aim_inf'].apply(lambda x: self.process_aim(x))
 
 
         for col_name in column_names:
