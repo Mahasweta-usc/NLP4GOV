@@ -339,8 +339,12 @@ class SRL:
         df1 = pd.read_csv(out_path)
         df1 = df1[['raw institutional statement','attribute','deontic','aim','object','attribute_inf','object_inf','aim_inf','deontic_inf']]
 
+
         df1.fillna('', inplace=True)
         df1 = df1.applymap(lambda x : x.lower().strip())
+
+        #also lemmatize predicted aims
+        data['aim_inf'] = data['aim_inf'].apply(lambda x: self.process_aim(x))
 
 
         for col_name in column_names:
