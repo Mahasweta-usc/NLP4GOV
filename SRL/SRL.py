@@ -315,7 +315,8 @@ class SRL:
     column_names = ['attribute', 'object', 'deontic', 'aim']
     eval_scores = {name:[] for name in column_names}
 
-    datasets = os.listdir('/content/NLP4GOV/SRL/data')
+    datasets = list(os.listdir('/content/NLP4GOV/SRL/data'))
+    datasets.sort()
     # file_names = ['NationalOrganicProgramRegulations_Siddiki.xlsx - Econ Development Mechanisms.csv']
 
     for subdata in datasets:
