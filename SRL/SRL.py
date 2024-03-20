@@ -216,11 +216,12 @@ class SRL:
 
       def tokens(text, colname):
           doc= nlp(text)
-          if colname in ['attribute','object']:
-           return ([word.lemma for sent in doc.sentences for word in sent.words if not word.text in all_words])
-          else:
-           return ([word.lemma for sent in doc.sentences for word in sent.words])
-          # return word_tokenize(text)
+          return ([word.lemma for sent in doc.sentences for word in sent.words if not word.text in all_words]) #exclude stop words
+
+          # if colname in ['attribute','object']:
+          #  return ([word.lemma for sent in doc.sentences for word in sent.words if not word.text in all_words]) #exclude stop words
+          # else: ##verbs and modals may be stopwords so screening not applied for AIM/DEONTIC
+          #  return ([word.lemma for sent in doc.sentences for word in sent.words])
 
       def remove_punc(text):
           exclude = set(string.punctuation)
@@ -353,7 +354,8 @@ class SRL:
 
         for col_name in column_names:
             df = df1.copy()
-            #remove [implied]
+            
+            #exclude abstractive coding from evaluation 
             df = df[df[col_name] != '<skipped>']
             values1 = df[col_name].tolist()
             values2 = df[col_name + '_inf'].tolist()
