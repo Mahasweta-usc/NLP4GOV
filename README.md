@@ -214,16 +214,16 @@ Reimers, N., & Gurevych, I. (2019). Sentence-bert: Sentence embeddings using sia
 * Apache Incubator Policies : Sen, A., Atkisson, C., & Schweik, C. (2022). Cui Bono. International Journal of the Commons, 16(1), 64-77.
 * Apache Incubator emails : Yin, L., Chen, Z., Xuan, Q., & Filkov, V. (2021, August). Sustainability forecasting for apache incubator projects. In Proceedings of the 29th ACM Joint Meeting on European Software Engineering Conference and Symposium on the Foundations of Software Engineering (pp. 1056-1067).
 * Food Policies : 
-      * The Food Policy data: 
-         - Saba Siddiki. 2014. Assessing Policy Design and Interpretation: An InstitutionsBased Analysis in the Context of Aquaculture in Florida and Virginia, United States. Review of Policy Research 31, 4 (2014), 281–303.
-         - Douglas Rice, Saba Siddiki, Seth Frey, Jay H Kwon, and Adam Sawyer. 2021. Machine coding of policy texts with the Institutional Grammar. Public Administration 99, 2 (2021), 248–262. Publisher: Wiley Online Library.
-
       * The Acquaculture Policy data:
          - Saba Siddiki, Xavier Basurto, and Christopher M Weible. 2012. Using the institutional grammar tool to understand regulatory compliance: The case of Colorado aquaculture. Regulation & Governance 6, 2 (2012), 167–188.
       
       * The National Organic Program regulations data:
          - David P Carter, Christopher M Weible, Saba N Siddiki, and Xavier Basurto. 2016. Integrating core concepts from the institutional analysis and development framework for the systematic analysis of policy designs: An illustration from the US National Organic Program regulation. Journal of Theoretical Politics 28, 1 (2016), 159–185.
          - Saba Siddiki and Christopher Frantz. 2023. Understanding the Effects of Social Value Orientations in Shaping Regulatory Outcomes through Agent-Based Modeling: An Application in Organic Farming. https://doi.org/10.4000/irpp.3398.
+         
+      * The Food Policy data: 
+         - Saba Siddiki. 2014. Assessing Policy Design and Interpretation: An InstitutionsBased Analysis in the Context of Aquaculture in Florida and Virginia, United States. Review of Policy Research 31, 4 (2014), 281–303.
+         - Douglas Rice, Saba Siddiki, Seth Frey, Jay H Kwon, and Adam Sawyer. 2021. Machine coding of policy texts with the Institutional Grammar. Public Administration 99, 2 (2021), 248–262. Publisher: Wiley Online Library.
 * Economic Council Policies : 
 
 **Supporting Libraries**
