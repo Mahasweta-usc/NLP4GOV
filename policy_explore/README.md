@@ -10,7 +10,7 @@ The primary use case demonstrated in this notebook involves taking a formal poli
 
 **Getting Started:** To use this notebook, start by running the provided code cells. You can either work with the sample datasets provided or upload your own datasets. The notebook is designed to be flexible and adaptable to different policy analysis scenarios.
 
-**Data Preparation:** The code reads policy data from CSV files, creating two dataframes, `query` and `search_base`, to represent the policy statement and the corpus of sentences to search within. Ensure that your datasets adhere to the expected structure, with columns named "policy.statement" and "reply."
+**Data Preparation:** The code reads policy data from CSV files, creating two dataframes, `query` and `search_base`, to represent the policy statement and the corpus of sentences to search within. Ensure that your datasets adhere to the expected structure, with columns named "document" and "reply."
 
 **Analysis and Visualization:** The notebook performs a series of steps, including BM25Okapi scoring to filter the most relevant sentences, extracting sentence embeddings, and ranking matches with the query by cosine distance. This process allows the identification of sentences in the "haystack" that are most similar to the "needle." The results are visualized and can be further analyzed.
 
@@ -56,6 +56,6 @@ The notebook relies on several Python libraries for data processing, text analys
 
 ## In and Out Information
 
-**Input Data:** The notebook expects two primary datasets - one containing a formal policy statement ("needle") and the other consisting of a corpus of sentences ("haystack") from which the relevant statements will be extracted. The expected columns are "policy.statement" and "reply." These datasets are crucial for the search and analysis.
+**Input Data:** The notebook expects two primary datasets - one containing a formal policy statement ("needle") and the other consisting of a corpus of sentences ("haystack") from which the relevant statements will be extracted. The expected columns are "document" and "reply." These datasets are crucial for the search and analysis.
 
 **Output Data:** The notebook generates valuable outputs, including a dataframe of the most relevant statements from the "haystack," along with their similarity scores. Additionally, it provides a downloadable CSV file containing the sorted results for further analysis and exploration.
