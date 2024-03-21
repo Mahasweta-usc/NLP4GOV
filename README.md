@@ -179,8 +179,8 @@ For further understanding of the Colab environment (How cells work, how to run c
 
 This library is the fruit of contributions (data and code) from multiple collaborators. We acknowledge the support of Co-NSF #1917908 ("RCN: Coordinating and Advancing Analytical Approaches for Policy Design"), NSF GCR #2020751 ("GCR: Jumpstarting Successful OSS Projects With Evidence Based Rules and Structures") as well as the [Institutional Grammar Research Initiative](https://institutionalgrammar.org/) and the [Computational Institutional Science Lab](cisl.info).
 
-If you use this library, please cite: Mahasweta Chakraborti, Sailendra Akash Bonagiri, Santiago Virgüez-Ruiz, and Seth Frey. 2024. NLP4Gov: A Comprehensive Library for Computational Policy Analysis. In Extended Abstracts of the CHI Conference on Human Factors in Computing Systems (CHI EA ’24), May 11–16, 2024, Honolulu, HI, USA 
-https://doi.org/10.1145/3613905.3650810
+If you use this library, please cite:
+- Mahasweta Chakraborti, Sailendra Akash Bonagiri, Santiago Virgüez-Ruiz, and Seth Frey. 2024. NLP4Gov: A Comprehensive Library for Computational Policy Analysis. In Extended Abstracts of the CHI Conference on Human Factors in Computing Systems (CHI EA ’24), May 11–16, 2024, Honolulu, HI, USA. [Article](https://doi.org/10.1145/3613905.3650810)
 
 
 
