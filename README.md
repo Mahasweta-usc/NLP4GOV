@@ -73,7 +73,7 @@ Anaphora Resolution is recommended as a precursor preprocessing step to policy t
             Objects : "their websites", "their websites"
 
 <img src="images/coreferences.png" alt="Sample Output Sheet" style="height:400px;"/>
-<!-- ![Sample Output Sheet](images/coreferences.png){ height: 400px; } -->
+<!-- ![Sample Output Sheet](images/coreferences.png){ height: 200px; } -->
 
 ### Institutional Grammar Parsing (ABDICO_parsing.ipynb)
 
