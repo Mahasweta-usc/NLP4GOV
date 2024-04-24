@@ -72,8 +72,8 @@ Anaphora Resolution is recommended as a precursor preprocessing step to policy t
             Attribute : "Podlings" (observing restrictions)
             Objects : "their websites", "their websites"
 
-
-![Sample Output Sheet](images/coreferences.png){ height: 400px; }
+<img src="images/coreferences.png" alt="Sample Output Sheet" style="height:400px;"/>
+<!-- ![Sample Output Sheet](images/coreferences.png){ height: 400px; } -->
 
 ### Institutional Grammar Parsing (ABDICO_parsing.ipynb)
 
