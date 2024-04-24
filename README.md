@@ -55,9 +55,10 @@ Performs disambiguation of pronouns in policy documents or passages to resolve t
 This preserves valuable information by identifying the exact individuals, groups or organizational instruments associated with different activities and contexts.
 Anaphora Resolution is recommended as a precursor preprocessing step to policy texts.
 
-**Input** : main.csv file where rows are passages/sections of policy documents (Best practice : language models have text limits. For best results, limit passages to 4 - 5 sentences. For even longer documents, break them down to such appropriate segments in each .csv row)
+**Input** : main.csv file where rows are passages/sections of policy documents under a column "document" <br/>
+(Best practice : language models have text limits. Limit these passages to 4 - 5 sentences. For even longer documents, break them down to such appropriate segments in each .csv row)
 
-**Output** : All individual sentences from the policy documents/sections after their anaphora resolution
+**Output** : All individual institutional statements from the policy documents/sections after their anaphora resolution (under column "raw institutional statement") .
 
 **Example** : After anaphora resolution, it becomes clear and specific that "them" in the policy refers to Podling websites
 
@@ -70,6 +71,9 @@ Anaphora Resolution is recommended as a precursor preprocessing step to policy t
             Statement: "there are restrictions on where podlings can host their websites and what branding podlings can use on their websites"
             Attribute : "Podlings" (observing restrictions)
             Objects : "their websites", "their websites"
+
+
+![Sample Output Sheet](images/coreferences.png)
 
 ### Institutional Grammar Parsing (ABDICO_parsing.ipynb)
 
