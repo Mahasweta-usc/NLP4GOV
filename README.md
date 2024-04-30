@@ -21,6 +21,7 @@ Our Github currently hosts 5 (more soon!) versatile end to end applications. Eac
 # Navigating Colaboratory
 
 Colaboratory or Colab is a service provided by Google, which allows users to run and develop notebook applications while leveraging their infrastructure at very little cost.
+
 ## Overview of Colab subscription plans:
 
 * Free : Nvidia T4 GPU
@@ -93,6 +94,9 @@ Uses a linguistic task called semantic role labeling and maps their outputs to t
 Semantic clustering and categorizing of dominant actors, resources and activities. Helps identify related and frequent activities, levels of regulation, and distribution of power and responsibilities across roles in an institution.
 
 **Input** : main.csv file where columns contain a policy's "Attribute", "Object", "Deontic" and "Aim" respectively. These could be human annotations or outputs from the ABDICO parsing notebook
+
+**Note: ** If you are using output files from ABDICO_parsing.ipynb, please make sure to change '_Inf' fields in the csv to respective ABDICO component names. <br/>
+E.g. 'Attribute_Inf' or inferred Attribute to "Attribute" only. 
 
 **Output** : Inferred categories (indicated by topic) for Attribute, Object, Deontic and Aim.
 
