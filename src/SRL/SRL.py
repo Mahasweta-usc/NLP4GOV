@@ -316,7 +316,7 @@ class SRL:
 
     data.to_csv(out_path,index=False)
 
-  def srl_eval(self, store='/content/NLP4GOV/SRL/data'):
+  def srl_eval(self, store='/content/NLP4GOV/src/SRL/data'):
     column_names = ['attribute', 'object', 'deontic', 'aim']
     eval_scores = {name:[] for name in column_names}
 
