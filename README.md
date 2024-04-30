@@ -33,10 +33,13 @@ For most notebooks here however, **users should not require premium subscription
 
 ## General Guidelines
       
-* There are broadly two types of notebooks
+* There are broadly two types of notebooks 
 	* Implementing Elinor Ostrom's Institutional Grammar Framework
 	* Exploring governances through policies
    
+These notebooks can be found under the Policy toolkit folder in the repository.  <br/>
+For case specific applications of these utilities, such as Reddit and open source communities, see [here]().
+
 * All input files to notebooks must be .csv. If your data is in any other formal (xls/json), please make sure to convert appropriately before running a notebook.
 * Check comments in each notebook to understand how input data should be configured, i.e. upload file name, table headers/input data fields/output data fields.
 * When coding raw institutional statements for some notebooks (e.g. ABDICO_parsing.ipynb, policies_compares, etc ), for interpretability as well as best results, it's recommended to present data in self contained statements with most IG components present than bullets.
