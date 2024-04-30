@@ -68,6 +68,8 @@ Anaphora Resolution is recommended as a precursor preprocessing step to policy t
 
 **Example** : After anaphora resolution, it becomes clear and specific that "them" in the policy refers to Podling websites
 
+<img src="images/coreferences.png" alt="Sample Output Sheet" style="height:50px;"/>
+
       Before:
             Statement: "there are restrictions on where podlings can host their websites and what branding they can use on them."
             Attribute : "Podlings" (observing restrictions)
@@ -78,7 +80,6 @@ Anaphora Resolution is recommended as a precursor preprocessing step to policy t
             Attribute : "Podlings" (observing restrictions)
             Objects : "their websites", "their websites"
 
-<img src="images/coreferences.png" alt="Sample Output Sheet" style="height:50px;"/>
 <!-- ![Sample Output Sheet](images/coreferences.png){ height: 200px; } -->
 
 ### Institutional Grammar Parsing (ABDICO_parsing.ipynb)
