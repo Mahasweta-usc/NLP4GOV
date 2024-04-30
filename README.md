@@ -18,6 +18,10 @@ Our Github currently hosts 5 (more soon!) versatile end to end applications. Eac
 * **Compare Institutions:** Preprocess policy documents from different communities > Find most similar rules between two communities
 * **Power dynamics in communities:** Preprocess policy documents > Extract ABDICO components > cluster actors > Analyze inter group leverage
 
+   
+These notebooks can be found under the [Policy toolkit](https://github.com/BSAkash/NLP4GOV/tree/master/Policy%20Toolkits) folder in the repository.  <br/>
+For case specific applications of these utilities, such as Reddit and open source communities, see [here](https://github.com/BSAkash/NLP4GOV/tree/master/Case%20Applications).
+
 # Navigating Colaboratory
 
 Colaboratory or Colab is a service provided by Google, which allows users to run and develop notebook applications while leveraging their infrastructure at very little cost.
@@ -36,9 +40,7 @@ For most notebooks here however, **users should not require premium subscription
 * There are broadly two types of notebooks 
 	* Implementing Elinor Ostrom's Institutional Grammar Framework
 	* Exploring governances through policies
-   
-These notebooks can be found under the Policy toolkit folder in the repository.  <br/>
-For case specific applications of these utilities, such as Reddit and open source communities, see [here]().
+
 
 * All input files to notebooks must be .csv. If your data is in any other formal (xls/json), please make sure to convert appropriately before running a notebook.
 * Check comments in each notebook to understand how input data should be configured, i.e. upload file name, table headers/input data fields/output data fields.
