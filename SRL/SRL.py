@@ -316,29 +316,32 @@ class SRL:
 
     data.to_csv(out_path,index=False)
 
-  def srl_eval(self):
+  def srl_eval(self, store='/content/NLP4GOV/SRL/data'):
     column_names = ['attribute', 'object', 'deontic', 'aim']
     eval_scores = {name:[] for name in column_names}
 
-    datasets = list(os.listdir('/content/NLP4GOV/SRL/data'))
+    datasets = list(os.listdir(store))
     datasets.sort()
     # file_names = ['NationalOrganicProgramRegulations_Siddiki.xlsx - Econ Development Mechanisms.csv']
 
     for subdata in datasets:
-        sub_path = os.path.join('/content/NLP4GOV/SRL/data', subdata)
+        sub_path = os.path.join(store, subdata)
         if 'Food' in subdata: self.fpc = True
         else: self.fpc = False
 
         sets = []
         for file_name in os.listdir(sub_path):
-            eval_name = os.path.join('/content/NLP4GOV/SRL/data', subdata,file_name)
+            eval_name = os.path.join(store, subdata, file_name)
             temp = pd.read_csv(eval_name)
             temp.columns = map(str.lower, temp.columns)
             sets.append(temp) #[['raw institutional statement','attribute','deontic','aim','object']]
 
-
         df1 = pd.concat(sets)
         print(subdata, "Dataset: ", df1.shape[0])
+        if not all(item in df1.columns for item in column_names):
+            print("Please check if file(s) have ground truth ABDICO labels")
+            return
+
         out_path = os.path.join('/content',f"{subdata}_data_new.csv")
         self.inference(df1, out_path)
         df1 = pd.read_csv(out_path)
