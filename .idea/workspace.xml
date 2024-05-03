@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb61224d-3886-4d51-a027-02d2a3e7fba2" name="Changes" comment="" />
+    <list default="true" id="eb61224d-3886-4d51-a027-02d2a3e7fba2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Case Applications/ASFI_network.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Case Applications/ASFI_network.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Case Applications/reddit_governance.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Case Applications/reddit_governance.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Policy Toolkits/ABDICO_parsing.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Policy Toolkits/ABDICO_parsing.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Policy Toolkits/policy_comparison.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Policy Toolkits/policy_comparison.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/policy_comparison/get_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/policy_comparison/get_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/policy_comparison/reddit_form.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/policy_comparison/reddit_form.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,7 +43,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "/home/maha/Desktop/gitproj/IG-SRL"
+    "last_opened_file_path": "/home/maha/Desktop/gitproj/IG-SRL/src/policy_comparison/policy_comparison.py"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
