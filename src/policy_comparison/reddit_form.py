@@ -15,7 +15,7 @@ data = json.load(f)
 subs_list = list(data.keys())
 
 #Create DF
-df = df = pd.DataFrame(columns = ['Dropdown_column', 'Float_column'])
+df = pd.DataFrame(columns = ['Dropdown_column', 'Float_column'])
 df
 
 # Layout
