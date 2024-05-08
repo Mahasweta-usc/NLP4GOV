@@ -59,7 +59,7 @@ For most notebooks here however, **users should not require premium subscription
 
 ### Preprocessing/Anaphora Resolution (ABDICO_coreferences.ipynb)
 
-Performs disambiguation of pronouns in policy documents or passages to resolve the absolute entity they are referring to.
+Performs disambiguation of pronouns/determiners in policy documents or passages to resolve the absolute entity they are referring to.
 This preserves valuable information by identifying the exact individuals, groups or organizational instruments associated with different activities and contexts.
 Anaphora Resolution is recommended as a precursor preprocessing step to policy texts.
 
@@ -166,7 +166,7 @@ While institutional comparision deals with policies against policies, this noteb
 
 ![pol_exp_out.png](images/pol_exp_out.PNG)
 
-- **Customization:** While the notebook comes with a default dataset for demonstration, users can easily replace it with their own pair of datasets to perform custom comparisons. The notebook provides insights into the methods used, such as semantic similarity, semantic search, BM25Okapi, and transformer-based word embeddings. You are encouraged to explore [Hugging-Face Sentence Transformers](https://huggingface.co/sentence-transformers) for different biencoder models to run your policy search engine!
+- **Customization:** While the notebook comes with a default dataset for demonstration, users can easily replace it with their own pair of datasets to perform custom comparisons. The notebook provides insights into the methods used, such as semantic similarity, semantic search, BM25Okapi, and transformer-based word embeddings. You are encouraged to explore [HuggingFace Sentence Transformers](https://huggingface.co/sentence-transformers) for different biencoder models to run your policy search engine!
 
 
 ## Getting Started
