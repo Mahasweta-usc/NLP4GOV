@@ -1,6 +1,8 @@
 
 The repository was developed and is being maintained by the C^2 lab at the University of California Davis and Institutional-Grammar research. It presents pipelines and applications to support empirical policy analysis at scale, and builds off an extensive survey of relevant tasks and functionalities in natural language processing. 
 
+**IF YOU FACE TECHNICAL PROBLEMS IN IMPLEMENTATION/QUESTIONS ABOUT THE NOTEBOOKS, PLEASE POST AN ISSUE DESCRIBING YOUR PROBLEM ON GITHUB**
+
 # Contents
 
 1. Recommended pipelines and applications
@@ -183,13 +185,17 @@ While institutional comparision deals with policies against policies, this noteb
 ![img.png](images/img6.png)
 7. Download the final file with the results (Generally "main.csv") from right hand directory panel.
 ![img.png](images/img7.png)
+8. To analyze another dataset(s)<br/>
+      1. Delete all files uploded from previous session e.g. main.csv (DO NOT DELETE ANY FOLDERS, e.g. NLP4GOV )<br/>
+      ![img.png](images/dir_nav.png)<br/>
+      2. Reinstantiate installed libraries (cell executes fast as libraries were already installed)<br/>
+      ![img.png](images/restart.png)<br/>
 
-For further understanding of the Colab environment (How cells work, how to run cells, etc) [refer to this link](https://youtu.be/inN8seMm7UI?si=NpsCUBWeQM9W7kW8)
+More on [navigating the colab file system](https://www.youtube.com/watch?v=VCllZKM7Njk)<br/>
+For further understanding of the Colab environment (How cells work, how to run cells, etc) [refer to this link](https://youtu.be/inN8seMm7UI?si=NpsCUBWeQM9W7kW8)<br/>
 
-**IF YOU FACE TECHNICAL PROBLEMS IN IMPLEMENTATION/QUESTIONS ABOUT THE NOTEBOOKS, PLEASE POST AN ISSUE DESCRIBING YOUR PROBLEM ON GITHUB**
 
-
-# *Citations*
+# Citations
 
 This library is the fruit of contributions (data and code) from multiple collaborators. We acknowledge the support of Co-NSF #1917908 ("RCN: Coordinating and Advancing Analytical Approaches for Policy Design"), NSF GCR #2020751 ("GCR: Jumpstarting Successful OSS Projects With Evidence Based Rules and Structures") as well as the [Institutional Grammar Research Initiative](https://institutionalgrammar.org/) and the [Computational Institutional Science Lab](cisl.info).
 
