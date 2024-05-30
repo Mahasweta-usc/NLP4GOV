@@ -6,11 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="eb61224d-3886-4d51-a027-02d2a3e7fba2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ABDICO_clustering/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/ABDICO_clustering/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SRL/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/SRL/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/constituent_coreferences/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/constituent_coreferences/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/policy_comparison/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/policy_comparison/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/policy_explore/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/policy_explore/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

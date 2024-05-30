@@ -1,5 +1,5 @@
-allennlp
-allennlp-models
+allennlp @ git+https://github.com/Mahasweta-usc/allennlp
+allennlp-models @ git+https://github.com/Mahasweta-usc/allennlp-models
 spacy[transformers]
 stanza==1.7.0
 typing_extensions==4.11.0
