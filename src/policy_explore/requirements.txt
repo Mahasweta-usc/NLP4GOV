@@ -1,3 +1,4 @@
 transformers
 rank_bm25
 sentence-transformers
+pandas<2.0

@@ -1,2 +1,3 @@
 sentence-transformers
 stanza
+pandas<2.0
