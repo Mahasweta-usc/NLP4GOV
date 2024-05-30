@@ -48,8 +48,8 @@ import string
 import pprint
 
 
-# from transformers import BertTokenizer
-# tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+from transformers import BertTokenizer
+tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 
 import math
 from scipy.spatial import distance
@@ -122,11 +122,21 @@ class SRL:
       else:
           return "<longest>"
 
+  def truncate(self,x):
+    tokens = tokenizer.tokenize(x)
+    return tokenizer.convert_tokens_to_string(tokens[:500])
+
   def file_read(self,file_name):
-    if isinstance(file_name,str): data = pd.read_csv(file_name)
+    if isinstance(file_name,str):
+        data = pd.read_csv(file_name)
     else: data = file_name
 
     data.columns = map(str.lower, data.columns)
+
+    # drop missing entries and size up sentences to token limit
+    data.dropna(subset=['raw institutional statement'], how='any', inplace=True)
+    data['raw institutional statement'] = data['raw institutional statement'].apply(lambda x: self.truncate(x))
+
     data = data.applymap(lambda x : str(x).lower().strip())
 
     data.replace("", np.nan, inplace=True)
@@ -134,7 +144,6 @@ class SRL:
     #statement needs to contain aim and recipient of action at the least
     if self.agent == "eval":
         # if not self.fpc:
-        data.dropna(subset=['raw institutional statement'], how='any', inplace=True)
         data.dropna(subset=['attribute', "deontic", "aim", "object"], how='all', inplace=True)
         print("Dataset after removing uncoded statements: ", data.shape[0])
 
@@ -284,10 +293,11 @@ class SRL:
             ##remove inferred coding re.sub("[\(\[].*?[\)\]]", "<skipped>",x)
             pattern = r'\[[^\]]*\]'
 
+            #some preprocessing for aquaculture and national organic datasets (see paper appendix)
             if not self.fpc:
              data[col_name] = data[col_name].apply(lambda x: "<skipped>" if x.startswith('[') else x)
              data[col_name] = data[col_name].apply(lambda x: re.sub("[\(\[].*?[\)\]]", "", x))
-             ##Look for whether annotation is span level
+             ##Look for whether annotation is span level (ABDICO value annotated is present in institutional statement)
              data[col_name] = data.apply(lambda x: "<skipped>" if x[col_name] and (
                     x[col_name] not in x['raw institutional statement']) else x[col_name], axis=1)
 

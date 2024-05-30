@@ -1,7 +1,8 @@
 
 The repository was developed and is being maintained by the C^2 lab at the University of California Davis and Institutional-Grammar research. It presents pipelines and applications to support empirical policy analysis at scale, and builds off an extensive survey of relevant tasks and functionalities in natural language processing. 
 
-**IF YOU FACE TECHNICAL PROBLEMS IN IMPLEMENTATION/QUESTIONS ABOUT THE NOTEBOOKS, PLEASE POST AN ISSUE DESCRIBING YOUR PROBLEM ON GITHUB**
+For seamless I/O, we recommend using the [Chrome](https://stackoverflow.com/questions/53630073/google-colaboratory-import-data-stack-size-exceeded) browser. 
+**IF YOU FACE UNDOCUMENTED TECHNICAL PROBLEMS IN IMPLEMENTATION/QUESTIONS ABOUT THE NOTEBOOKS, PLEASE POST AN ISSUE DESCRIBING YOUR PROBLEM**
 
 # Contents
 

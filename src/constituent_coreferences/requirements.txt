@@ -1,4 +1,5 @@
 allennlp
 allennlp-models
-stanza==1.7.0
 spacy[transformers]
+stanza==1.7.0
+typing_extensions==4.11.0
