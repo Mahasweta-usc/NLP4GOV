@@ -4,4 +4,3 @@ sentence-transformers
 bertopic==0.16.0
 stanza==1.7.0
 typing_extensions==4.11.0
-pandas<2.0

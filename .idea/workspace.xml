@@ -6,6 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="eb61224d-3886-4d51-a027-02d2a3e7fba2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
+=======
+      <change beforePath="$PROJECT_DIR$/Policy Toolkits/policy_comparison.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Policy Toolkits/policy_comparison.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Policy Toolkits/policy_explore.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Policy Toolkits/policy_explore.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ABDICO_clustering/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/ABDICO_clustering/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SRL/SRL.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/SRL/SRL.py" afterDir="false" />
+>>>>>>> parent of 03a8779 (froze pandas version)
       <change beforePath="$PROJECT_DIR$/src/SRL/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/SRL/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/constituent_coreferences/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/constituent_coreferences/requirements.txt" afterDir="false" />
     </list>
