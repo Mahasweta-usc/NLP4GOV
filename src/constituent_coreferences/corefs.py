@@ -21,7 +21,7 @@ from SRL.SRL import SRL
 PRN = ["her", "him", "his", "it", "me", "one", "ours", "its", "it's", "theirs", "them", "they",'their', "she", "he", "us", 'you', 'yours', "this", "that", "these", "those"]
 poss_prn = ["her","his","ours","theirs",'their','yours']
 
-class corefs:
+class corefs(SRL):
   def __init__(self):
     self.nlp = stanza.Pipeline(lang='en', processors='tokenize,mwt,pos,lemma,ner,depparse',use_gpu=True)
   def prns(self, test_list,indices):
@@ -31,7 +31,7 @@ class corefs:
     return test_list
 
   def coref(self, text):
-    text = SRL.truncate(str(text))
+    text = truncate(str(text))
     text = text.lower()
     text = text.replace('\n', " ")
     text = re.sub(' +', ' ', text)
