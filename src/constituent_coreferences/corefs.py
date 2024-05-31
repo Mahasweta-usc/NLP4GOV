@@ -23,6 +23,7 @@ poss_prn = ["her","his","ours","theirs",'their','yours']
 
 class corefs(SRL):
   def __init__(self):
+    super().__init__()
     self.nlp = stanza.Pipeline(lang='en', processors='tokenize,mwt,pos,lemma,ner,depparse',use_gpu=True)
   def prns(self, test_list,indices):
     for i in sorted(indices, reverse=True):
