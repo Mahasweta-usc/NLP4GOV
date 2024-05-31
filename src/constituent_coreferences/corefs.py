@@ -16,7 +16,7 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 from allennlp.predictors.predictor import Predictor
 predictor = Predictor.from_path("https://storage.googleapis.com/allennlp-public-models/coref-spanbert-large-2021.03.10.tar.gz",cuda_device=torch.cuda.current_device())
 
-from SRL import SRL
+from SRL.SRL import SRL
 PRN = ["her", "him", "his", "it", "me", "one", "ours", "its", "it's", "theirs", "them", "they",'their', "she", "he", "us", 'you', 'yours', "this", "that", "these", "those"]
 poss_prn = ["her","his","ours","theirs",'their','yours']
 
