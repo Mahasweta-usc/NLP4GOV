@@ -32,7 +32,7 @@ class corefs(SRL):
     return test_list
 
   def coref(self, text):
-    text = truncate(str(text))
+    text = self.truncate(str(text))
     text = text.lower()
     text = text.replace('\n', " ")
     text = re.sub(' +', ' ', text)
