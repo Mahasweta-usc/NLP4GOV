@@ -109,6 +109,8 @@ E.g. 'Attribute_Inf' or inferred Attribute to "Attribute" only.
 
 **Output** : Inferred categories (indicated by topic) for Attribute, Object, Deontic and Aim.
 
+[SRL Benchmark Datasets](https://github.com/BSAkash/NLP4GOV/tree/master/src/SRL/data)
+
 ## Policy Search Engines
 
 ### Institutional Comparison (policy_comparison.ipynb)
