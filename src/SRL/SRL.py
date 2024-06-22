@@ -124,7 +124,7 @@ class SRL:
 
   def truncate(self,x):
     tokens = tokenizer.tokenize(x)
-    return tokenizer.convert_tokens_to_string(tokens[:500])
+    return tokenizer.convert_tokens_to_string(tokens[:100])
 
   def file_read(self,file_name):
     if isinstance(file_name,str):
