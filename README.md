@@ -4,7 +4,7 @@ The repository was developed and is being maintained by the C^2 lab at the Unive
 For seamless I/O, we recommend using the [Chrome](https://stackoverflow.com/questions/53630073/google-colaboratory-import-data-stack-size-exceeded) browser. 
 **IF YOU FACE UNDOCUMENTED TECHNICAL PROBLEMS IN IMPLEMENTATION/QUESTIONS ABOUT THE NOTEBOOKS, PLEASE POST AN ISSUE DESCRIBING YOUR PROBLEM**
 
-**NEW** :yt: [Video Tutorials](https://www.youtube.com/playlist?list=PLlzHym4WEheKzaNksu-_ZrGQsY_qODEXC)
+**NEW** : yt: [Video Tutorials](https://www.youtube.com/playlist?list=PLlzHym4WEheKzaNksu-_ZrGQsY_qODEXC)
 
 # Contents
 
