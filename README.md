@@ -4,6 +4,8 @@ The repository was developed and is being maintained by the C^2 lab at the Unive
 For seamless I/O, we recommend using the [Chrome](https://stackoverflow.com/questions/53630073/google-colaboratory-import-data-stack-size-exceeded) browser. 
 **IF YOU FACE UNDOCUMENTED TECHNICAL PROBLEMS IN IMPLEMENTATION/QUESTIONS ABOUT THE NOTEBOOKS, PLEASE POST AN ISSUE DESCRIBING YOUR PROBLEM**
 
+**NEW** :yt: [Video Tutorials](https://www.youtube.com/playlist?list=PLlzHym4WEheKzaNksu-_ZrGQsY_qODEXC)
+
 # Contents
 
 1. Recommended pipelines and applications
@@ -97,6 +99,10 @@ Uses a linguistic task called semantic role labeling and maps their outputs to t
 
 ![img_1.png](images/img_srl_out.png)
 
+[SRL Benchmark Datasets](https://github.com/BSAkash/NLP4GOV/tree/master/src/SRL/data)
+
+Note: Valid Institutional statements govern a course of action between institutional entities. **Empty rows and entires carrying no verbs shall be automatically dropped**
+
 ### Categorizing Institutional Components (ABDICO_clustering.ipynb)
 
 
@@ -109,7 +115,7 @@ E.g. 'Attribute_Inf' or inferred Attribute to "Attribute" only.
 
 **Output** : Inferred categories (indicated by topic) for Attribute, Object, Deontic and Aim.
 
-[SRL Benchmark Datasets](https://github.com/BSAkash/NLP4GOV/tree/master/src/SRL/data)
+
 
 ## Policy Search Engines
 
