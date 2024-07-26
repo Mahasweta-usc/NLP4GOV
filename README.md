@@ -4,7 +4,7 @@ The repository was developed and is being maintained by the C^2 lab at the Unive
 For seamless I/O, we recommend using the [Chrome](https://stackoverflow.com/questions/53630073/google-colaboratory-import-data-stack-size-exceeded) browser. 
 **IF YOU FACE UNDOCUMENTED TECHNICAL PROBLEMS IN IMPLEMENTATION/QUESTIONS ABOUT THE NOTEBOOKS, PLEASE POST AN ISSUE DESCRIBING YOUR PROBLEM**
 
-**Full Paper**: Mahasweta Chakraborti, Sailendra Akash Bonagiri, Santiago Virgüez-Ruiz, and Seth Frey. 2024. NLP4Gov: A Comprehensive Library for Computational Policy Analysis. In Extended Abstracts of the 2024 CHI Conference on Human Factors in Computing Systems (CHI EA '24). Association for Computing Machinery. [URL](https://doi.org/10.1145/3613905.3650810)
+**Full Paper**: Mahasweta Chakraborti, Sailendra Akash Bonagiri, Santiago Virgüez-Ruiz, and Seth Frey. 2024. NLP4Gov: A Comprehensive Library for Computational Policy Analysis. In Extended Abstracts of the 2024 CHI Conference on Human Factors in Computing Systems (CHI EA '24). ACM. [URL](https://doi.org/10.1145/3613905.3650810)
 
 **NEW** :arrow_forward: [Video Tutorials](https://www.youtube.com/playlist?list=PLlzHym4WEheKzaNksu-_ZrGQsY_qODEXC)
 
