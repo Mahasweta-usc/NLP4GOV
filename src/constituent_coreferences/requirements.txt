@@ -3,3 +3,4 @@ allennlp-models==2.10.1
 spacy[transformers]
 stanza==1.7.0
 typing_extensions==4.11.0
+huggingface-hub>=0.23.0
